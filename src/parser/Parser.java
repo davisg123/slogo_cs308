@@ -3,8 +3,12 @@ package parser;
 import java.io.File;
 
 public class Parser {
-    public Parser () {
+
+    CommandFactory commandFactory = new CommandFactory();
+
+    public Parser() {
     }
+    
     
     /**
      * Accepts a file for parsing

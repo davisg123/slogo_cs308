@@ -1,6 +1,6 @@
 package parser;
 
-public abstract class MathCommand {
+public abstract class MathCommand implements Input{
 
     /**
      * accepts how every many expressions are needed, depending on the subclass
@@ -12,6 +12,7 @@ public abstract class MathCommand {
      */
     public MathCommand (double[] expressions) {
     }
+    
     
     /**
      * get the result of the math command
