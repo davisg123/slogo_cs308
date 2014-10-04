@@ -19,7 +19,5 @@ public abstract class Command {
         
     }
     
-    public abstract void executeCommand(){
-        
-    }
+    public abstract void executeCommand();
 }
