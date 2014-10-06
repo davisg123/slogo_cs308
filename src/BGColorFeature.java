@@ -1,5 +1,3 @@
-package resources;
-
 import Feature.Feature;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

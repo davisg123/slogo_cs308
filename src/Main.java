@@ -1,5 +1,4 @@
 
-import resources.BGColorFeature;
 import Feature.Feature;
 import javafx.application.Application;
 import javafx.scene.Node;
@@ -22,6 +21,8 @@ public class Main extends Application {
     private Scene myScene;
     private Rectangle myDisplay;
     private Button BGColorButton;
+    private Button RefGridButton;
+    private Button HelpPageButton;
     
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -41,7 +42,8 @@ public class Main extends Application {
                     root.setCenter(myDisplay);
                     
                     //Add Feature buttons on top
-                    root.setTop(addFeatureButtons(root));
+                    root.setTop(addFeatureButtons(root, primaryStage));
+                    
           
                     primaryStage.setScene(myScene);
                     primaryStage.show();
@@ -54,12 +56,23 @@ public class Main extends Application {
     /**
      * Adds features.
      */
-    public Node addFeatureButtons(BorderPane root){        
+    public Node addFeatureButtons(BorderPane root, Stage primaryStage){        
         HBox featureButtons = new HBox();
+        
         BGColorFeature BGColor = new BGColorFeature();
         BGColorButton = BGColor.makeButton("Background Color", event -> BGColor.changeBGColor(BGColorButton, myScene, myDisplay));
-        featureButtons.getChildren().add(BGColorButton);
+        
+        RefGridFeature RefGrid = new RefGridFeature();
+        RefGridButton = RefGrid.makeButton("RefGrid On/Off",event -> RefGrid.showReferenceGrid(RefGridButton, root));
+
+        
+        HelpPageFeature HelpPage = new HelpPageFeature();
+        HelpPageButton = HelpPage.makeButton("Help Page", event -> HelpPage.openHelpPage(HelpPageButton, root));
+        
+        featureButtons.getChildren().addAll(BGColorButton, RefGridButton, HelpPageButton);
+        
         return featureButtons;
+        
     }
     
 //    /**
@@ -99,7 +112,6 @@ public class Main extends Application {
 //        
 //    }
      
-    
     /**
      * the main entry point for the program.
      * @param args
