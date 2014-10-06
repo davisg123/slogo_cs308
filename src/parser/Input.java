@@ -1,14 +1,14 @@
 package parser;
 
-import java.awt.Point;
+import com.sun.javafx.geom.Point2D;
 
 public interface Input {
 
-	void setDistance(int pixels);
+	void setDistance(double pixels);
 
-	void setAngle(int degrees);
+	void setAngle(double degrees);
 
-	void setPosition(Point position);
+	void setPosition(Point2D position);
 	
 	void executeCommand();
 	

@@ -1,5 +1,7 @@
 package parser;
 
+import commands.Command;
+
 public class CommandFactory {
     
     public CommandFactory() {
