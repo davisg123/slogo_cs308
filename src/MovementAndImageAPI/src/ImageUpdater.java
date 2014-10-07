@@ -33,14 +33,11 @@ public class ImageUpdater {
 	 * @param from
 	 *            the starting point of the line
 	 * @param to
-	 *            the ending point of the line
-	 * @param lineColor
-	 *            the color of the line to draw (whatever Turtle's pen color is)
-	 *            If the ending point will end up being outside of the view, it
-	 *            will recursively call itself again to draw as far as possible,
-	 *            then to draw another line.
+	 *            the ending point of the line. If the ending point will end up
+	 *            being outside of the view, it will recursively call itself
+	 *            again to draw as far as possible, then to draw another line.
 	 */
-	public void drawLine(Point2D from, Point2D to, Color lineColor) {
-	};
+	public void drawLine(Point2D from, Point2D to) {
+	}
 
 }

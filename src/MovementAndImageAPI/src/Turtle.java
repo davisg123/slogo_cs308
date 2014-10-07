@@ -19,12 +19,28 @@ public class Turtle {
 
 	/**
 	 * 
+	 * @param newAngle
+	 *            The angle to immediately change to.
+	 */
+	public void updateAbsoluteOrientation(double newAngle) {
+	};
+
+	/**
+	 * 
 	 * @param translocation
 	 *            How many pixels to move in that direction. Uses TurtleMath and
 	 *            orientation to figure out how many pixels that is in the X and
 	 *            Y directions.
 	 */
 	public void updateLocation(double translocation) {
+	};
+
+	/**
+	 * 
+	 * @param newLocation
+	 *            The location to instantly move to.
+	 */
+	public void updateAbsoluteLocation(Point2D newLocation) {
 	};
 
 	/**

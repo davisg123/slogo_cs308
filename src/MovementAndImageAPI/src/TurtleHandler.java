@@ -1,3 +1,4 @@
+import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
 /**
@@ -15,6 +16,15 @@ public class TurtleHandler {
 	 */
 	public void updateTurtleLocation(double translocation) {
 	};
+	
+	/**
+	 * 
+	 * @param newLocation
+	 *            the location to instantly move to.
+	 */
+	public void updateTurtleAbsoluteLocation(Point2D newLocation) {
+	};
+
 
 	/**
 	 * 
@@ -23,5 +33,14 @@ public class TurtleHandler {
 	 */
 	public void updateTurtleOrientation(double rotation) {
 	};
+	
+	/**
+	 * 
+	 * @param newAngle
+	 *            the orientation angle to immediately change to.
+	 */
+	public void updateTurtleAbsoluteOrientation(double newAngle) {
+	};
+
 
 }
