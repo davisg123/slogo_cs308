@@ -1,3 +1,4 @@
+package MovementAndImageAPI.src;
 import javafx.scene.paint.Color;
 
 /**
@@ -8,21 +9,30 @@ import javafx.scene.paint.Color;
  *
  */
 public class Pen {
+	private Color myPenColor;
+	private int myPenPosition;
+	
+	public Pen(){
+		myPenColor = Color.BLACK;
+		myPenPosition = 1;
+	}
+	
 	/**
 	 * 
 	 * @param newPenColor
 	 *            the new color for the Pen
 	 */
 	public void setPenColor(Color newPenColor) {
-	};
+		myPenColor = newPenColor;
+	}
 
 	/**
 	 * 
 	 * @return myPenColor (the current color)
 	 */
 	public Color getPenColor() {
-		return null;
-	};
+		return myPenColor;
+	}
 
 	/**
 	 * 
@@ -30,14 +40,15 @@ public class Pen {
 	 *            0 if pen is up, 1 if pen is down
 	 */
 	public void setPenPosition(int penPosition) {
-	};
+		myPenPosition = penPosition;
+	}
 
 	/**
 	 * 
 	 * @return 0 if pen is up, 1 if pen is down
 	 */
 	public int getPenPosition() {
-		return 0;
-	};
+		return myPenPosition;
+	}
 
 }
