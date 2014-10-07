@@ -1,6 +1,8 @@
 package parser;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import commands.Command;
 
@@ -10,8 +12,10 @@ public class CommandFactory {
     private static ResourceBundle ourCommandClasses;
     private static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
     private static final String DOT = ".";
+    private List<Command> myCommandList;
 
     public CommandFactory () {
+        myCommandList = new ArrayList<Command>();
         ourCommandClasses = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + "ClassConversion");
     }
 
@@ -38,7 +42,7 @@ public class CommandFactory {
         Command commandInstance =
                 instantiateClassFromString(commandBundleName + DOT + commandClassName,
                                            Double.parseDouble(commandParams[1]));
-
+        myCommandList.add(commandInstance);
     }
 
     /**
