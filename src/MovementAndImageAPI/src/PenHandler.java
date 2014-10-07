@@ -1,3 +1,5 @@
+package MovementAndImageAPI.src;
+
 import javafx.scene.paint.Color;
 
 /**

@@ -1,3 +1,5 @@
+package MovementAndImageAPI.src;
+
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
