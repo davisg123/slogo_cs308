@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class CommandFactory {
+public class CommandsFactory {
 
     private static ResourceBundle ourCommandClasses;
     private static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
     private static final String DOT = ".";
     private List<Command> myCommandList;
 
-    public CommandFactory () {
+    public CommandsFactory () {
         myCommandList = new ArrayList<Command>();
         ourCommandClasses = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + "ClassConversion");
     }
