@@ -44,6 +44,42 @@ public class CommandsFactory {
         return command;
     }
 
+    public ICommand pickUpTurtle() {
+        return new ActivityCommand(turtle, ActivityCommand.CommandType.PICK_UP);
+    }
+    
+    public ICommand putTurtle() {
+        return new ActivityCommand(turtle, ActivityCommand.CommandType.PUT);
+    }
+    
+    public ICommand showTurtle() {
+        return new ActivityCommand(turtle, ActivityCommand.CommandType.SHOW);
+    }
+    
+    public ICommand hideTurtle() {
+        return new ActivityCommand(turtle, ActivityCommand.CommandType.HIDE);
+    }
+    
+    public ICommand rotateTurtle(double angle) {
+        return new MovementCommand(turtle, MovementCommand.CommandType.ROTATE, angle);
+    }
+    
+    public ICommand rotateTurtleLeft(double angle) {
+        return new MovementCommand(turtle, MovementCommand.CommandType.ROTATE, angle);
+    }
+    
+    public ICommand rotateTurtleRight(double angle) {
+        return new MovementCommand(turtle, MovementCommand.CommandType.ROTATE, -1.0 * angle);
+    }
+
+    public ICommand turtleGoForward(double distance) {
+        return new MovementCommand(turtle, MovementCommand.CommandType.GO_FORWARD, distance);
+    }
+    
+    public ICommand turtleGoBack(double distance) {
+        return new MovementCommand(turtle, MovementCommand.CommandType.GO_BACK, distance);
+    }
+    
     /**
      * adds a command to the queue for processing
      * 

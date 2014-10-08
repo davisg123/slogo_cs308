@@ -28,7 +28,5 @@ public class ActivityCommand extends CommandsTurtle {
                 turtle().put();
                 break;
         }
-        
     }   
-
 }
