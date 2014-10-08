@@ -1,8 +1,9 @@
-import Feature.Feature;
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -10,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 
@@ -22,10 +22,11 @@ public class Main extends Application {
     private static final int DISPLAY_WIDTH = 1000;
     private static final int DISPLAY_HEIGHT = 600;
     private Scene myScene;
-    private Rectangle myDisplay;
+    private Canvas myDisplay;
     private Button BGColorButton;
     private Button RefGridButton;
     private Button HelpPageButton;
+    private GraphicsContext gc;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -33,22 +34,31 @@ public class Main extends Application {
     @Override
     public void start (Stage primaryStage) {
         try {
-            
-            BorderPane root = new BorderPane();
+            Group root = new Group();
+            Pane pane = new Pane();
+            BorderPane bpane = new BorderPane();
             myScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
             
-            // Add textbox at bottom (temporary)
-            TextField textBox = new TextField("Type command here...");
-            root.setBottom(textBox); 
 
-//            // Add display box in center. (Using a rectangle for now...)
-            myDisplay = new Rectangle(DISPLAY_WIDTH, DISPLAY_HEIGHT, Color.WHITE);
-            root.setCenter(myDisplay);
-
-            // Add Feature buttons on top
-            root.setTop(addFeatureButtons(root, primaryStage));
-            root.setCenter(myDisplay);
+            //Add display canvas
+            myDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            gc = myDisplay.getGraphicsContext2D();
+            gc.setFill(Color.BLACK);
+            gc.fillRect(0,0,DISPLAY_WIDTH,DISPLAY_HEIGHT);  // 0 and 0 here are x,y
+            pane.getChildren().add(myDisplay);
+            myDisplay.toFront();
+            bpane.setCenter(pane);
             
+            // Add Feature buttons on top
+            bpane.setTop(addFeatureButtons(bpane, primaryStage));
+               
+            // Add textbox at bottom (temporary)
+            TextField textBox = new TextField(">");
+            bpane.setBottom(textBox);
+            
+            // Setting up layers
+            root.getChildren().add(bpane);
+        
             primaryStage.setScene(myScene);
             primaryStage.show();
         }
@@ -64,12 +74,12 @@ public class Main extends Application {
         HBox featureButtons = new HBox();
 
         BGColorFeature BGColor = new BGColorFeature();        
-        ChoiceBox BGColorChoices = BGColor.makeColorChoices(myDisplay);
+        ChoiceBox BGColorChoices = BGColor.makeColorChoices(gc,DISPLAY_WIDTH,DISPLAY_HEIGHT);
         root.getChildren().add(BGColorChoices);
         BGColorButton = BGColor.makeButton("Show Background Color Options", event->BGColorChoices.show());
         
 
-        // ? this doesn't work yet.
+        //should fix this for canvas
         RefGridFeature RefGrid = new RefGridFeature();
         RefGridButton =
                 RefGrid.makeButton("RefGrid On/Off",
