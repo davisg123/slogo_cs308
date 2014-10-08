@@ -26,6 +26,14 @@ public class CommandsFactory {
        return new CommandsRepeat(times, command);
    }
     
+  public ICommand CommandMake(String name, ICommand command) { 
+      return new CommandMake(name, command);
+  }
+  
+  public ICommand CommandExecute(String commandName) {
+      return new CommandExecute(commandName);
+  }
+   
     /**
      * parses command with getCommand method to get type of command
      * 

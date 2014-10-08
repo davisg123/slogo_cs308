@@ -1,6 +1,6 @@
 package commands;
 
-public class CommandMake {
+public class CommandMake implements ICommand {
     
     private String name;
     private ICommand command;
@@ -8,6 +8,11 @@ public class CommandMake {
     public CommandMake(String name, ICommand command) {
         this.name = name;
         this.command = command;
+    }
+
+    @Override
+    public void execute () {
+       command.execute(); 
     }
     
 }
