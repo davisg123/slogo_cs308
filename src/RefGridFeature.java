@@ -2,21 +2,20 @@ import java.util.ArrayList;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import Feature.Feature;
 
 public class RefGridFeature extends Feature {
    
 private ArrayList<Line> lineList;
- 
-    boolean gridOn = true;
-    public void showReferenceGrid(Button button, BorderPane root, int displayWidth, int displayHeight){
+boolean gridOn = true;
+    public void showReferenceGrid(Button button,Pane pane, int displayWidth, int displayHeight){
         button.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event){
                 if (gridOn){
-                    drawRefGrid(root, displayWidth, displayHeight);
+                    drawRefGrid(pane, displayWidth, displayHeight);
                 }
                 else{
                     removeRefGrid();
@@ -24,32 +23,22 @@ private ArrayList<Line> lineList;
             }
     });
     }
-        
-    //Need to clean this code...but code works for now.
-     public void drawRefGrid(BorderPane root, int displayWidth, int displayHeight){
+            
+//    //Need to clean this code...but code works for now.
+     public void drawRefGrid(Pane pane, int displayWidth, int displayHeight){
          lineList = new ArrayList<Line>();
-         int vert_difference = (700-displayHeight)/2;   //700=screenheight
-         int horiz_difference = (1000-displayWidth)/2;
+         //vertical lines
          for (int i=0; i<=displayWidth; i=i+10){
-             //vertical lines
-             Line line = new Line();
-             line.setStartX(i);
-             line.setStartY(vert_difference);
-             line.setEndX(i); //x stays same as start
-             line.setEndY(displayHeight+vert_difference); //y is different
+             Line line = new Line(i, 0, i, displayHeight);
              line.setOpacity(0.1);
-             root.getChildren().add(line);
+             pane.getChildren().add(line);
              lineList.add(line);
          }
+         //horizontal lines
          for (int i=0; i<=displayHeight; i=i+10) {
-             //horizontal lines
-             Line line = new Line();
-             line.setStartX(horiz_difference);
-             line.setStartY(i+vert_difference);
-             line.setEndX(displayWidth+horiz_difference); //x is different
-             line.setEndY(i+vert_difference); //y stays same as start
+             Line line = new Line(0,i,displayWidth,i);
              line.setOpacity(0.1);
-             root.getChildren().add(line);
+             pane.getChildren().add(line);
              lineList.add(line);
          }
          gridOn = false;

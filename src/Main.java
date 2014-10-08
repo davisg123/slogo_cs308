@@ -50,7 +50,7 @@ public class Main extends Application {
             bpane.setCenter(pane);
             
             // Add Feature buttons on top
-            bpane.setTop(addFeatureButtons(bpane, primaryStage));
+            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane));
                
             // Add textbox at bottom (temporary)
             TextField textBox = new TextField(">");
@@ -70,12 +70,12 @@ public class Main extends Application {
     /**
      * Adds features.
      */
-    public Node addFeatureButtons (BorderPane root, Stage primaryStage) {
+    public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane) {
         HBox featureButtons = new HBox();
 
         BGColorFeature BGColor = new BGColorFeature();        
         ChoiceBox BGColorChoices = BGColor.makeColorChoices(gc,DISPLAY_WIDTH,DISPLAY_HEIGHT);
-        root.getChildren().add(BGColorChoices);
+        bpane.getChildren().add(BGColorChoices);
         BGColorButton = BGColor.makeButton("Show Background Color Options", event->BGColorChoices.show());
         
 
@@ -83,12 +83,12 @@ public class Main extends Application {
         RefGridFeature RefGrid = new RefGridFeature();
         RefGridButton =
                 RefGrid.makeButton("RefGrid On/Off",
-                                   event -> RefGrid.showReferenceGrid(RefGridButton, root, DISPLAY_WIDTH, DISPLAY_HEIGHT));
+                                   event -> RefGrid.showReferenceGrid(RefGridButton, pane, DISPLAY_WIDTH, DISPLAY_HEIGHT));
 
         HelpPageFeature HelpPage = new HelpPageFeature();
         HelpPageButton =
                 HelpPage.makeButton("Help Page",
-                                    event -> HelpPage.openHelpPage(HelpPageButton, root));
+                                    event -> HelpPage.openHelpPage(HelpPageButton, bpane));
 
         featureButtons.getChildren().addAll(BGColorButton, RefGridButton, HelpPageButton);
 
