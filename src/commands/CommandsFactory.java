@@ -18,12 +18,12 @@ public class CommandsFactory {
         ourCommandClasses = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + "ClassConversion");
     }
 
-   public CommandsQueue commandsQueue() { 
+   public CommandsQueue CommandsQueue() { 
        return new CommandsQueue();
    }
     
-   public ICommand commandsRepeat(int times, ICommand command) { 
-       return new commandsRepeat(times, command);
+   public ICommand CommandsRepeat(int times, ICommand command) { 
+       return new CommandsRepeat(times, command);
    }
     
     /**
