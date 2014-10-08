@@ -22,8 +22,8 @@ public class CommandsFactory {
        return new CommandsQueue();
    }
     
-   public ICommand commandRepeat(int times, ICommand command) { 
-       return new commandRepeat(times, command);
+   public ICommand commandsRepeat(int times, ICommand command) { 
+       return new commandsRepeat(times, command);
    }
     
     /**
