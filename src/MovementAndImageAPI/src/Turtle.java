@@ -95,15 +95,15 @@ public class Turtle {
 	 *             image.
 	 */
 	public void updateImage(String newImageLocation) {
-		try {
-			File turtleImageFile = new File(newImageLocation);
-			if (!turtleImageFile.exists())
-				throw new ImageNotFoundException();
+//		try {
+//			File turtleImageFile = new File(newImageLocation);
+//			if (!turtleImageFile.exists())
+//				throw new ImageNotFoundException();
 			myImage.setImage(new Image(getClass().getResourceAsStream(
 					newImageLocation)));
-		} catch (ImageNotFoundException e) {
-			System.out.println(e.getMessage());
-		}
+//		} catch (ImageNotFoundException e) {
+//			System.out.println(e.getMessage());
+//		}
 	}
 
 	/**

@@ -1,7 +1,8 @@
 
-import com.sun.javafx.geom.Point2D;
 import MovementAndImageAPI.src.ImageUpdater;
+import MovementAndImageAPI.src.Turtle;
 import javafx.application.Application;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -10,8 +11,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -63,13 +62,15 @@ public class Main extends Application {
             
             //adding imageUpdater
             ImageUpdater imageUpdater = new ImageUpdater(myDisplay);
-            Point2D test = new Point2D(100,100);
+            Point2D testP = new Point2D(0,0);
 
-            Image image = new Image(getClass().getResourceAsStream(filename));
-            ImageView iv = new ImageView(image);
+            //adding my turtle
+            Turtle testTurtle = new Turtle();
+            testTurtle.updateAbsoluteLocation(testP);
+            testTurtle.updateImage("/images/turtle.png");
             
-            imageUpdater.updateTurtleImage(test, turtleImage);
-            
+            // turtle image updating
+            imageUpdater.updateTurtleImage(testTurtle.getPoint(), testTurtle.getImage());
             
             
             // Setting up layers
