@@ -37,7 +37,7 @@ public class Turtle {
 
 	/**
 	 * Ensures a positive orientation angle (ex: 359 degrees instead of -1
-	 * degree)
+	 * degree) for clarity
 	 */
 	private void ensurePositiveOrientation() {
 		if (myOrientation < 0) {
@@ -72,6 +72,9 @@ public class Turtle {
 	 *            Y directions.
 	 */
 	public void updateLocation(double translocation) {
+		myLocation = new Point2D(
+				(myLocation.getX() + (translocation * Math.cos(Math.toRadians(myOrientation)))),
+				(myLocation.getY() + (translocation * Math.sin(Math.toRadians(myOrientation)))));
 	}
 
 	/**
