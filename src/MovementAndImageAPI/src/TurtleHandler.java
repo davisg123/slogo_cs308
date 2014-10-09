@@ -1,3 +1,6 @@
+package MovementAndImageAPI.src;
+
+import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
 /**
@@ -7,6 +10,13 @@ import javafx.scene.paint.Color;
  */
 public class TurtleHandler {
 
+	private Turtle mainTurtle = new Turtle();
+	private ImageUpdater mainImageUpdater;
+
+	public TurtleHandler(ImageUpdater imageUpdater) {
+		mainImageUpdater = imageUpdater;
+	}
+
 	/**
 	 * 
 	 * @param translocation
@@ -14,6 +24,41 @@ public class TurtleHandler {
 	 *            Positive = move forwards, negative = move backwards
 	 */
 	public void updateTurtleLocation(double translocation) {
+		Point2D from = mainTurtle.getPoint();
+		mainTurtle.updateLocation(translocation);
+		Point2D to = mainTurtle.getPoint();
+		moveAndDraw(from, to);
+	}
+
+	/**
+	 * 
+	 * @param newLocation
+	 *            the location to instantly move to.
+	 */
+	public void updateTurtleAbsoluteLocation(Point2D newLocation) {
+		try {
+			if (!mainImageUpdater.isValidPoint(newLocation))
+				throw new OutOfSceneException();
+			Point2D from = mainTurtle.getPoint();
+			mainTurtle.updateAbsoluteLocation(newLocation);
+			Point2D to = mainTurtle.getPoint();
+			moveAndDraw(from, to);
+		} catch (OutOfSceneException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/**
+	 * 
+	 * @param from
+	 *            The start point of the line
+	 * @param to
+	 *            The end point of the line, also where the Turtle image should
+	 *            be moved to
+	 */
+	private void moveAndDraw(Point2D from, Point2D to) {
+		mainImageUpdater.updateTurtleImage(to, mainTurtle.getImage());
+		mainImageUpdater.drawLine(from, to);
 	};
 
 	/**
@@ -22,6 +67,20 @@ public class TurtleHandler {
 	 *            the amount of degrees to rotate the Turtle (clockwise)
 	 */
 	public void updateTurtleOrientation(double rotation) {
+		mainTurtle.updateOrientation(rotation);
+		mainImageUpdater.updateTurtleImage(mainTurtle.getPoint(),
+				mainTurtle.getImage());
+	}
+
+	/**
+	 * 
+	 * @param newAngle
+	 *            the orientation angle to immediately change to.
+	 */
+	public void updateTurtleAbsoluteOrientation(double newAngle) {
+		mainTurtle.updateAbsoluteOrientation(newAngle);
+		mainImageUpdater.updateTurtleImage(mainTurtle.getPoint(),
+				mainTurtle.getImage());
 	};
 
 }
