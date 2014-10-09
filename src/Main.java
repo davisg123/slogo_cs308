@@ -1,3 +1,4 @@
+
 import com.sun.javafx.geom.Point2D;
 import MovementAndImageAPI.src.ImageUpdater;
 import javafx.application.Application;
@@ -73,9 +74,9 @@ public class Main extends Application {
             
             // Setting up layers
             root.getChildren().add(bpane);
-        
             primaryStage.setScene(myScene);
             primaryStage.show();
+            
         }
         catch (Exception e) {
             e.printStackTrace();

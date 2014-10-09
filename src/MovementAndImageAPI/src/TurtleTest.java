@@ -2,6 +2,7 @@ package MovementAndImageAPI.src;
 
 import static org.junit.Assert.*;
 import javafx.geometry.Point2D;
+import javafx.scene.canvas.Canvas;
 
 import org.junit.Test;
 
@@ -32,5 +33,13 @@ public class TurtleTest {
 				* testTurtle2.getPoint().getX()
 				&& testTurtle1.getPoint().getY() == testTurtle2.getPoint()
 						.getY());
+	}
+	
+	@Test
+	public void testValidLocations(){
+		Canvas testCanvas = new Canvas(100, 100);
+		ImageUpdater testUpdater = new ImageUpdater(testCanvas);
+		assertTrue(testUpdater.isValidPoint(new Point2D(50, 50)));
+		assertTrue(!testUpdater.isValidPoint(new Point2D(400, 0)));
 	}
 }
