@@ -2,6 +2,9 @@ package MovementAndImageAPI.src;
 
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -12,11 +15,14 @@ import javafx.scene.shape.Line;
  *         Scene.
  */
 public class ImageUpdater {
-	private Scene myScene;
+	private Canvas myCanvas;
+	private GraphicsContext gc;
+	
 	private Pen mainPen = new Pen();
 
-	public ImageUpdater(Scene newScene) {
-		myScene = newScene;
+	public ImageUpdater(Canvas newCanvas) {
+		myCanvas = newCanvas;
+		gc = myCanvas.getGraphicsContext2D();
 	}
 
 	/**
@@ -28,17 +34,17 @@ public class ImageUpdater {
 	 *            because that should be handled by the TurtleHandler.
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
-
+		gc.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
 	}
 
-	/**
-	 * 
-	 * @param newColor
-	 *            The new color for the background of the scene.
-	 */
-	public void setBackgroundColor(Color newColor) {
-		myScene.setFill(newColor);
-	}
+//	/**
+//	 * 
+//	 * @param newColor
+//	 *            The new color for the background of the scene.
+//	 */
+//	public void setBackgroundColor(Color newColor) {
+//		myScene.setFill(newColor);
+//	}
 
 	/**
 	 * 
@@ -63,8 +69,7 @@ public class ImageUpdater {
 	 * @return true if the point is within the scene
 	 */
 	public boolean isValidPoint(Point2D newLocation) {
-		return (newLocation.getX() <= myScene.getX() && newLocation.getY() <= myScene
-				.getY());
+		return (newLocation.getX() <= myCanvas.getWidth() && newLocation.getY() <= myCanvas.getHeight());
 	}
 
 }

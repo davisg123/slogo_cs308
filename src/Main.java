@@ -1,3 +1,4 @@
+import parser.FilePicker;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -58,9 +59,9 @@ public class Main extends Application {
             
             // Setting up layers
             root.getChildren().add(bpane);
-        
             primaryStage.setScene(myScene);
             primaryStage.show();
+            
         }
         catch (Exception e) {
             e.printStackTrace();

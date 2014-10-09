@@ -1,6 +1,7 @@
 package commands;
 
 import MovementAndImageAPI.*;
+import MovementAndImageAPI.src.Turtle;
 
 public class ActivityCommand extends CommandsTurtle {
 
