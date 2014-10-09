@@ -2,6 +2,7 @@ package MovementAndImageAPI.src;
 
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -12,11 +13,11 @@ import javafx.scene.shape.Line;
  *         Scene.
  */
 public class ImageUpdater {
-	private Scene myScene;
+	private Canvas myCanvas;
 	private Pen mainPen = new Pen();
 
-	public ImageUpdater(Scene newScene) {
-		myScene = newScene;
+	public ImageUpdater(Canvas newCanvas) {
+		myCanvas = newCanvas;
 	}
 
 	/**
@@ -29,15 +30,6 @@ public class ImageUpdater {
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
 
-	}
-
-	/**
-	 * 
-	 * @param newColor
-	 *            The new color for the background of the scene.
-	 */
-	public void setBackgroundColor(Color newColor) {
-		myScene.setFill(newColor);
 	}
 
 	/**
@@ -63,8 +55,8 @@ public class ImageUpdater {
 	 * @return true if the point is within the scene
 	 */
 	public boolean isValidPoint(Point2D newLocation) {
-		return (newLocation.getX() <= myScene.getX() && newLocation.getY() <= myScene
-				.getY());
+		return (newLocation.getX() <= myCanvas.getWidth() && newLocation.getY() <= myCanvas
+				.getHeight());
 	}
 
 }
