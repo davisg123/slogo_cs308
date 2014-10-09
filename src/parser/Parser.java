@@ -1,33 +1,26 @@
 package parser;
 
-import java.io.File;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import commands.*;
 
 public class Parser {
 
-    CommandFactory commandFactory = new CommandFactory();
+    private CommandsFactory commandsFactory = null;
+    private LogoParser logoParser;
 
-    public Parser() {
+    public Parser(CommandsFactory commandsFactory) {
+        this.commandsFactory = commandsFactory;
+    }
+   
+    public void createLogoParser() {
+        logoParser = new LogoParser(System.in);
     }
     
-    
-    /**
-     * Accepts a file for parsing
-     * 
-     * @param file
-     * file to parse
-     */
-    public void parseCommandFile(File file)  {
-        
-    }
-    
-    /**
-     * Accepts a command for parsing.  Should utilize the command factory's addCommand method
-     * 
-     * @param command
-     * command to parse
-     */
-    public void parseCommand(String command) {
-        
+    public ICommand parse(String input) throws Exception {
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        logoParser.ReInit(inputStream);
+        return logoParser.parse(commandsFactory);
     }
     
 }
