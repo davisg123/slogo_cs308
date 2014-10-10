@@ -47,10 +47,19 @@ public class ImageUpdater {
 	 */
 	public void drawLine(Point2D from, Point2D to) {
 		if (isValidPoint(to)) {
-			Line toDraw = new Line(from.getX(), from.getY(), to.getX(),
+//			Line toDraw = new Line(from.getX(), from.getY(), to.getX(),
+//					to.getY());
+//			toDraw.setStroke(mainPen.getPenColor());
+			gc.setStroke(mainPen.getPenColor());
+			gc.strokeLine(from.getX(), from.getY(), to.getX(),
 					to.getY());
-			toDraw.setStroke(mainPen.getPenColor());
+			
 		}
+//		else{
+//			double angleMoving = from.angle(to);
+//			Point2D newEndPoint = findValidEndPoint(to);
+//			Point2D newStartPoint = findNewStartPoint(to);
+//		}
 	}
 
 	/**

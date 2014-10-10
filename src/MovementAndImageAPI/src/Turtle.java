@@ -131,4 +131,12 @@ public class Turtle {
 	public ImageView getImage() {
 		return myImage;
 	}
+
+	/**
+	 * 
+	 * @param show true if should show the turtle, false if should hide the turtle
+	 */
+	public void show(boolean show) {
+		myImage.setVisible(show);
+	}
 }
