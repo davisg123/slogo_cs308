@@ -6,6 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
@@ -34,9 +35,9 @@ public class ImageUpdater {
 	 *            because that should be handled by the TurtleHandler.
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
-		gc.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
+	    gc.clearRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());    
+	    gc.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
 	}
-
 
 	/**
 	 * 

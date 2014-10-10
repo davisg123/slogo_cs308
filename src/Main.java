@@ -1,6 +1,7 @@
 
 import MovementAndImageAPI.src.ImageUpdater;
 import MovementAndImageAPI.src.Turtle;
+import MovementAndImageAPI.src.TurtleHandler;
 import javafx.application.Application;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
@@ -11,6 +12,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -55,7 +58,6 @@ public class Main extends Application {
             gcFront = myFrontDisplay.getGraphicsContext2D();
             pane.getChildren().add(myFrontDisplay);
 
-            
             //Setting display positions
             myBackDisplay.toBack();
             myFrontDisplay.toFront();
@@ -72,16 +74,13 @@ public class Main extends Application {
             
             //adding imageUpdater
             ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
-            Point2D testP = new Point2D(0,0);
 
             //adding my turtle
-            Turtle testTurtle = new Turtle();
-            testTurtle.updateAbsoluteLocation(testP);
+            TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
             testTurtle.updateImage("/images/turtle.png");
-            
-            // turtle image updating
-            frontImageUpdater.updateTurtleImage(testTurtle.getPoint(), testTurtle.getImage());
-            
+
+            //(test) turtle knows how to move -- YESSS
+//            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,0));
             
             // Setting up layers
             root.getChildren().add(bpane);
@@ -157,12 +156,5 @@ public class Main extends Application {
     public static void main (String[] args) {
         launch(args);
     }
-    
-    
-    //make imageupdater
-    //when i make turtle handler, pass in imageupdater
-    //when i make imageupdater pass scene to imageupdater
-    //make turtle handler 
-    
     
 }
