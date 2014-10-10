@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import MovementAndImageAPI.src.TurtleHandler;
 
 
 public class CommandsFactory {
@@ -12,10 +13,15 @@ public class CommandsFactory {
     private static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
     private static final String DOT = ".";
     private List<Command> myCommandList;
+    private TurtleHandler myTurtleHandler;
 
     public CommandsFactory () {
         myCommandList = new ArrayList<Command>();
         ourCommandClasses = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + "ClassConversion");
+    }
+    
+    public void setTurtleHandler(TurtleHandler turtleHandler){
+        myTurtleHandler = turtleHandler;
     }
 
    public CommandsQueue CommandsQueue() { 
@@ -45,39 +51,39 @@ public class CommandsFactory {
     }
 
     public ICommand pickUpTurtle() {
-        return new ActivityCommand(turtle, ActivityCommand.CommandType.PICK_UP);
+        return new ActivityCommand(myTurtleHandler, ActivityCommand.CommandType.PICK_UP);
     }
     
     public ICommand putTurtle() {
-        return new ActivityCommand(turtle, ActivityCommand.CommandType.PUT);
+        return new ActivityCommand(myTurtleHandler, ActivityCommand.CommandType.PUT);
     }
     
     public ICommand showTurtle() {
-        return new ActivityCommand(turtle, ActivityCommand.CommandType.SHOW);
+        return new ActivityCommand(myTurtleHandler, ActivityCommand.CommandType.SHOW);
     }
     
     public ICommand hideTurtle() {
-        return new ActivityCommand(turtle, ActivityCommand.CommandType.HIDE);
+        return new ActivityCommand(myTurtleHandler, ActivityCommand.CommandType.HIDE);
     }
     
     public ICommand rotateTurtle(double angle) {
-        return new MovementCommand(turtle, MovementCommand.CommandType.ROTATE, angle);
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, angle);
     }
     
     public ICommand rotateTurtleLeft(double angle) {
-        return new MovementCommand(turtle, MovementCommand.CommandType.ROTATE, angle);
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, angle);
     }
     
     public ICommand rotateTurtleRight(double angle) {
-        return new MovementCommand(turtle, MovementCommand.CommandType.ROTATE, -1.0 * angle);
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, -1.0 * angle);
     }
 
     public ICommand turtleGoForward(double distance) {
-        return new MovementCommand(turtle, MovementCommand.CommandType.GO_FORWARD, distance);
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.GO_FORWARD, distance);
     }
     
     public ICommand turtleGoBack(double distance) {
-        return new MovementCommand(turtle, MovementCommand.CommandType.GO_BACK, distance);
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.GO_BACK, distance);
     }
     
     /**

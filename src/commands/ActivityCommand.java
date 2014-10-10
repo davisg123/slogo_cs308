@@ -1,14 +1,16 @@
 package commands;
 
 import MovementAndImageAPI.*;
+import MovementAndImageAPI.src.Turtle;
+import MovementAndImageAPI.src.TurtleHandler;
 
 public class ActivityCommand extends CommandsTurtle {
 
     public enum CommandType {HIDE, SHOW, PICK_UP, PUT};
     private CommandType command;
     
-    public ActivityCommand(Turtle turtle, CommandType command) {
-        super(turtle);
+    public ActivityCommand(TurtleHandler turtleHandler, CommandType command) {
+        super(turtleHandler);
         this.command = command;
     }
     
@@ -16,16 +18,16 @@ public class ActivityCommand extends CommandsTurtle {
     public void execute() {
         switch(command) {
             case HIDE:
-                turtle().hide();
+                turtleHandler().hide();
                 break;
             case SHOW:
-                turtle().show();
+                turtleHandler().show();
                 break;
             case PICK_UP:
-                turtle().pickUp();
+                turtleHandler().pickUp();
                 break;
             case PUT:
-                turtle().put();
+                turtleHandler().put();
                 break;
         }
     }   
