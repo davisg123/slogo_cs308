@@ -1,4 +1,5 @@
 
+import commands.CommandsFactory;
 import MovementAndImageAPI.src.ImageUpdater;
 import MovementAndImageAPI.src.Turtle;
 import MovementAndImageAPI.src.TurtleHandler;
@@ -41,7 +42,9 @@ public class Main extends Application {
     private GraphicsContext gcBack;
     private GraphicsContext gcFront;
     private String userInput;
+    private boolean validInput;
     private Parser myParser;
+    private Button StartButton;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -75,7 +78,8 @@ public class Main extends Application {
             bpane.setTop(addFeatureButtons(bpane, primaryStage, pane));
                
             //adding parser? not sure now this works...!
-            myParser = new Parser(null);
+            myParser = new Parser(new CommandsFactory());
+            myParser.createLogoParser();
             
             // Add textbox at bottom (temporary)
             TextField textBox = new TextField("");
@@ -107,15 +111,13 @@ public class Main extends Application {
      * Adds features.
      */
     public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane) {
-        HBox featureButtons = new HBox();
-
+        HBox featureButtons = new HBox();        
+        
         BGColorFeature BGColor = new BGColorFeature();        
         ChoiceBox BGColorChoices = BGColor.makeColorChoices(gcBack,DISPLAY_WIDTH,DISPLAY_HEIGHT);
         bpane.getChildren().add(BGColorChoices);
         BGColorButton = BGColor.makeButton("Show Background Color Options", event->BGColorChoices.show());
         
-
-        //should fix this for canvas
         RefGridFeature RefGrid = new RefGridFeature();
         RefGridButton =
                 RefGrid.makeButton("RefGrid On/Off",
@@ -140,20 +142,23 @@ public class Main extends Application {
      * returns false otherwise.
      */
      public boolean sendUserInput(TextField textBox){
-         boolean validInput = false;
+         validInput = false;      
          textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
              @Override
              public void handle (KeyEvent key) {
                  if (key.getCode() == KeyCode.ENTER) {
                      userInput = textBox.getText();
                      //i need to send this userInput to the parser.
-                     System.out.println(userInput);
-                            
-//                     //i need to check if this userInput is valid... using the parser.
-//                     if (userInput is a valid input){
-//                         validInput = true;
-//                     }
-                     
+                     System.out.println("userInput: " + userInput);
+                     try {
+                         myParser.parse(userInput);
+                        validInput = true;
+                        System.out.println("userInput went through myParser");
+                    }
+                    catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }          
                      textBox.clear();
                  }
              }
