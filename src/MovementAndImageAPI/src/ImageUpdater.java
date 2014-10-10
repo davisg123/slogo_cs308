@@ -35,6 +35,7 @@ public class ImageUpdater {
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
 		gc.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
+		
 	}
 
 //	/**
