@@ -26,11 +26,13 @@ public class Main extends Application {
     private static final int DISPLAY_WIDTH = 1000;
     private static final int DISPLAY_HEIGHT = 600;
     private Scene myScene;
-    private Canvas myDisplay;
+    private Canvas myBackDisplay;
+    private Canvas myFrontDisplay;
     private Button BGColorButton;
     private Button RefGridButton;
     private Button HelpPageButton;
-    private GraphicsContext gc;
+    private GraphicsContext gcBack;
+    private GraphicsContext gcFront;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -43,14 +45,22 @@ public class Main extends Application {
             BorderPane bpane = new BorderPane();
             myScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
             
+            //Add back display canvas
+            myBackDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            gcBack = myBackDisplay.getGraphicsContext2D();
+            pane.getChildren().add(myBackDisplay);
+            
+            //Add front display canvas
+            myFrontDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            gcFront = myFrontDisplay.getGraphicsContext2D();
+            pane.getChildren().add(myFrontDisplay);
 
-            //Add display canvas
-            myDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            gc = myDisplay.getGraphicsContext2D();
-            gc.setFill(Color.BLACK);
-            gc.fillRect(0,0,DISPLAY_WIDTH,DISPLAY_HEIGHT);  // 0 and 0 here are x,y
-            pane.getChildren().add(myDisplay);
-            myDisplay.toFront();
+            
+            //Setting display positions
+            myBackDisplay.toBack();
+            myFrontDisplay.toFront();
+
+            //Setting pane(containing the displays) to the center of the borderpane.
             bpane.setCenter(pane);
             
             // Add Feature buttons on top
@@ -61,7 +71,7 @@ public class Main extends Application {
             bpane.setBottom(textBox);
             
             //adding imageUpdater
-            ImageUpdater imageUpdater = new ImageUpdater(myDisplay);
+            ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
             Point2D testP = new Point2D(0,0);
 
             //adding my turtle
@@ -70,7 +80,7 @@ public class Main extends Application {
             testTurtle.updateImage("/images/turtle.png");
             
             // turtle image updating
-            imageUpdater.updateTurtleImage(testTurtle.getPoint(), testTurtle.getImage());
+            frontImageUpdater.updateTurtleImage(testTurtle.getPoint(), testTurtle.getImage());
             
             
             // Setting up layers
@@ -91,7 +101,7 @@ public class Main extends Application {
         HBox featureButtons = new HBox();
 
         BGColorFeature BGColor = new BGColorFeature();        
-        ChoiceBox BGColorChoices = BGColor.makeColorChoices(gc,DISPLAY_WIDTH,DISPLAY_HEIGHT);
+        ChoiceBox BGColorChoices = BGColor.makeColorChoices(gcBack,DISPLAY_WIDTH,DISPLAY_HEIGHT);
         bpane.getChildren().add(BGColorChoices);
         BGColorButton = BGColor.makeButton("Show Background Color Options", event->BGColorChoices.show());
         
