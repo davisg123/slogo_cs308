@@ -2,7 +2,9 @@
 import MovementAndImageAPI.src.ImageUpdater;
 import MovementAndImageAPI.src.Turtle;
 import MovementAndImageAPI.src.TurtleHandler;
+import parser.Parser;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -14,6 +16,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -36,6 +40,8 @@ public class Main extends Application {
     private Button HelpPageButton;
     private GraphicsContext gcBack;
     private GraphicsContext gcFront;
+    private String userInput;
+    private Parser myParser;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -68,10 +74,14 @@ public class Main extends Application {
             // Add Feature buttons on top
             bpane.setTop(addFeatureButtons(bpane, primaryStage, pane));
                
-            // Add textbox at bottom (temporary)
-            TextField textBox = new TextField(">");
-            bpane.setBottom(textBox);
+            //adding parser? not sure now this works...!
+            myParser = new Parser(null);
             
+            // Add textbox at bottom (temporary)
+            TextField textBox = new TextField("");
+            bpane.setBottom(textBox);
+            sendUserInput(textBox);
+           
             //adding imageUpdater
             ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
 
@@ -121,24 +131,35 @@ public class Main extends Application {
         return featureButtons;
     }
 
-    // /**
-    // * The main animation loop. Updates one total frame.
-    // * @param root the root to have the updated display
-    // */
-    // public void advanceOneFrame (BorderPane root){
-    //
-    // }
-
-    // /**
-    // * Tells the parser to parse the userInput String
-    // * (determined by whatever was typed in the TextField)
-    // * @param userInput the user input
-    // * @return returns true if XMLparser can parse the userInput (which means the userInput is
-    // valid)
-    // * returns false otherwise.
-    // */
-    // public boolean sendUserInput(String userInput){
-    // }
+     /**
+     * Tells the parser to parse the userInput String
+     * (determined by whatever was typed in the TextField)
+     * @param userInput the user input
+     * @return returns true if XMLparser can parse the userInput (which means the userInput is
+     valid)
+     * returns false otherwise.
+     */
+     public boolean sendUserInput(TextField textBox){
+         boolean validInput = false;
+         textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
+             @Override
+             public void handle (KeyEvent key) {
+                 if (key.getCode() == KeyCode.ENTER) {
+                     userInput = textBox.getText();
+                     //i need to send this userInput to the parser.
+                     System.out.println(userInput);
+                            
+//                     //i need to check if this userInput is valid... using the parser.
+//                     if (userInput is a valid input){
+//                         validInput = true;
+//                     }
+                     
+                     textBox.clear();
+                 }
+             }
+         });
+         return validInput;
+     }
 
     // /**
     // * Displays a list of valid commands (valid userInputs that the XMLparser could parse)
