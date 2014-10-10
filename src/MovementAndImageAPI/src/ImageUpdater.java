@@ -1,6 +1,13 @@
+package MovementAndImageAPI.src;
+
 import javafx.geometry.Point2D;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 /**
  * 
@@ -8,6 +15,15 @@ import javafx.scene.paint.Color;
  *         Scene.
  */
 public class ImageUpdater {
+	private Canvas myCanvas;
+	private GraphicsContext gc;
+	
+	private Pen mainPen = new Pen();
+
+	public ImageUpdater(Canvas newCanvas) {
+		myCanvas = newCanvas;
+		gc = myCanvas.getGraphicsContext2D();
+	}
 
 	/**
 	 * 
@@ -18,15 +34,9 @@ public class ImageUpdater {
 	 *            because that should be handled by the TurtleHandler.
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
-	};
+		gc.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
+	}
 
-	/**
-	 * 
-	 * @param newColor
-	 *            The new color for the background of the scene.
-	 */
-	public void setBackgroundColor(Color newColor) {
-	};
 
 	/**
 	 * 
@@ -34,13 +44,33 @@ public class ImageUpdater {
 	 *            the starting point of the line
 	 * @param to
 	 *            the ending point of the line
-	 * @param lineColor
-	 *            the color of the line to draw (whatever Turtle's pen color is)
-	 *            If the ending point will end up being outside of the view, it
-	 *            will recursively call itself again to draw as far as possible,
-	 *            then to draw another line.
 	 */
-	public void drawLine(Point2D from, Point2D to, Color lineColor) {
-	};
+	public void drawLine(Point2D from, Point2D to) {
+		if (isValidPoint(to)) {
+//			Line toDraw = new Line(from.getX(), from.getY(), to.getX(),
+//					to.getY());
+//			toDraw.setStroke(mainPen.getPenColor());
+			gc.setStroke(mainPen.getPenColor());
+			gc.strokeLine(from.getX(), from.getY(), to.getX(),
+					to.getY());
+			
+		}
+//		else{
+//			double angleMoving = from.angle(to);
+//			Point2D newEndPoint = findValidEndPoint(to);
+//			Point2D newStartPoint = findNewStartPoint(to);
+//		}
+	}
+
+	/**
+	 * 
+	 * @param newLocation
+	 *            The point which is being checked to be within the scene's
+	 *            limits
+	 * @return true if the point is within the scene
+	 */
+	public boolean isValidPoint(Point2D newLocation) {
+		return (newLocation.getX() <= myCanvas.getWidth() && newLocation.getY() <= myCanvas.getHeight());
+	}
 
 }

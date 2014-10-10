@@ -26,7 +26,6 @@ public class FilePicker extends Application {
   @Override
   public void start(Stage primaryStage) {
       primaryStage.setTitle("File Chooser");
-     
       final Label labelFile = new Label();
      
       Button btn = new Button();
