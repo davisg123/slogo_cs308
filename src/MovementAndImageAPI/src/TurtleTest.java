@@ -8,16 +8,16 @@ import org.junit.Test;
 
 public class TurtleTest {
 
-	@Test
-	public void testChangingTurtleImage() {
-		Turtle testTurtle = new Turtle();
+//	@Test
+//	public void testChangingTurtleImage() {
+//		Turtle testTurtle = new Turtle();
 //		testTurtle.updateImage("notARealFileLocation.gif");
 //		if (!(testTurtle.getImage().getImage() == null)) {
 //			fail("Should not have updated an image because the image location doesn't exist.");
 //		}
-		testTurtle.updateImage("/caterpie.png");
-		assertNotNull(testTurtle.getImage().getImage());
-	}
+//		testTurtle.updateImage("/caterpie.png");
+//		assertNotNull(testTurtle.getImage().getImage());
+//	}
 
 	@Test
 	public void testMovingDirections() {
@@ -44,4 +44,10 @@ public class TurtleTest {
 		assertTrue(testUpdater.isValidPoint(new Point2D(50, 50)));
 		assertTrue(!testUpdater.isValidPoint(new Point2D(400, 0)));
 	}
+	
+	@Test
+	public void testTurtleMoving(){
+		
+	}
+	
 }

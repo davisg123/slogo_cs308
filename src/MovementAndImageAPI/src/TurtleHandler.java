@@ -83,4 +83,17 @@ public class TurtleHandler {
 				mainTurtle.getImage());
 	};
 
+	/**
+	 * 
+	 * @param show true if should show the turtle, false if should hide the turtle
+	 */
+	public void showTurtle(boolean show){
+		mainTurtle.show(show);
+		mainImageUpdater.updateTurtleImage(mainTurtle.getPoint(), mainTurtle.getImage());
+	}
+	
+	public void updateImage(String location){
+		mainTurtle.updateImage(location);
+		mainImageUpdater.updateTurtleImage(mainTurtle.getPoint(),  mainTurtle.getImage());
+	}
 }
