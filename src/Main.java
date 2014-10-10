@@ -1,5 +1,12 @@
-import parser.FilePicker;
+
+import commands.CommandsFactory;
+import MovementAndImageAPI.src.ImageUpdater;
+import MovementAndImageAPI.src.Turtle;
+import MovementAndImageAPI.src.TurtleHandler;
+import parser.Parser;
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -8,6 +15,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -23,11 +34,17 @@ public class Main extends Application {
     private static final int DISPLAY_WIDTH = 1000;
     private static final int DISPLAY_HEIGHT = 600;
     private Scene myScene;
-    private Canvas myDisplay;
+    private Canvas myBackDisplay;
+    private Canvas myFrontDisplay;
     private Button BGColorButton;
     private Button RefGridButton;
     private Button HelpPageButton;
-    private GraphicsContext gc;
+    private GraphicsContext gcBack;
+    private GraphicsContext gcFront;
+    private String userInput;
+    private boolean validInput;
+    private Parser myParser;
+    private Button StartButton;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -40,22 +57,44 @@ public class Main extends Application {
             BorderPane bpane = new BorderPane();
             myScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
             
+            //Add back display canvas
+            myBackDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            gcBack = myBackDisplay.getGraphicsContext2D();
+            pane.getChildren().add(myBackDisplay);
+            
+            //Add front display canvas
+            myFrontDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            gcFront = myFrontDisplay.getGraphicsContext2D();
+            pane.getChildren().add(myFrontDisplay);
 
-            //Add display canvas
-            myDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            gc = myDisplay.getGraphicsContext2D();
-            gc.setFill(Color.BLACK);
-            gc.fillRect(0,0,DISPLAY_WIDTH,DISPLAY_HEIGHT);  // 0 and 0 here are x,y
-            pane.getChildren().add(myDisplay);
-            myDisplay.toFront();
+            //Setting display positions
+            myBackDisplay.toBack();
+            myFrontDisplay.toFront();
+
+            //Setting pane(containing the displays) to the center of the borderpane.
             bpane.setCenter(pane);
             
             // Add Feature buttons on top
             bpane.setTop(addFeatureButtons(bpane, primaryStage, pane));
                
+            //adding parser? not sure now this works...!
+            myParser = new Parser(new CommandsFactory());
+            myParser.createLogoParser();
+            
             // Add textbox at bottom (temporary)
-            TextField textBox = new TextField(">");
+            TextField textBox = new TextField("");
             bpane.setBottom(textBox);
+            sendUserInput(textBox);
+           
+            //adding imageUpdater
+            ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
+
+            //adding my turtle
+            TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
+            testTurtle.updateImage("/images/turtle.png");
+
+            //(test) turtle knows how to move -- YESSS
+//            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,0));
             
             // Setting up layers
             root.getChildren().add(bpane);
@@ -72,15 +111,13 @@ public class Main extends Application {
      * Adds features.
      */
     public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane) {
-        HBox featureButtons = new HBox();
-
+        HBox featureButtons = new HBox();        
+        
         BGColorFeature BGColor = new BGColorFeature();        
-        ChoiceBox BGColorChoices = BGColor.makeColorChoices(gc,DISPLAY_WIDTH,DISPLAY_HEIGHT);
+        ChoiceBox BGColorChoices = BGColor.makeColorChoices(gcBack,DISPLAY_WIDTH,DISPLAY_HEIGHT);
         bpane.getChildren().add(BGColorChoices);
         BGColorButton = BGColor.makeButton("Show Background Color Options", event->BGColorChoices.show());
         
-
-        //should fix this for canvas
         RefGridFeature RefGrid = new RefGridFeature();
         RefGridButton =
                 RefGrid.makeButton("RefGrid On/Off",
@@ -96,24 +133,38 @@ public class Main extends Application {
         return featureButtons;
     }
 
-    // /**
-    // * The main animation loop. Updates one total frame.
-    // * @param root the root to have the updated display
-    // */
-    // public void advanceOneFrame (BorderPane root){
-    //
-    // }
-
-    // /**
-    // * Tells the parser to parse the userInput String
-    // * (determined by whatever was typed in the TextField)
-    // * @param userInput the user input
-    // * @return returns true if XMLparser can parse the userInput (which means the userInput is
-    // valid)
-    // * returns false otherwise.
-    // */
-    // public boolean sendUserInput(String userInput){
-    // }
+     /**
+     * Tells the parser to parse the userInput String
+     * (determined by whatever was typed in the TextField)
+     * @param userInput the user input
+     * @return returns true if XMLparser can parse the userInput (which means the userInput is
+     valid)
+     * returns false otherwise.
+     */
+     public boolean sendUserInput(TextField textBox){
+         validInput = false;      
+         textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
+             @Override
+             public void handle (KeyEvent key) {
+                 if (key.getCode() == KeyCode.ENTER) {
+                     userInput = textBox.getText();
+                     //i need to send this userInput to the parser.
+                     System.out.println("userInput: " + userInput);
+                     try {
+                         myParser.parse(userInput);
+                        validInput = true;
+                        System.out.println("userInput went through myParser");
+                    }
+                    catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }          
+                     textBox.clear();
+                 }
+             }
+         });
+         return validInput;
+     }
 
     // /**
     // * Displays a list of valid commands (valid userInputs that the XMLparser could parse)
@@ -131,12 +182,5 @@ public class Main extends Application {
     public static void main (String[] args) {
         launch(args);
     }
-    
-    
-    //make imageupdater
-    //when i make turtle handler, pass in imageupdater
-    //when i make imageupdater pass scene to imageupdater
-    //make turtle handler 
-    
     
 }
