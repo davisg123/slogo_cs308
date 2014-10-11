@@ -100,7 +100,7 @@ public class Main extends Application {
             
             //adding my turtle
             TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
-            testTurtle.updateImage("/images/turtle.png");
+            testTurtle.updateImage(new Image(getClass().getResourceAsStream("/images/turtle.png")));
             
             // Add previousCommands box
             TextArea prevCommandBox = new TextArea("Previous Commands: ");
@@ -125,8 +125,7 @@ public class Main extends Application {
             mainPenHandler.setPenColor(Color.RED);
             
 
-            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,100));
-            testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,200));
+
             
             // Add Feature buttons on top
             bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, mainPenHandler, testTurtle, root, frontImageUpdater));

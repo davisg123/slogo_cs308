@@ -19,6 +19,7 @@ public class ImageUpdater {
 	private Canvas myTurtleCanvas, myLineCanvas;
 	private GraphicsContext turtleGC, lineGC;
 	private PenHandler mainPenHandler;
+	private static double X_OFFSET, Y_OFFSET;
 
 	public ImageUpdater(Canvas turtleCanvas, Canvas lineCanvas, PenHandler penHandler) {
 		myTurtleCanvas = turtleCanvas;
@@ -26,6 +27,8 @@ public class ImageUpdater {
 		myLineCanvas = lineCanvas;
 		lineGC = myLineCanvas.getGraphicsContext2D();
 		mainPenHandler = penHandler;
+		X_OFFSET = turtleCanvas.getWidth() / 2;
+		Y_OFFSET = turtleCanvas.getHeight() / 2;
 	}
 
 	/**
@@ -38,7 +41,7 @@ public class ImageUpdater {
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
 	    turtleGC.clearRect(0, 0, myTurtleCanvas.getWidth(), myTurtleCanvas.getHeight());    
-	    turtleGC.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
+	    turtleGC.drawImage(turtleImage.getImage(), newLocation.getX() + X_OFFSET, newLocation.getY() - (turtleImage.getImage().getHeight() / 2) + Y_OFFSET);
 	}
 	
 
@@ -50,13 +53,13 @@ public class ImageUpdater {
 	 *            the ending point of the line
 	 */
 	public void drawLine(Point2D from, Point2D to) {
-		if (isValidPoint(to)) {
+		if (isValidPoint(to) && mainPenHandler.getPenPosition() == 1) {
 //			Line toDraw = new Line(from.getX(), from.getY(), to.getX(),
 //					to.getY());
 //			toDraw.setStroke(mainPen.getPenColor());
 			lineGC.setStroke(mainPenHandler.getPenColor());
-			lineGC.strokeLine(from.getX(), from.getY(), to.getX(),
-					to.getY());
+			lineGC.strokeLine(from.getX() + X_OFFSET, from.getY() + Y_OFFSET, to.getX() + X_OFFSET,
+					to.getY() + Y_OFFSET);
 			
 		}
 //		else{
