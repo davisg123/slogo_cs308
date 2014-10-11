@@ -28,10 +28,10 @@ public class PenHandler {
 	}
 	
 	public Color getPenColor(){
-		return mainPen.getPenColor();
+	    return mainPen.getPenColor();
 	}
 	
 	public int getPenPosition(){
-		return mainPen.getPenPosition();
+	    return mainPen.getPenPosition();
 	}
 }

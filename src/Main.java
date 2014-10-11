@@ -89,9 +89,10 @@ public class Main extends Application {
             //Setting pane(containing the displays) to the center of the borderpane.
             bpane.setCenter(pane);
             
-         
-            //adding imageUpdater
+            //making penHandler
             PenHandler mainPenHandler = new PenHandler();
+            
+            //adding imageUpdater
             ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay, mainPenHandler);
             
             //adding my turtle
@@ -117,10 +118,10 @@ public class Main extends Application {
            
 
 
-            
             //adding my penHandler and pen
             mainPenHandler.setPenColor(Color.RED);
             
+
             testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,100));
             testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,200));
             
