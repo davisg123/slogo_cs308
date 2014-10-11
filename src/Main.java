@@ -91,7 +91,8 @@ public class Main extends Application {
             
          
             //adding imageUpdater
-            ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
+            PenHandler mainPenHandler = new PenHandler();
+            ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay, mainPenHandler);
             
             //adding my turtle
             TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
@@ -118,14 +119,13 @@ public class Main extends Application {
 
             
             //adding my penHandler and pen
-            PenHandler penHandler = new PenHandler();
-            penHandler.setPenColor(Color.RED);
+            mainPenHandler.setPenColor(Color.RED);
             
             testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,100));
             testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,200));
             
             // Add Feature buttons on top
-            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, penHandler, testTurtle, root, frontImageUpdater));
+            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, mainPenHandler, testTurtle, root, frontImageUpdater));
             
             
             // Setting up layers

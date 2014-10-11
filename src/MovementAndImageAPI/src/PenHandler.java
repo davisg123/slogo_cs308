@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
  *
  */
 public class PenHandler {
-	public Pen mainPen = new Pen();
+	private Pen mainPen = new Pen();
 	/**
 	 * 
 	 * @param newPenColor
@@ -25,5 +25,13 @@ public class PenHandler {
 	 */
 	public void setPenPosition(int penPosition) {
 		mainPen.setPenPosition(penPosition);
+	}
+	
+	public Color getPenColor(){
+		return mainPen.getPenColor();
+	}
+	
+	public int getPenPosition(){
+		return mainPen.getPenPosition();
 	}
 }

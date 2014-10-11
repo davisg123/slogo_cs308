@@ -18,12 +18,12 @@ import javafx.scene.shape.Line;
 public class ImageUpdater {
 	private Canvas myCanvas;
 	private GraphicsContext gc;
-	
-	private Pen mainPen = new Pen();
+	private PenHandler mainPenHandler;
 
-	public ImageUpdater(Canvas newCanvas) {
+	public ImageUpdater(Canvas newCanvas, PenHandler penHandler) {
 		myCanvas = newCanvas;
 		gc = myCanvas.getGraphicsContext2D();
+		mainPenHandler = penHandler;
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class ImageUpdater {
 //			Line toDraw = new Line(from.getX(), from.getY(), to.getX(),
 //					to.getY());
 //			toDraw.setStroke(mainPen.getPenColor());
-			gc.setStroke(mainPen.getPenColor());
+			gc.setStroke(mainPenHandler.getPenColor());
 			gc.strokeLine(from.getX(), from.getY(), to.getX(),
 					to.getY());
 			
