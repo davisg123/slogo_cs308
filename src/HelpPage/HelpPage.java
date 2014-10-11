@@ -52,6 +52,5 @@ class Browser extends Region {
         webEngine
                 .load("http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php");
         getChildren().add(browser);
-        System.out.println("i get here");
     }
 }

@@ -287,10 +287,10 @@ public class LogoParser implements LogoParserConstants {
       parameter = eval();
     {if (true) return factory.rotateTurtleLeft(parameter);}
       break;
-//    case CLEAR:
-//      jj_consume_token(CLEAR);
-//    {if (true) return factory.clearCanvas();}
-//      break;
+    case CLEAR:
+      jj_consume_token(CLEAR);
+    {if (true) return factory.showTurtle();}
+      break;
     case PENUP:
       jj_consume_token(PENUP);
     {if (true) return factory.pickUpTurtle();}
@@ -307,16 +307,16 @@ public class LogoParser implements LogoParserConstants {
       jj_consume_token(SHOW);
     {if (true) return factory.showTurtle();}
       break;
-//    case HOME:
-//      jj_consume_token(HOME);
-//    {if (true) return factory.turtleGoTo(0, 0);}
-//      break;
-//    case SETXY:
-//      jj_consume_token(SETXY);
-//      parameter = eval();
-//      parameter2 = eval();
-//    {if (true) return factory.turtleGoTo(parameter, parameter2);}
-//      break;
+    case HOME:
+      jj_consume_token(HOME);
+    {if (true) return factory.showTurtle();}
+      break;
+    case SETXY:
+      jj_consume_token(SETXY);
+      parameter = eval();
+      parameter2 = eval();
+    {if (true) return factory.showTurtle();}
+      break;
     default:
       jj_la1[6] = jj_gen;
       jj_consume_token(-1);
