@@ -89,11 +89,7 @@ public class Main extends Application {
             //Setting pane(containing the displays) to the center of the borderpane.
             bpane.setCenter(pane);
             
-               
-<<<<<<< HEAD
-            //adding parser? not sure now this works...!
-            myParser = new Parser(new CommandsFactory());
-            myParser.createLogoParser();
+         
             
             // Add previousCommands box
             TextArea prevCommandBox = new TextArea("Previous Commands: ");
@@ -102,21 +98,15 @@ public class Main extends Application {
             bpane.setRight(prevCommandBox);
             prevCommandList = new ArrayList<String>();
             
-            // Add textbox at bottom (temporary)
-            TextField inputBox = new TextField("");
-            bpane.setBottom(inputBox);
-            sendUserInput(inputBox, prevCommandBox);
-            
-=======
+
             // Add textbox at bottom (temporary)
             TextField textBox = new TextField("");
             parser = new Parser(commandsFactory);
             parser.createLogoParser();
             bpane.setBottom(textBox);
-            sendUserInput(textBox);
+            sendUserInput(textBox, prevCommandBox);
            
 
->>>>>>> master
             //adding imageUpdater
             ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
 
@@ -201,14 +191,10 @@ public class Main extends Application {
 //                     userInput += "\r\n";
                      System.out.println("userInput: " + userInput);
                      try {
-<<<<<<< HEAD
-                        myParser.parse(userInput);
-                        prevCommandList.add("\n"+userInput);
-=======
+
                          commandsFactory.turtleGoForward(20);
 //                         command = parser.parse(userInput);
 //                         command.execute();
->>>>>>> master
                         validInput = true;
                         showPreviousCommands(prevCommandBox);
                     }
