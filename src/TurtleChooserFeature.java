@@ -45,10 +45,7 @@ public class TurtleChooserFeature extends Feature {
                 }
                 Image image = SwingFXUtils.toFXImage(bufferedImage, null);
                 
-                ImageView iv = new ImageView();
-                iv.setImage(image);
-                
-                imageUpdater.updateTurtleImage(turtleHandler.getTurtleLocation(), iv);
+                turtleHandler.updateImage(image);
                 
                 
             }
