@@ -42,7 +42,7 @@ public class Turtle {
 	 * degree) for clarity
 	 */
 	private void ensurePositiveOrientation() {
-		if (myOrientation < 0) {
+		while (myOrientation < 0) {
 			myOrientation += TOTAL_NUMBER_OF_DEGREES;
 		}
 	}

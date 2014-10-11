@@ -1,7 +1,14 @@
 
+import commands.CommandsFactory;
+import commands.ICommand;
 import MovementAndImageAPI.src.ImageUpdater;
 import MovementAndImageAPI.src.Turtle;
+import MovementAndImageAPI.src.TurtleHandler;
+import parser.*;
+import input.*;
+import java.util.ArrayDeque;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -11,6 +18,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -33,6 +44,13 @@ public class Main extends Application {
     private Button HelpPageButton;
     private GraphicsContext gcBack;
     private GraphicsContext gcFront;
+    private String userInput;
+    private boolean validInput;
+    private InputExecutor inputExecutor = null;
+    private CommandsFactory commandsFactory = null;
+    private Parser parser = null;
+    private ArrayDeque<ICommand> commands = new ArrayDeque<>();
+    private Button StartButton;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -55,7 +73,6 @@ public class Main extends Application {
             gcFront = myFrontDisplay.getGraphicsContext2D();
             pane.getChildren().add(myFrontDisplay);
 
-            
             //Setting display positions
             myBackDisplay.toBack();
             myFrontDisplay.toFront();
@@ -67,21 +84,22 @@ public class Main extends Application {
             bpane.setTop(addFeatureButtons(bpane, primaryStage, pane));
                
             // Add textbox at bottom (temporary)
-            TextField textBox = new TextField(">");
+            TextField textBox = new TextField("");
+            parser = new Parser(commandsFactory);
+            parser.createLogoParser();
             bpane.setBottom(textBox);
-            
+            sendUserInput(textBox);
+           
+
             //adding imageUpdater
             ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
-            Point2D testP = new Point2D(0,0);
 
             //adding my turtle
-            Turtle testTurtle = new Turtle();
-            testTurtle.updateAbsoluteLocation(testP);
+            TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
             testTurtle.updateImage("/images/turtle.png");
-            
-            // turtle image updating
-            frontImageUpdater.updateTurtleImage(testTurtle.getPoint(), testTurtle.getImage());
-            
+
+            //(test) turtle knows how to move -- YESSS
+//            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,0));
             
             // Setting up layers
             root.getChildren().add(bpane);
@@ -98,15 +116,13 @@ public class Main extends Application {
      * Adds features.
      */
     public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane) {
-        HBox featureButtons = new HBox();
-
+        HBox featureButtons = new HBox();        
+        
         BGColorFeature BGColor = new BGColorFeature();        
         ChoiceBox BGColorChoices = BGColor.makeColorChoices(gcBack,DISPLAY_WIDTH,DISPLAY_HEIGHT);
         bpane.getChildren().add(BGColorChoices);
         BGColorButton = BGColor.makeButton("Show Background Color Options", event->BGColorChoices.show());
         
-
-        //should fix this for canvas
         RefGridFeature RefGrid = new RefGridFeature();
         RefGridButton =
                 RefGrid.makeButton("RefGrid On/Off",
@@ -122,24 +138,43 @@ public class Main extends Application {
         return featureButtons;
     }
 
-    // /**
-    // * The main animation loop. Updates one total frame.
-    // * @param root the root to have the updated display
-    // */
-    // public void advanceOneFrame (BorderPane root){
-    //
-    // }
-
-    // /**
-    // * Tells the parser to parse the userInput String
-    // * (determined by whatever was typed in the TextField)
-    // * @param userInput the user input
-    // * @return returns true if XMLparser can parse the userInput (which means the userInput is
-    // valid)
-    // * returns false otherwise.
-    // */
-    // public boolean sendUserInput(String userInput){
-    // }
+    
+     /**
+     * Tells the parser to parse the userInput String
+     * (determined by whatever was typed in the TextField)
+     * @param userInput the user input
+     * @return returns true if XMLparser can parse the userInput (which means the userInput is
+     valid)
+     * returns false otherwise.
+     */
+     public boolean sendUserInput(TextField textBox){
+         validInput = false;      
+         textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
+             @Override
+             public void handle (KeyEvent key) {
+                 ICommand command = null;
+                 if (key.getCode() == KeyCode.ENTER) {
+                     userInput = textBox.getText();
+                     //i need to send this userInput to the parser.
+//                     userInput += "\r\n";
+                     System.out.println("userInput: " + userInput);
+                     try {
+                         commandsFactory.turtleGoForward(20);
+//                         command = parser.parse(userInput);
+//                         command.execute();
+                        validInput = true;
+                        System.out.println("userInput went through myParser");
+                    }
+                    catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }          
+                     textBox.clear();
+                 }
+             }
+         });
+         return validInput;
+     }
 
     // /**
     // * Displays a list of valid commands (valid userInputs that the XMLparser could parse)
@@ -157,12 +192,5 @@ public class Main extends Application {
     public static void main (String[] args) {
         launch(args);
     }
-    
-    
-    //make imageupdater
-    //when i make turtle handler, pass in imageupdater
-    //when i make imageupdater pass scene to imageupdater
-    //make turtle handler 
-    
     
 }
