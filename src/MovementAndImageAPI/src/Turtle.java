@@ -90,22 +90,10 @@ public class Turtle {
 
 	/**
 	 * 
-	 * @param newImageLocation
-	 *            The location of the image to be used as myImage
-	 * @throws ImageNotFoundException
-	 *             The location couldn't be found, so it doesn't update the
-	 *             image.
+	 * @param newImage the new Image to set the Turtle's image to
 	 */
-	public void updateImage(String newImageLocation) {
-//		try {
-//			File turtleImageFile = new File(newImageLocation);
-//			if (!turtleImageFile.exists())
-//				throw new ImageNotFoundException();
-			myImage.setImage(new Image(getClass().getResourceAsStream(
-					newImageLocation)));
-//		} catch (ImageNotFoundException e) {
-//			System.out.println(e.getMessage());
-//		}
+	public void updateImage(Image newImage) {
+			myImage.setImage(newImage);
 	}
 
 	/**
