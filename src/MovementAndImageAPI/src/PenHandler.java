@@ -26,4 +26,12 @@ public class PenHandler {
 	public void setPenPosition(int penPosition) {
 		mainPen.setPenPosition(penPosition);
 	}
+	
+	public Color getPenColor(){
+	    return mainPen.getPenColor();
+	}
+	
+	public int getPenPosition(){
+	    return mainPen.getPenPosition();
+	}
 }

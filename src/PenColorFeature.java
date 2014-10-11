@@ -20,6 +20,8 @@ public class PenColorFeature extends Feature {
         colorChoices.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number> () {
             @Override
             public void changed (ObservableValue<? extends Number> ov, Number value, Number new_value) {
+                
+                
                 penHandler.setPenColor(colorList[new_value.intValue()]);
             }
         });
