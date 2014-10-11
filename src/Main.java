@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import commands.CommandsFactory;
 import MovementAndImageAPI.src.ImageUpdater;
 import MovementAndImageAPI.src.Turtle;
@@ -14,6 +15,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,10 +30,12 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private static final int PREV_COMMANDBOX_HEIGHT = 200;
+    private static final int PREV_COMMANDBOX_WIDTH = 200;
     private static final int SCREEN_WIDTH = 1000;
     private static final int SCREEN_HEIGHT = 700;
 
-    private static final int DISPLAY_WIDTH = 1000;
+    private static final int DISPLAY_WIDTH = 700;
     private static final int DISPLAY_HEIGHT = 600;
     private Scene myScene;
     private Canvas myBackDisplay;
@@ -45,6 +49,7 @@ public class Main extends Application {
     private boolean validInput;
     private Parser myParser;
     private Button StartButton;
+    private ArrayList<String> prevCommandList;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -81,11 +86,18 @@ public class Main extends Application {
             myParser = new Parser(new CommandsFactory());
             myParser.createLogoParser();
             
+            // Add previousCommands box
+            TextArea prevCommandBox = new TextArea("Previous Commands: ");
+            prevCommandBox.setPrefSize(PREV_COMMANDBOX_WIDTH, PREV_COMMANDBOX_HEIGHT);
+            prevCommandBox.editableProperty().set(false);
+            bpane.setRight(prevCommandBox);
+            prevCommandList = new ArrayList<String>();
+            
             // Add textbox at bottom (temporary)
-            TextField textBox = new TextField("");
-            bpane.setBottom(textBox);
-            sendUserInput(textBox);
-           
+            TextField inputBox = new TextField("");
+            bpane.setBottom(inputBox);
+            sendUserInput(inputBox, prevCommandBox);
+            
             //adding imageUpdater
             ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
 
@@ -141,7 +153,7 @@ public class Main extends Application {
      valid)
      * returns false otherwise.
      */
-     public boolean sendUserInput(TextField textBox){
+     public boolean sendUserInput(TextField textBox, TextArea prevCommandBox){
          validInput = false;      
          textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
              @Override
@@ -151,9 +163,10 @@ public class Main extends Application {
                      //i need to send this userInput to the parser.
                      System.out.println("userInput: " + userInput);
                      try {
-                         myParser.parse(userInput);
+                        myParser.parse(userInput);
+                        prevCommandList.add("\n"+userInput);
                         validInput = true;
-                        System.out.println("userInput went through myParser");
+                        showPreviousCommands(prevCommandBox);
                     }
                     catch (Exception e) {
                         // TODO Auto-generated catch block
@@ -166,13 +179,17 @@ public class Main extends Application {
          return validInput;
      }
 
-    // /**
-    // * Displays a list of valid commands (valid userInputs that the XMLparser could parse)
-    // * @param userInput the user input
-    // */
-    // public void showPreviousCommands(String userInput){
-    //
-    // }
+     /**
+     * Displays a list of valid commands (that the parser could parse)
+     * @param userInput the user input
+     */
+     public void showPreviousCommands(TextArea prevCommandBox){
+         String text = "Previous Commands: ";
+         for (int i=0; i<prevCommandList.size(); i++){
+             text = text + prevCommandList.get(i);
+         }
+         prevCommandBox.setText(text);
+     }
 
     /**
      * the main entry point for the program.
