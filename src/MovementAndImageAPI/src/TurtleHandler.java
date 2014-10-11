@@ -17,6 +17,11 @@ public class TurtleHandler {
 		mainImageUpdater = imageUpdater;
 	}
 
+	
+	public Point2D getTurtleLocation(){
+	    return mainTurtle.getPoint();
+	}
+	
 	/**
 	 * 
 	 * @param translocation
@@ -96,4 +101,6 @@ public class TurtleHandler {
 		mainTurtle.updateImage(location);
 		mainImageUpdater.updateTurtleImage(mainTurtle.getPoint(),  mainTurtle.getImage());
 	}
+	
+	
 }

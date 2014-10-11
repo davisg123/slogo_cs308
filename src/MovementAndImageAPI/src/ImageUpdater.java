@@ -38,6 +38,7 @@ public class ImageUpdater {
 	    gc.clearRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());    
 	    gc.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
 	}
+	
 
 	/**
 	 * 

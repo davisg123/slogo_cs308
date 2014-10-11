@@ -1,9 +1,15 @@
 
+import java.util.ArrayList;
 import commands.CommandsFactory;
+import commands.ICommand;
 import MovementAndImageAPI.src.ImageUpdater;
+import MovementAndImageAPI.src.Pen;
+import MovementAndImageAPI.src.PenHandler;
 import MovementAndImageAPI.src.Turtle;
 import MovementAndImageAPI.src.TurtleHandler;
-import parser.Parser;
+import parser.*;
+import input.*;
+import java.util.ArrayDeque;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
@@ -14,6 +20,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,10 +35,12 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private static final int PREV_COMMANDBOX_HEIGHT = 200;
+    private static final int PREV_COMMANDBOX_WIDTH = 200;
     private static final int SCREEN_WIDTH = 1000;
     private static final int SCREEN_HEIGHT = 700;
 
-    private static final int DISPLAY_WIDTH = 1000;
+    private static final int DISPLAY_WIDTH = 700;
     private static final int DISPLAY_HEIGHT = 600;
     private Scene myScene;
     private Canvas myBackDisplay;
@@ -39,12 +48,18 @@ public class Main extends Application {
     private Button BGColorButton;
     private Button RefGridButton;
     private Button HelpPageButton;
+    private Button PenColorButton;
+    private Button TCButton;
     private GraphicsContext gcBack;
     private GraphicsContext gcFront;
     private String userInput;
     private boolean validInput;
-    private Parser myParser;
+    private InputExecutor inputExecutor = null;
+    private CommandsFactory commandsFactory = null;
+    private Parser parser = null;
+    private ArrayDeque<ICommand> commands = new ArrayDeque<>();
     private Button StartButton;
+    private ArrayList<String> prevCommandList;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -74,27 +89,44 @@ public class Main extends Application {
             //Setting pane(containing the displays) to the center of the borderpane.
             bpane.setCenter(pane);
             
-            // Add Feature buttons on top
-            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane));
-               
-            //adding parser? not sure now this works...!
-            myParser = new Parser(new CommandsFactory());
-            myParser.createLogoParser();
-            
-            // Add textbox at bottom (temporary)
-            TextField textBox = new TextField("");
-            bpane.setBottom(textBox);
-            sendUserInput(textBox);
-           
+         
             //adding imageUpdater
             ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
-
+            
             //adding my turtle
             TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
             testTurtle.updateImage("/images/turtle.png");
+            
+            // Add previousCommands box
+            TextArea prevCommandBox = new TextArea("Previous Commands: ");
+            prevCommandBox.setPrefSize(PREV_COMMANDBOX_WIDTH, PREV_COMMANDBOX_HEIGHT);
+            prevCommandBox.editableProperty().set(false);
+            bpane.setRight(prevCommandBox);
+            prevCommandList = new ArrayList<String>();
+            
 
-            //(test) turtle knows how to move -- YESSS
-//            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,0));
+            // Add textbox at bottom (temporary)
+            TextField textBox = new TextField("");
+            commandsFactory = new CommandsFactory();
+            commandsFactory.setTurtleHandler(testTurtle);
+            parser = new Parser(commandsFactory);
+            parser.createLogoParser();
+            bpane.setBottom(textBox);
+            sendUserInput(textBox, prevCommandBox);
+           
+
+
+            
+            //adding my penHandler and pen
+            PenHandler penHandler = new PenHandler();
+            penHandler.setPenColor(Color.RED);
+            
+            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,100));
+            testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,200));
+            
+            // Add Feature buttons on top
+            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, penHandler, testTurtle, root, frontImageUpdater));
+            
             
             // Setting up layers
             root.getChildren().add(bpane);
@@ -110,13 +142,18 @@ public class Main extends Application {
     /**
      * Adds features.
      */
-    public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane) {
+    public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane, 
+                                   PenHandler penHandler, TurtleHandler turtleHandler, Group root, ImageUpdater iu) {
         HBox featureButtons = new HBox();        
         
         BGColorFeature BGColor = new BGColorFeature();        
         ChoiceBox BGColorChoices = BGColor.makeColorChoices(gcBack,DISPLAY_WIDTH,DISPLAY_HEIGHT);
-        bpane.getChildren().add(BGColorChoices);
-        BGColorButton = BGColor.makeButton("Show Background Color Options", event->BGColorChoices.show());
+        BGColorButton = BGColor.makeButton("Background Color", event->BGColorChoices.show());
+        
+        PenColorFeature PenColor = new PenColorFeature();
+        ChoiceBox PenColorChoices = PenColor.makeColorChoices(penHandler);
+        PenColorButton = PenColor.makeButton("Pen Color", event->PenColorChoices.show());
+        bpane.getChildren().addAll(BGColorChoices, PenColorChoices);
         
         RefGridFeature RefGrid = new RefGridFeature();
         RefGridButton =
@@ -127,12 +164,15 @@ public class Main extends Application {
         HelpPageButton =
                 HelpPage.makeButton("Help Page",
                                     event -> HelpPage.openHelpPage(HelpPageButton, bpane));
-
-        featureButtons.getChildren().addAll(BGColorButton, RefGridButton, HelpPageButton);
+        
+        TurtleChooserFeature TurtleChooser = new TurtleChooserFeature();
+        TCButton = TurtleChooser.makeButton("TC", event-> TurtleChooser.openTurtleChooser(TCButton, root, iu, turtleHandler));
+        featureButtons.getChildren().addAll(BGColorButton, PenColorButton, RefGridButton, HelpPageButton, TCButton);
 
         return featureButtons;
     }
 
+    
      /**
      * Tells the parser to parse the userInput String
      * (determined by whatever was typed in the TextField)
@@ -141,24 +181,31 @@ public class Main extends Application {
      valid)
      * returns false otherwise.
      */
-     public boolean sendUserInput(TextField textBox){
+     public boolean sendUserInput(TextField textBox, TextArea prevCommandBox){
          validInput = false;      
          textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
              @Override
              public void handle (KeyEvent key) {
+                 ICommand command = null;
                  if (key.getCode() == KeyCode.ENTER) {
                      userInput = textBox.getText();
                      //i need to send this userInput to the parser.
+//                     userInput += "\r\n";
                      System.out.println("userInput: " + userInput);
                      try {
-                         myParser.parse(userInput);
+
+//                         commandsFactory.turtleGoForward(500);
+                         command = parser.parse(userInput);
+                         command.execute();
+                         System.out.println("i should've moved forward");
                         validInput = true;
-                        System.out.println("userInput went through myParser");
+                        prevCommandList.add("\n" + userInput);
+                        showPreviousCommands(prevCommandBox);
                     }
                     catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
-                    }          
+                    }           
                      textBox.clear();
                  }
              }
@@ -166,13 +213,17 @@ public class Main extends Application {
          return validInput;
      }
 
-    // /**
-    // * Displays a list of valid commands (valid userInputs that the XMLparser could parse)
-    // * @param userInput the user input
-    // */
-    // public void showPreviousCommands(String userInput){
-    //
-    // }
+     /**
+     * Displays a list of valid commands (that the parser could parse)
+     * @param userInput the user input
+     */
+     public void showPreviousCommands(TextArea prevCommandBox){
+         String text = "Previous Commands: ";
+         for (int i=0; i<prevCommandList.size(); i++){
+             text = text + prevCommandList.get(i);
+         }
+         prevCommandBox.setText(text);
+     }
 
     /**
      * the main entry point for the program.
