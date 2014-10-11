@@ -124,7 +124,6 @@ public class Main extends Application {
             
 //            (test) turtle knows how to move -- YESSS
             testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,100));
-            testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,100));
             
             // Setting up layers
             root.getChildren().add(bpane);
@@ -196,6 +195,7 @@ public class Main extends Application {
 //                         command = parser.parse(userInput);
 //                         command.execute();
                         validInput = true;
+                        prevCommandList.add("\n" + userInput);
                         showPreviousCommands(prevCommandBox);
                     }
                     catch (Exception e) {
