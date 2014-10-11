@@ -44,14 +44,14 @@ public class Main extends Application {
     private static final int DISPLAY_HEIGHT = 600;
     private Scene myScene;
     private Canvas myBackDisplay;
-    private Canvas myFrontDisplay;
+    private Canvas myTurtleCanvas;
+    private Canvas myLineCanvas;
     private Button BGColorButton;
     private Button RefGridButton;
     private Button HelpPageButton;
     private Button PenColorButton;
     private Button TCButton;
     private GraphicsContext gcBack;
-    private GraphicsContext gcFront;
     private String userInput;
     private boolean validInput;
     private InputExecutor inputExecutor = null;
@@ -77,14 +77,17 @@ public class Main extends Application {
             gcBack = myBackDisplay.getGraphicsContext2D();
             pane.getChildren().add(myBackDisplay);
             
-            //Add front display canvas
-            myFrontDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            gcFront = myFrontDisplay.getGraphicsContext2D();
-            pane.getChildren().add(myFrontDisplay);
+            //Add line display canvas
+            myLineCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            pane.getChildren().add(myLineCanvas);
+            
+            //Add turtle display canvas
+            myTurtleCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            pane.getChildren().add(myTurtleCanvas);
 
             //Setting display positions
             myBackDisplay.toBack();
-            myFrontDisplay.toFront();
+            myTurtleCanvas.toFront();
 
             //Setting pane(containing the displays) to the center of the borderpane.
             bpane.setCenter(pane);
@@ -93,7 +96,7 @@ public class Main extends Application {
             PenHandler mainPenHandler = new PenHandler();
             
             //adding imageUpdater
-            ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay, mainPenHandler);
+            ImageUpdater frontImageUpdater = new ImageUpdater(myTurtleCanvas, myLineCanvas, mainPenHandler);
             
             //adding my turtle
             TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);

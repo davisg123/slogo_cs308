@@ -40,7 +40,8 @@ public class TurtleTest {
 	@Test
 	public void testValidLocations(){
 		Canvas testCanvas = new Canvas(100, 100);
-		ImageUpdater testUpdater = new ImageUpdater(testCanvas, new PenHandler());
+		Canvas testLineCanvas = new Canvas(100, 100);
+		ImageUpdater testUpdater = new ImageUpdater(testCanvas, testLineCanvas, new PenHandler());
 		assertTrue(testUpdater.isValidPoint(new Point2D(50, 50)));
 		assertTrue(!testUpdater.isValidPoint(new Point2D(400, 0)));
 	}

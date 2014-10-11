@@ -16,13 +16,15 @@ import javafx.scene.shape.Line;
  *         Scene.
  */
 public class ImageUpdater {
-	private Canvas myCanvas;
-	private GraphicsContext gc;
+	private Canvas myTurtleCanvas, myLineCanvas;
+	private GraphicsContext turtleGC, lineGC;
 	private PenHandler mainPenHandler;
 
-	public ImageUpdater(Canvas newCanvas, PenHandler penHandler) {
-		myCanvas = newCanvas;
-		gc = myCanvas.getGraphicsContext2D();
+	public ImageUpdater(Canvas turtleCanvas, Canvas lineCanvas, PenHandler penHandler) {
+		myTurtleCanvas = turtleCanvas;
+		turtleGC = myTurtleCanvas.getGraphicsContext2D();
+		myLineCanvas = lineCanvas;
+		lineGC = myLineCanvas.getGraphicsContext2D();
 		mainPenHandler = penHandler;
 	}
 
@@ -35,8 +37,8 @@ public class ImageUpdater {
 	 *            because that should be handled by the TurtleHandler.
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
-	    gc.clearRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());    
-	    gc.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
+	    turtleGC.clearRect(0, 0, myTurtleCanvas.getWidth(), myTurtleCanvas.getHeight());    
+	    turtleGC.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
 	}
 	
 
@@ -52,8 +54,8 @@ public class ImageUpdater {
 //			Line toDraw = new Line(from.getX(), from.getY(), to.getX(),
 //					to.getY());
 //			toDraw.setStroke(mainPen.getPenColor());
-			gc.setStroke(mainPenHandler.getPenColor());
-			gc.strokeLine(from.getX(), from.getY(), to.getX(),
+			lineGC.setStroke(mainPenHandler.getPenColor());
+			lineGC.strokeLine(from.getX(), from.getY(), to.getX(),
 					to.getY());
 			
 		}
@@ -72,7 +74,7 @@ public class ImageUpdater {
 	 * @return true if the point is within the scene
 	 */
 	public boolean isValidPoint(Point2D newLocation) {
-		return (newLocation.getX() <= myCanvas.getWidth() && newLocation.getY() <= myCanvas.getHeight());
+		return (newLocation.getX() <= myTurtleCanvas.getWidth() && newLocation.getY() <= myTurtleCanvas.getHeight());
 	}
 
 }
