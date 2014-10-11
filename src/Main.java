@@ -2,6 +2,8 @@
 import commands.CommandsFactory;
 import commands.ICommand;
 import MovementAndImageAPI.src.ImageUpdater;
+import MovementAndImageAPI.src.Pen;
+import MovementAndImageAPI.src.PenHandler;
 import MovementAndImageAPI.src.Turtle;
 import MovementAndImageAPI.src.TurtleHandler;
 import parser.*;
@@ -42,6 +44,8 @@ public class Main extends Application {
     private Button BGColorButton;
     private Button RefGridButton;
     private Button HelpPageButton;
+    private Button PenColorButton;
+    private Button TCButton;
     private GraphicsContext gcBack;
     private GraphicsContext gcFront;
     private String userInput;
@@ -80,8 +84,6 @@ public class Main extends Application {
             //Setting pane(containing the displays) to the center of the borderpane.
             bpane.setCenter(pane);
             
-            // Add Feature buttons on top
-            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane));
                
             // Add textbox at bottom (temporary)
             TextField textBox = new TextField("");
@@ -98,8 +100,17 @@ public class Main extends Application {
             TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
             testTurtle.updateImage("/images/turtle.png");
 
-            //(test) turtle knows how to move -- YESSS
-//            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,0));
+            
+            //adding my penHandler and pen
+            PenHandler penHandler = new PenHandler();
+            
+            // Add Feature buttons on top
+            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, penHandler, testTurtle, root, frontImageUpdater));
+            
+            
+//            (test) turtle knows how to move -- YESSS
+            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,100));
+            testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,100));
             
             // Setting up layers
             root.getChildren().add(bpane);
@@ -115,13 +126,18 @@ public class Main extends Application {
     /**
      * Adds features.
      */
-    public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane) {
+    public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane, 
+                                   PenHandler penHandler, TurtleHandler turtleHandler, Group root, ImageUpdater iu) {
         HBox featureButtons = new HBox();        
         
         BGColorFeature BGColor = new BGColorFeature();        
         ChoiceBox BGColorChoices = BGColor.makeColorChoices(gcBack,DISPLAY_WIDTH,DISPLAY_HEIGHT);
-        bpane.getChildren().add(BGColorChoices);
-        BGColorButton = BGColor.makeButton("Show Background Color Options", event->BGColorChoices.show());
+        BGColorButton = BGColor.makeButton("Background Color", event->BGColorChoices.show());
+        
+        PenColorFeature PenColor = new PenColorFeature();
+        ChoiceBox PenColorChoices = PenColor.makeColorChoices(penHandler);
+        PenColorButton = PenColor.makeButton("Pen Color", event->PenColorChoices.show());
+        bpane.getChildren().addAll(BGColorChoices, PenColorChoices);
         
         RefGridFeature RefGrid = new RefGridFeature();
         RefGridButton =
@@ -132,8 +148,10 @@ public class Main extends Application {
         HelpPageButton =
                 HelpPage.makeButton("Help Page",
                                     event -> HelpPage.openHelpPage(HelpPageButton, bpane));
-
-        featureButtons.getChildren().addAll(BGColorButton, RefGridButton, HelpPageButton);
+        
+        TurtleChooserFeature TurtleChooser = new TurtleChooserFeature();
+        TCButton = TurtleChooser.makeButton("TC", event-> TurtleChooser.openTurtleChooser(TCButton, root, iu, turtleHandler));
+        featureButtons.getChildren().addAll(BGColorButton, PenColorButton, RefGridButton, HelpPageButton, TCButton);
 
         return featureButtons;
     }

@@ -27,15 +27,4 @@ public class HelpPageFeature extends Feature {
             }
     });
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   
-    
 }
