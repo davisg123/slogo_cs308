@@ -1,9 +1,12 @@
 
 import commands.CommandsFactory;
+import commands.ICommand;
 import MovementAndImageAPI.src.ImageUpdater;
 import MovementAndImageAPI.src.Turtle;
 import MovementAndImageAPI.src.TurtleHandler;
-import parser.Parser;
+import parser.*;
+import input.*;
+import java.util.ArrayDeque;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
@@ -43,7 +46,10 @@ public class Main extends Application {
     private GraphicsContext gcFront;
     private String userInput;
     private boolean validInput;
-    private Parser myParser;
+    private InputExecutor inputExecutor = null;
+    private CommandsFactory commandsFactory = null;
+    private Parser parser = null;
+    private ArrayDeque<ICommand> commands = new ArrayDeque<>();
     private Button StartButton;
 
     /**
@@ -77,15 +83,14 @@ public class Main extends Application {
             // Add Feature buttons on top
             bpane.setTop(addFeatureButtons(bpane, primaryStage, pane));
                
-            //adding parser? not sure now this works...!
-            myParser = new Parser(new CommandsFactory());
-            myParser.createLogoParser();
-            
             // Add textbox at bottom (temporary)
             TextField textBox = new TextField("");
+            parser = new Parser(commandsFactory);
+            parser.createLogoParser();
             bpane.setBottom(textBox);
             sendUserInput(textBox);
            
+
             //adding imageUpdater
             ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
 
@@ -133,6 +138,7 @@ public class Main extends Application {
         return featureButtons;
     }
 
+    
      /**
      * Tells the parser to parse the userInput String
      * (determined by whatever was typed in the TextField)
@@ -146,12 +152,16 @@ public class Main extends Application {
          textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
              @Override
              public void handle (KeyEvent key) {
+                 ICommand command = null;
                  if (key.getCode() == KeyCode.ENTER) {
                      userInput = textBox.getText();
                      //i need to send this userInput to the parser.
+//                     userInput += "\r\n";
                      System.out.println("userInput: " + userInput);
                      try {
-                         myParser.parse(userInput);
+                         commandsFactory.turtleGoForward(20);
+//                         command = parser.parse(userInput);
+//                         command.execute();
                         validInput = true;
                         System.out.println("userInput went through myParser");
                     }
