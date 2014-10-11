@@ -90,6 +90,12 @@ public class Main extends Application {
             bpane.setCenter(pane);
             
          
+            //adding imageUpdater
+            ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
+            
+            //adding my turtle
+            TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
+            testTurtle.updateImage("/images/turtle.png");
             
             // Add previousCommands box
             TextArea prevCommandBox = new TextArea("Previous Commands: ");
@@ -101,29 +107,26 @@ public class Main extends Application {
 
             // Add textbox at bottom (temporary)
             TextField textBox = new TextField("");
+            commandsFactory = new CommandsFactory();
+            commandsFactory.setTurtleHandler(testTurtle);
             parser = new Parser(commandsFactory);
             parser.createLogoParser();
             bpane.setBottom(textBox);
             sendUserInput(textBox, prevCommandBox);
            
 
-            //adding imageUpdater
-            ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
-
-            //adding my turtle
-            TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
-            testTurtle.updateImage("/images/turtle.png");
 
             
             //adding my penHandler and pen
             PenHandler penHandler = new PenHandler();
+            penHandler.setPenColor(Color.RED);
+            
+            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,100));
+            testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,200));
             
             // Add Feature buttons on top
             bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, penHandler, testTurtle, root, frontImageUpdater));
             
-            
-//            (test) turtle knows how to move -- YESSS
-            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,100));
             
             // Setting up layers
             root.getChildren().add(bpane);
@@ -191,9 +194,10 @@ public class Main extends Application {
                      System.out.println("userInput: " + userInput);
                      try {
 
-                         commandsFactory.turtleGoForward(20);
-//                         command = parser.parse(userInput);
-//                         command.execute();
+//                         commandsFactory.turtleGoForward(500);
+                         command = parser.parse(userInput);
+                         command.execute();
+                         System.out.println("i should've moved forward");
                         validInput = true;
                         prevCommandList.add("\n" + userInput);
                         showPreviousCommands(prevCommandBox);
@@ -201,7 +205,7 @@ public class Main extends Application {
                     catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
-                    }          
+                    }           
                      textBox.clear();
                  }
              }
