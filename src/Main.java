@@ -85,6 +85,7 @@ public class Main extends Application {
                
             // Add textbox at bottom (temporary)
             TextField textBox = new TextField("");
+            commandsFactory = new CommandsFactory();
             parser = new Parser(commandsFactory);
             parser.createLogoParser();
             bpane.setBottom(textBox);
@@ -97,6 +98,9 @@ public class Main extends Application {
             //adding my turtle
             TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
             testTurtle.updateImage("/images/turtle.png");
+            
+            //commands factory needs turtleHandler
+            commandsFactory.setTurtleHandler(testTurtle);
 
             //(test) turtle knows how to move -- YESSS
 //            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,0));
@@ -159,9 +163,8 @@ public class Main extends Application {
 //                     userInput += "\r\n";
                      System.out.println("userInput: " + userInput);
                      try {
-                         commandsFactory.turtleGoForward(20);
-//                         command = parser.parse(userInput);
-//                         command.execute();
+                         command = parser.parse(userInput);
+                         command.execute();
                         validInput = true;
                         System.out.println("userInput went through myParser");
                     }
