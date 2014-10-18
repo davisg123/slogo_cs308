@@ -69,7 +69,7 @@ public class Turtle {
 	/**
 	 * 
 	 * @param translocation
-	 *            How many pixels to move in that direction. Uses TurtleMath and
+	 *            How many pixels to move in that direction. Uses Math and
 	 *            orientation to figure out how many pixels that is in the X and
 	 *            Y directions.
 	 */

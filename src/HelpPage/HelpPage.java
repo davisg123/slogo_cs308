@@ -28,7 +28,7 @@ public class HelpPage extends Application {
      * Creates the JavaFX Stage
      */
     @Override
-    public void start (Stage stage) throws Exception {
+    public void start (Stage stage){
         stage.setTitle("HELP PAGE");
         myScene = new Scene(new Browser(), 800, 500, Color.web("#666970"));
         stage.setScene(myScene);

@@ -46,9 +46,12 @@ public class TurtleTest {
 		assertTrue(!testUpdater.isValidPoint(new Point2D(400, 0)));
 	}
 	
-	@Test
-	public void testTurtleMoving(){
-		
-	}
+//	@Test
+//	public void testTurtleMoving(){
+//		Canvas testTurtleCanvas = new Canvas(100, 100);
+//		Canvas testLineCanvas = new Canvas(100, 100);
+//		ImageUpdater testImageUpdater = new ImageUpdater(testTurtleCanvas, testLineCanvas, new PenHandler());
+//		TurtleHandler testTurtleHandler = new TurtleHandler(testImageUpdater);
+//	}
 	
 }

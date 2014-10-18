@@ -136,6 +136,9 @@ public class Main extends Application {
             primaryStage.setScene(myScene);
             primaryStage.show();
             
+            // Testing Turtle rotation/moving
+            testTurtle.updateTurtleOrientation(90);
+            
         }
         catch (Exception e) {
             e.printStackTrace();
