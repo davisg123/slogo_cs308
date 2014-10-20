@@ -42,16 +42,10 @@ public class TurtleHandler {
 	 *            the location to instantly move to.
 	 */
 	public void updateTurtleAbsoluteLocation(Point2D newLocation) {
-		try {
-			if (!mainImageUpdater.isValidPoint(newLocation))
-				throw new OutOfSceneException();
 			Point2D from = mainTurtle.getPoint();
 			mainTurtle.updateAbsoluteLocation(newLocation);
 			Point2D to = mainTurtle.getPoint();
 			moveAndDraw(from, to);
-		} catch (OutOfSceneException e) {
-			System.out.println(e.getMessage());
-		}
 	}
 
 	/**

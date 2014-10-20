@@ -100,8 +100,11 @@ public class Main extends Application {
             //adding my turtle
             TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
             testTurtle.updateImage(new Image(getClass().getResourceAsStream("/images/turtle.png")));
+<<<<<<< HEAD
             
             testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,100));
+=======
+>>>>>>> rds44
             
             // Add previousCommands box
             TextArea prevCommandBox = new TextArea("Previous Commands: ");
@@ -126,6 +129,10 @@ public class Main extends Application {
             mainPenHandler.setPenColor(Color.RED);
             
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> rds44
             
             // Add Feature buttons on top
             bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, mainPenHandler, testTurtle, root, frontImageUpdater));
@@ -135,6 +142,9 @@ public class Main extends Application {
             root.getChildren().add(bpane);
             primaryStage.setScene(myScene);
             primaryStage.show();
+            
+            // Testing Turtle rotation/moving
+            testTurtle.updateTurtleOrientation(90);
             
         }
         catch (Exception e) {
