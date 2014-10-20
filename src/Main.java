@@ -30,6 +30,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -46,10 +47,8 @@ public class Main extends Application {
     private Canvas myBackDisplay;
     private Canvas myTurtleCanvas;
     private Canvas myLineCanvas;
-    private Button BGColorButton;
     private Button RefGridButton;
     private Button HelpPageButton;
-    private Button PenColorButton;
     private Button TCButton;
     private GraphicsContext gcBack;
     private String userInput;
@@ -100,7 +99,9 @@ public class Main extends Application {
             
             //adding my turtle
             TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
-            testTurtle.updateImage("/images/turtle.png");
+            testTurtle.updateImage(new Image(getClass().getResourceAsStream("/images/turtle.png")));
+            
+            testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,100));
             
             // Add previousCommands box
             TextArea prevCommandBox = new TextArea("Previous Commands: ");
@@ -125,8 +126,6 @@ public class Main extends Application {
             mainPenHandler.setPenColor(Color.RED);
             
 
-            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,100));
-            testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,200));
             
             // Add Feature buttons on top
             bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, mainPenHandler, testTurtle, root, frontImageUpdater));
@@ -150,14 +149,10 @@ public class Main extends Application {
                                    PenHandler penHandler, TurtleHandler turtleHandler, Group root, ImageUpdater iu) {
         HBox featureButtons = new HBox();        
         
-        BGColorFeature BGColor = new BGColorFeature();        
-        ChoiceBox BGColorChoices = BGColor.makeColorChoices(gcBack,DISPLAY_WIDTH,DISPLAY_HEIGHT);
-        BGColorButton = BGColor.makeButton("Background Color", event->BGColorChoices.show());
-        
-        PenColorFeature PenColor = new PenColorFeature();
-        ChoiceBox PenColorChoices = PenColor.makeColorChoices(penHandler);
-        PenColorButton = PenColor.makeButton("Pen Color", event->PenColorChoices.show());
-        bpane.getChildren().addAll(BGColorChoices, PenColorChoices);
+        //pen color chooser and canvas color chooser
+        ColorFeature ColorOptions = new ColorFeature();
+        featureButtons.getChildren().addAll(new Text(" Pen:"),ColorOptions.changePenColor(penHandler),
+                                            new Text(" Canvas:"), ColorOptions.changeBGColor(gcBack, DISPLAY_WIDTH, DISPLAY_HEIGHT));
         
         RefGridFeature RefGrid = new RefGridFeature();
         RefGridButton =
@@ -171,7 +166,7 @@ public class Main extends Application {
         
         TurtleChooserFeature TurtleChooser = new TurtleChooserFeature();
         TCButton = TurtleChooser.makeButton("TC", event-> TurtleChooser.openTurtleChooser(TCButton, root, iu, turtleHandler));
-        featureButtons.getChildren().addAll(BGColorButton, PenColorButton, RefGridButton, HelpPageButton, TCButton);
+        featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton);
 
         return featureButtons;
     }

@@ -38,7 +38,7 @@ public class ImageUpdater {
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
 	    turtleGC.clearRect(0, 0, myTurtleCanvas.getWidth(), myTurtleCanvas.getHeight());    
-	    turtleGC.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
+	    turtleGC.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY() - (turtleImage.getImage().getHeight() / 2));
 	}
 	
 
@@ -50,7 +50,7 @@ public class ImageUpdater {
 	 *            the ending point of the line
 	 */
 	public void drawLine(Point2D from, Point2D to) {
-		if (isValidPoint(to)) {
+		if (isValidPoint(to) && mainPenHandler.getPenPosition() ==1) {
 //			Line toDraw = new Line(from.getX(), from.getY(), to.getX(),
 //					to.getY());
 //			toDraw.setStroke(mainPen.getPenColor());
