@@ -42,10 +42,6 @@ public class ImageUpdater {
 	 *            because that should be handled by the TurtleHandler.
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
-<<<<<<< HEAD
-	    turtleGC.clearRect(0, 0, myTurtleCanvas.getWidth(), myTurtleCanvas.getHeight());    
-	    turtleGC.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY() - (turtleImage.getImage().getHeight() / 2));
-=======
 		turtleGC.clearRect(0, 0, myTurtleCanvas.getWidth(),
 				myTurtleCanvas.getHeight());
 		Point2D endLocation = new Point2D((newLocation.getX() + X_OFFSET)
@@ -68,7 +64,6 @@ public class ImageUpdater {
 		Rotate r = new Rotate(rotationAngle, xPivot, yPivot);
 		turtleGC.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(),
 				r.getTx(), r.getTy());
->>>>>>> rds44
 	}
 
 	/**
@@ -79,17 +74,10 @@ public class ImageUpdater {
 	 *            the ending point of the line
 	 */
 	public void drawLine(Point2D from, Point2D to) {
-<<<<<<< HEAD
-		if (isValidPoint(to) && mainPenHandler.getPenPosition() ==1) {
-//			Line toDraw = new Line(from.getX(), from.getY(), to.getX(),
-//					to.getY());
-//			toDraw.setStroke(mainPen.getPenColor());
-=======
 		if (isValidPoint(to) && mainPenHandler.getPenPosition() == 1) {
 			// Line toDraw = new Line(from.getX(), from.getY(), to.getX(),
 			// to.getY());
 			// toDraw.setStroke(mainPen.getPenColor());
->>>>>>> rds44
 			lineGC.setStroke(mainPenHandler.getPenColor());
 			Point2D fromInCanvas = new Point2D((from.getX() + X_OFFSET)
 					% myLineCanvas.getWidth(), (from.getY() + Y_OFFSET)
