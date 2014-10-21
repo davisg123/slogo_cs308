@@ -1,6 +1,7 @@
 package MovementAndImageAPI.src;
 
 import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 /**
@@ -17,6 +18,11 @@ public class TurtleHandler {
 		mainImageUpdater = imageUpdater;
 	}
 
+	
+	public Point2D getTurtleLocation(){
+	    return mainTurtle.getPoint();
+	}
+	
 	/**
 	 * 
 	 * @param translocation
@@ -92,8 +98,10 @@ public class TurtleHandler {
 		mainImageUpdater.updateTurtleImage(mainTurtle.getPoint(), mainTurtle.getImage());
 	}
 	
-	public void updateImage(String location){
-		mainTurtle.updateImage(location);
+	public void updateImage(Image newImage){
+		mainTurtle.updateImage(newImage);
 		mainImageUpdater.updateTurtleImage(mainTurtle.getPoint(),  mainTurtle.getImage());
 	}
+	
+	
 }

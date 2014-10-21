@@ -16,12 +16,12 @@ public class FilePicker extends Application {
  
   File file;
  
-  /**
-   * @param args the command line arguments
-   */
-  public static void main(String[] args) {
-      launch(args);
-  }
+//  /**
+//   * @param args the command line arguments
+//   */
+//  public static void main(String[] args) {
+//      launch(args);
+//  }
  
   @Override
   public void start(Stage primaryStage) {
