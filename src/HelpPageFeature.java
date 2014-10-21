@@ -16,10 +16,6 @@ public class HelpPageFeature extends Feature {
             public void handle(MouseEvent event){
                 HelpPage myHelpPage = new HelpPage();
                 myHelpPage.start(new Stage());
-<<<<<<< HEAD
-=======
-                
->>>>>>> rds44
             }
     });
     }
