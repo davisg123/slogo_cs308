@@ -1,14 +1,9 @@
 package MovementAndImageAPI.src;
 
-import java.io.File;
-
-
 
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-
 /**
  * 
  * @author Eirika Sawh This class is the actual visual representation of the

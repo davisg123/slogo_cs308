@@ -41,6 +41,7 @@ public class Main extends Application {
     private Button RefGridButton;
     private Button HelpPageButton;
     private Button TCButton;
+    private Button TurtleDataButton;
     private GraphicsContext gcBack;
     private String userInput;
     private boolean validInput;
@@ -152,7 +153,11 @@ public class Main extends Application {
         TCButton = TurtleChooser.makeButton("Turtle Image", 
                                             event -> TurtleChooser.openTurtleChooser(TCButton, root, iu, turtleHandler));
         
-        featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton);
+        TurtleDataFeature TurtleData = new TurtleDataFeature();
+        TurtleDataButton = TurtleData.makeButton("Turtle Data", 
+                                                 event -> TurtleData.openTurtleDataPage(TurtleDataButton,turtleHandler));
+        
+        featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton, TurtleDataButton);
         return featureButtons;
     }
 

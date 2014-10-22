@@ -2,7 +2,6 @@ package MovementAndImageAPI.src;
 
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 /**
  * 
@@ -18,6 +17,10 @@ public class TurtleHandler {
 		mainImageUpdater = imageUpdater;
 	}
 
+	
+	public double getOrientation(){
+	    return mainTurtle.getOrientation();
+	}
 	
 	public Point2D getTurtleLocation(){
 	    return mainTurtle.getPoint();
