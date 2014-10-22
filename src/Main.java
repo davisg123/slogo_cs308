@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import commands.CommandsFactory;
 import commands.ICommand;
 import MovementAndImageAPI.src.ImageUpdater;
@@ -20,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -45,6 +48,7 @@ public class Main extends Application {
     private Parser parser = null;
     private ArrayList<Text> prevCommandList;
     private ObservableList<Text> prevCommandObsvList;
+    private Map<Text,ICommand> prevCommandMap;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -99,6 +103,7 @@ public class Main extends Application {
             // Add previousCommands box
             ListView<Text> prevCommandListView = new ListView<Text>();
             prevCommandList = new ArrayList<Text>();
+            prevCommandMap = new HashMap<Text,ICommand>();
             prevCommandList.add(new Text("Previous Commands: "));
             prevCommandObsvList = FXCollections.observableArrayList(prevCommandList);
             prevCommandListView.setItems(prevCommandObsvList);
@@ -172,8 +177,10 @@ public class Main extends Application {
                         command = parser.parse(userInput);
                         command.execute();
                         validInput = true;
-                        prevCommandList.add(new Text(userInput));
-                        showPreviousCommands(prevCommandListView);
+                        Text userInputText = new Text(userInput);
+                        prevCommandList.add(userInputText);
+                        prevCommandMap.put(userInputText, command);
+                        setUpPreviousCommands(prevCommandListView);
                     }
                     catch (Exception e) {
                         e.printStackTrace();
@@ -190,10 +197,22 @@ public class Main extends Application {
      * 
      * @param userInput the user input
      */
-    public void showPreviousCommands (ListView<Text> prevCommandListView) {
+    public void setUpPreviousCommands (ListView<Text> prevCommandListView) {
         prevCommandObsvList = FXCollections.observableArrayList(prevCommandList);
         prevCommandListView.setItems(prevCommandObsvList);
+        for (int i=0; i<prevCommandObsvList.size(); i++){
+            Text text = prevCommandObsvList.get(i);
+            text.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle (MouseEvent arg0) {
+                    // TODO Auto-generated method stub
+                    ICommand command = prevCommandMap.get(text);
+                    command.execute();
+                }
+            });
+        }
     }
+
 
     /**
      * the main entry point for the program.
