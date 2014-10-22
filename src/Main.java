@@ -5,8 +5,6 @@ import MovementAndImageAPI.src.ImageUpdater;
 import MovementAndImageAPI.src.PenHandler;
 import MovementAndImageAPI.src.TurtleHandler;
 import parser.*;
-import input.*;
-import java.util.ArrayDeque;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,8 +27,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    private static final int PREV_COMMANDBOX_HEIGHT = 200;
-    private static final int PREV_COMMANDBOX_WIDTH = 200;
     private static final int SCREEN_WIDTH = 1000;
     private static final int SCREEN_HEIGHT = 700;
     private static final int DISPLAY_WIDTH = 700;
@@ -45,12 +41,8 @@ public class Main extends Application {
     private GraphicsContext gcBack;
     private String userInput;
     private boolean validInput;
-    private InputExecutor inputExecutor = null;
     private CommandsFactory commandsFactory = null;
     private Parser parser = null;
-    private ArrayDeque<ICommand> commands = new ArrayDeque<>();
-    private Button StartButton;
-    private int prevCommandCount = 0;
     private ArrayList<Text> prevCommandList;
     private ObservableList<Text> prevCommandObsvList;
 
@@ -62,7 +54,6 @@ public class Main extends Application {
         try {
             Group root = new Group();
             Pane pane = new Pane();
-            Pane prevCommandPane = new Pane();
             BorderPane bpane = new BorderPane();
             myScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
 
