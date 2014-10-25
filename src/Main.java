@@ -70,6 +70,11 @@ public class Main extends Application {
             workspace.setText("Workspace 1");
             tabPane.getTabs().add(workspace);
             
+            Tab workspace2 = createWorkspace(primaryStage, root, tabPane);
+            workspace2.setText("Workspace 2");
+            tabPane.getTabs().add(workspace2);
+            
+            
             // using arrow keys to move my turtle 
             tabPane.setOnKeyPressed(new EventHandler<KeyEvent>(){
                 @Override
@@ -77,7 +82,6 @@ public class Main extends Application {
                     // TODO Auto-generated method stub
                     if (key.getCode() == KeyCode.LEFT){
                         System.out.println("left key is pressed");
-                        
                     }
                     if (key.getCode() == KeyCode.RIGHT){
                         System.out.println("right key is pressed");
@@ -90,8 +94,7 @@ public class Main extends Application {
                     }
                 }
             });
-            
-                   
+              
             mainbpane.setCenter(tabPane);
             root.getChildren().add(mainbpane);
             primaryStage.setScene(myScene);
@@ -137,7 +140,6 @@ public class Main extends Application {
         testTurtle.updateImage(new
                 Image(getClass().getResourceAsStream("/images/turtle.png")));
 
-        
 
         // setting textbox settings
         TextField textBox = new TextField("");
@@ -149,7 +151,6 @@ public class Main extends Application {
         bpane.setBottom(textBox);
         
         
-
         // Add previousCommands box
         ListView<Text> prevCommandListView = new ListView<Text>();
         prevCommandList = new ArrayList<Text>();
