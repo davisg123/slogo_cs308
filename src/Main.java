@@ -70,8 +70,7 @@ public class Main extends Application {
             
             Tab workspace = createWorkspace(primaryStage, root, tabPane);
             tabPane.getTabs().add(workspace);
-            
-            
+                  
             mainbpane.setCenter(tabPane);
 
             root.getChildren().add(mainbpane);
