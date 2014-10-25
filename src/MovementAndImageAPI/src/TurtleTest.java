@@ -8,17 +8,6 @@ import org.junit.Test;
 
 public class TurtleTest {
 
-//	@Test
-//	public void testChangingTurtleImage() {
-//		Turtle testTurtle = new Turtle();
-//		testTurtle.updateImage("notARealFileLocation.gif");
-//		if (!(testTurtle.getImage().getImage() == null)) {
-//			fail("Should not have updated an image because the image location doesn't exist.");
-//		}
-//		testTurtle.updateImage("/caterpie.png");
-//		assertNotNull(testTurtle.getImage().getImage());
-//	}
-
 	@Test
 	public void testMovingDirections() {
 		Turtle testTurtle1 = new Turtle();
@@ -45,13 +34,6 @@ public class TurtleTest {
 		assertTrue(testUpdater.isValidPoint(new Point2D(50, 50)));
 		assertTrue(!testUpdater.isValidPoint(new Point2D(400, 0)));
 	}
-	
-//	@Test
-//	public void testTurtleMoving(){
-//		Canvas testTurtleCanvas = new Canvas(100, 100);
-//		Canvas testLineCanvas = new Canvas(100, 100);
-//		ImageUpdater testImageUpdater = new ImageUpdater(testTurtleCanvas, testLineCanvas, new PenHandler());
-//		TurtleHandler testTurtleHandler = new TurtleHandler(testImageUpdater);
-//	}
+
 	
 }

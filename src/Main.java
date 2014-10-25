@@ -59,10 +59,7 @@ public class Main extends Application {
      */
     @Override
     public void start (Stage primaryStage) {
-        try {
             Group root = new Group();
-            // Pane pane = new Pane();
-            // BorderPane bpane = new BorderPane();
             BorderPane mainbpane = new BorderPane();
             myScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -76,13 +73,6 @@ public class Main extends Application {
             root.getChildren().add(mainbpane);
             primaryStage.setScene(myScene);
             primaryStage.show();
-
-            // // Testing Turtle rotation/moving
-            // testTurtle.updateTurtleOrientation(90);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public Tab createWorkspace (Stage primaryStage, Group root, TabPane tabPane) {
@@ -230,7 +220,7 @@ public class Main extends Application {
                         setUpPreviousCommands(prevCommandListView);
                     }
                     catch (Exception e) {
-                        e.printStackTrace();
+                        System.out.println("Invalid user command.");
                     }
                     textBox.clear();
                 }
