@@ -207,4 +207,11 @@ public class ImageUpdater {
 				.getY() <= myTurtleCanvas.getHeight());
 	}
 
+	/**
+	 * 
+	 * @return a Point2D with the x being the turtle canvas width, the y being the turtle canvas height
+	 */
+	public Point2D getTurtleCanvasSize(){
+		return new Point2D(myTurtleCanvas.getWidth(), myTurtleCanvas.getHeight());
+	}
 }

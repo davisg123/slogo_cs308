@@ -15,11 +15,13 @@ public class Turtle {
 	private Point2D myLocation;
 	private double myOrientation;
 	private ImageView myImage;
+	private PenHandler myPenHandler;
 
 	public Turtle() {
 		myLocation = new Point2D(0, 0);
 		myOrientation = 0;
 		myImage = new ImageView();
+		myPenHandler = new PenHandler();
 	}
 
 	/**

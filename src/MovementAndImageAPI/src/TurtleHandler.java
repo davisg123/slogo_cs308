@@ -26,6 +26,12 @@ public class TurtleHandler {
 	    return mainTurtle.getPoint();
 	}
 	
+	public Point2D getTurtleLocationInCanvas(){
+		Point2D turtlePoint = mainTurtle.getPoint();
+		Point2D canvasSize = mainImageUpdater.getTurtleCanvasSize();
+		return new Point2D(turtlePoint.getX() % canvasSize.getX(), turtlePoint.getY() % canvasSize.getY());
+	}
+	
 	/**
 	 * 
 	 * @param translocation
