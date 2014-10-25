@@ -1,14 +1,9 @@
 package MovementAndImageAPI.src;
 
-import java.io.File;
-
-
 
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-
 /**
  * 
  * @author Eirika Sawh This class is the actual visual representation of the
@@ -20,11 +15,13 @@ public class Turtle {
 	private Point2D myLocation;
 	private double myOrientation;
 	private ImageView myImage;
+	private PenHandler myPenHandler;
 
 	public Turtle() {
 		myLocation = new Point2D(0, 0);
 		myOrientation = 0;
 		myImage = new ImageView();
+		myPenHandler = new PenHandler();
 	}
 
 	/**
@@ -69,7 +66,7 @@ public class Turtle {
 	/**
 	 * 
 	 * @param translocation
-	 *            How many pixels to move in that direction. Uses TurtleMath and
+	 *            How many pixels to move in that direction. Uses Math and
 	 *            orientation to figure out how many pixels that is in the X and
 	 *            Y directions.
 	 */
@@ -96,6 +93,10 @@ public class Turtle {
 			myImage.setImage(newImage);
 	}
 
+	public void setPenPosition(int penPosition){
+		myPenHandler.setPenPosition(penPosition);
+	}
+	
 	/**
 	 * 
 	 * @return the Turtle's current point
@@ -120,11 +121,17 @@ public class Turtle {
 		return myImage;
 	}
 
+	public int getPenPosition(){
+		return myPenHandler.getPenPosition();
+	}
 	/**
 	 * 
-	 * @param show true if should show the turtle, false if should hide the turtle
+	 * @param show 1 if should show the turtle, 0 if should hide the turtle
 	 */
-	public void show(boolean show) {
-		myImage.setVisible(show);
+	public void show(int show) {
+		if(show == 1)
+			myImage.setVisible(true);
+		else if(show == 0)
+			myImage.setVisible(false);
 	}
 }

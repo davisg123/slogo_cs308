@@ -2,7 +2,6 @@ package MovementAndImageAPI.src;
 
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 /**
  * 
@@ -19,8 +18,18 @@ public class TurtleHandler {
 	}
 
 	
+	public double getOrientation(){
+	    return mainTurtle.getOrientation();
+	}
+	
 	public Point2D getTurtleLocation(){
 	    return mainTurtle.getPoint();
+	}
+	
+	public Point2D getTurtleLocationInCanvas(){
+		Point2D turtlePoint = mainTurtle.getPoint();
+		Point2D canvasSize = mainImageUpdater.getTurtleCanvasSize();
+		return new Point2D(turtlePoint.getX() % canvasSize.getX(), turtlePoint.getY() % canvasSize.getY());
 	}
 	
 	/**
@@ -42,16 +51,10 @@ public class TurtleHandler {
 	 *            the location to instantly move to.
 	 */
 	public void updateTurtleAbsoluteLocation(Point2D newLocation) {
-		try {
-			if (!mainImageUpdater.isValidPoint(newLocation))
-				throw new OutOfSceneException();
 			Point2D from = mainTurtle.getPoint();
 			mainTurtle.updateAbsoluteLocation(newLocation);
 			Point2D to = mainTurtle.getPoint();
 			moveAndDraw(from, to);
-		} catch (OutOfSceneException e) {
-			System.out.println(e.getMessage());
-		}
 	}
 
 	/**
@@ -64,7 +67,8 @@ public class TurtleHandler {
 	 */
 	private void moveAndDraw(Point2D from, Point2D to) {
 		mainImageUpdater.updateTurtleImage(to, mainTurtle.getImage());
-		mainImageUpdater.drawLine(from, to);
+		if(mainTurtle.getPenPosition() == 1)
+			mainImageUpdater.drawLine(from, to);
 	};
 
 	/**
@@ -91,9 +95,9 @@ public class TurtleHandler {
 
 	/**
 	 * 
-	 * @param show true if should show the turtle, false if should hide the turtle
+	 * @param show 1 if should show the turtle, 0 if should hide the turtle
 	 */
-	public void showTurtle(boolean show){
+	public void showTurtle(int show){
 		mainTurtle.show(show);
 		mainImageUpdater.updateTurtleImage(mainTurtle.getPoint(), mainTurtle.getImage());
 	}
@@ -102,6 +106,14 @@ public class TurtleHandler {
 		mainTurtle.updateImage(newImage);
 		mainImageUpdater.updateTurtleImage(mainTurtle.getPoint(),  mainTurtle.getImage());
 	}
+
 	
+	public void clearLines(){
+		mainImageUpdater.clearLines();
+	}
+	
+	public void setPenPosition(int penPosition){
+		mainTurtle.setPenPosition(penPosition);
+	}
 	
 }

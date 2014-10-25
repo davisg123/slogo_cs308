@@ -10,20 +10,12 @@ import javafx.stage.Stage;
 
 public class HelpPageFeature extends Feature {
 
-    
     public void openHelpPage(Button button, BorderPane root){
         button.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event){
                 HelpPage myHelpPage = new HelpPage();
-                try {
-                    myHelpPage.start(new Stage());
-                }
-                catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                
+                myHelpPage.start(new Stage());
             }
     });
     }
