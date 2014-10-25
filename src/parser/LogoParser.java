@@ -315,7 +315,7 @@ public class LogoParser implements LogoParserConstants {
       jj_consume_token(SETXY);
       parameter = eval();
       parameter2 = eval();
-    {if (true) return factory.showTurtle();}
+    {if (true) return factory.setTurtlePosition(parameter, parameter2);}
       break;
     default:
       jj_la1[6] = jj_gen;

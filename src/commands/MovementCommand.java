@@ -1,14 +1,15 @@
 package commands;
 
+import javafx.geometry.Point2D;
 import MovementAndImageAPI.*;
 import MovementAndImageAPI.src.TurtleHandler;
 
 public class MovementCommand extends CommandsTurtle { 
-    public enum CommandType {ROTATE, GO_FORWARD, GO_BACK};
+    public enum CommandType {ROTATE, GO_FORWARD, GO_BACK, SET_POSITION};
     private CommandType command;
-    private double value = 0.0;
+    private double[] value = {0.0};
     
-    public MovementCommand(TurtleHandler turtleHandler, CommandType command, double value) {
+    public MovementCommand(TurtleHandler turtleHandler, CommandType command, double[] value) {
         super(turtleHandler);
         this.command = command;
         this.value = value;
@@ -18,14 +19,16 @@ public class MovementCommand extends CommandsTurtle {
     public void execute() {
         switch(command) {
             case ROTATE:
-                turtleHandler.updateTurtleOrientation(value);
+                turtleHandler.updateTurtleOrientation(value[0]);
                 break;
             case GO_FORWARD:
-                turtleHandler.updateTurtleLocation(value);
+                turtleHandler.updateTurtleLocation(value[0]);
                 break;
             case GO_BACK:
-                turtleHandler.updateTurtleLocation(-value);
+                turtleHandler.updateTurtleLocation(-value[0]);
                 break;
+            case SET_POSITION:
+                turtleHandler.updateTurtleAbsoluteLocation(new Point2D(value[0],value[1]));
         }
     }
 }
