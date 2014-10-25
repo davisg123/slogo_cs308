@@ -67,11 +67,10 @@ public class Main extends Application {
             myScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
 
             TabPane tabPane = new TabPane();
-            tabPane.getTabs().add(createWorkspace(primaryStage, root));
-
-            Tab tabB = new Tab();
-            tabB.setText("TabB");
-            tabPane.getTabs().add(tabB);
+            
+            Tab workspace = createWorkspace(primaryStage, root, tabPane);
+            tabPane.getTabs().add(workspace);
+            
             mainbpane.setCenter(tabPane);
 
             root.getChildren().add(mainbpane);
@@ -86,7 +85,7 @@ public class Main extends Application {
         }
     }
 
-    public Tab createWorkspace (Stage primaryStage, Group root) {
+    public Tab createWorkspace (Stage primaryStage, Group root, TabPane tabPane) {
         // Create Tab
         Tab tab = new Tab();
         tab.setText("Tab");
