@@ -541,12 +541,12 @@ public class LogoParser implements LogoParserConstants {
 
   /** Constructor. */
   public LogoParser(java.io.Reader stream) {
-    if (jj_initialized_once) {
-      System.out.println("ERROR: Second call to constructor of static parser. ");
-      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
-      System.out.println("       during parser generation.");
-      throw new Error();
-    }
+//    if (jj_initialized_once) {
+//      System.out.println("ERROR: Second call to constructor of static parser. ");
+//      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
+//      System.out.println("       during parser generation.");
+//      throw new Error();
+//    }
     jj_initialized_once = true;
     jj_input_stream = new SimpleCharStream(stream, 1, 1);
     token_source = new LogoParserTokenManager(jj_input_stream);
@@ -568,12 +568,12 @@ public class LogoParser implements LogoParserConstants {
 
   /** Constructor with generated Token Manager. */
   public LogoParser(LogoParserTokenManager tm) {
-    if (jj_initialized_once) {
-      System.out.println("ERROR: Second call to constructor of static parser. ");
-      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
-      System.out.println("       during parser generation.");
-      throw new Error();
-    }
+//    if (jj_initialized_once) {
+//      System.out.println("ERROR: Second call to constructor of static parser. ");
+//      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
+//      System.out.println("       during parser generation.");
+//      throw new Error();
+//    }
     jj_initialized_once = true;
     token_source = tm;
     token = new Token();
