@@ -309,7 +309,7 @@ public class LogoParser implements LogoParserConstants {
       break;
     case HOME:
       jj_consume_token(HOME);
-    {if (true) return factory.showTurtle();}
+    {if (true) return factory.setTurtlePosition(0,0);}
       break;
     case SETXY:
       jj_consume_token(SETXY);
