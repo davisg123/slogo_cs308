@@ -50,7 +50,7 @@ public class Main extends Application {
     private GraphicsContext gcFront;
     private String userInput;
     private boolean validInput;
-    private InputExecutor inputExecutor = null;
+//    private InputExecutor inputExecutor = null;
     private CommandsFactory commandsFactory = null;
     private Parser parser = null;
     private ArrayDeque<ICommand> commands = new ArrayDeque<>();
