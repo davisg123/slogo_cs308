@@ -65,14 +65,37 @@ public class Main extends Application {
             // BorderPane bpane = new BorderPane();
             BorderPane mainbpane = new BorderPane();
             myScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
-
+            
             TabPane tabPane = new TabPane();
             
+            
             Tab workspace = createWorkspace(primaryStage, root, tabPane);
+            workspace.setText("Workspace 1");
             tabPane.getTabs().add(workspace);
-                  
+            
+            // using arrow keys to move my turtle 
+            tabPane.setOnKeyPressed(new EventHandler<KeyEvent>(){
+                @Override
+                public void handle (KeyEvent key) {
+                    // TODO Auto-generated method stub
+                    if (key.getCode() == KeyCode.LEFT){
+                        System.out.println("left key is pressed");
+                        
+                    }
+                    if (key.getCode() == KeyCode.RIGHT){
+                        System.out.println("right key is pressed");
+                    }
+                    if (key.getCode() == KeyCode.UP){
+                        System.out.println("up key is pressed");
+                    }
+                    if (key.getCode() == KeyCode.DOWN){
+                        System.out.println("down key is pressed");
+                    }
+                }
+            });
+            
+                   
             mainbpane.setCenter(tabPane);
-
             root.getChildren().add(mainbpane);
             primaryStage.setScene(myScene);
             primaryStage.show();
@@ -88,7 +111,6 @@ public class Main extends Application {
     public Tab createWorkspace (Stage primaryStage, Group root, TabPane tabPane) {
         // Create Tab
         Tab tab = new Tab();
-        tab.setText("Tab");
 
         Pane pane = new Pane();
         BorderPane bpane = new BorderPane();
@@ -125,13 +147,18 @@ public class Main extends Application {
         testTurtle.updateImage(new
                 Image(getClass().getResourceAsStream("/images/turtle.png")));
 
-        // Add textbox at bottom (temporary)
+        
+
+        // setting textbox settings
         TextField textBox = new TextField("");
         commandsFactory = new CommandsFactory();
         commandsFactory.setTurtleHandler(testTurtle);
         parser = new Parser(commandsFactory);
         parser.createLogoParser();
+        
         bpane.setBottom(textBox);
+        
+        
 
         // Add previousCommands box
         ListView<Text> prevCommandListView = new ListView<Text>();
