@@ -193,7 +193,6 @@ public class Main extends Application {
 //                         commandsFactory.turtleGoForward(500);
                          command = parser.parse(userInput);
                          command.execute();
-                         System.out.println("i should've moved forward");
                         validInput = true;
                         prevCommandList.add("\n" + userInput);
                         showPreviousCommands(prevCommandBox);
