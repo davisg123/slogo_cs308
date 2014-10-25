@@ -18,6 +18,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -28,6 +30,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 
 public class Main extends Application {
     private static final int SCREEN_WIDTH = 1000;
@@ -49,7 +52,7 @@ public class Main extends Application {
     private Parser parser = null;
     private ArrayList<Text> prevCommandList;
     private ObservableList<Text> prevCommandObsvList;
-    private Map<Text,ICommand> prevCommandMap;
+    private Map<Text, ICommand> prevCommandMap;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -60,68 +63,96 @@ public class Main extends Application {
             Group root = new Group();
             Pane pane = new Pane();
             BorderPane bpane = new BorderPane();
+            BorderPane mainbpane = new BorderPane();
             myScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+            TabPane tabPane = new TabPane();
+            // Create Tabs
+            Tab tabA = new Tab();
+            tabA.setText("Tab A");
 
             // Add back display canvas
             myBackDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
             gcBack = myBackDisplay.getGraphicsContext2D();
             pane.getChildren().add(myBackDisplay);
 
-            // Add line display canvas
-            myLineCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            pane.getChildren().add(myLineCanvas);
-
-            // Add turtle display canvas
-            myTurtleCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            pane.getChildren().add(myTurtleCanvas);
-
-            // Setting display positions
-            myBackDisplay.toBack();
-            myTurtleCanvas.toFront();
-
-            // Setting pane(containing the displays) to the center of the borderpane.
-            bpane.setCenter(pane);
-
-            // making penHandler
-            PenHandler mainPenHandler = new PenHandler();
-
-            // adding imageUpdater
-            ImageUpdater frontImageUpdater =
-                    new ImageUpdater(myTurtleCanvas, myLineCanvas, mainPenHandler);
-
-            // adding my turtle
-            TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
-            testTurtle.updateImage(new Image(getClass().getResourceAsStream("/images/turtle.png")));
-
             // Add textbox at bottom (temporary)
             TextField textBox = new TextField("");
-            commandsFactory = new CommandsFactory();
-            commandsFactory.setTurtleHandler(testTurtle);
-            parser = new Parser(commandsFactory);
-            parser.createLogoParser();
             bpane.setBottom(textBox);
 
-            // Add previousCommands box
-            ListView<Text> prevCommandListView = new ListView<Text>();
-            prevCommandList = new ArrayList<Text>();
-            prevCommandMap = new HashMap<Text,ICommand>();
-            prevCommandList.add(new Text("Previous Commands: "));
-            prevCommandObsvList = FXCollections.observableArrayList(prevCommandList);
-            prevCommandListView.setItems(prevCommandObsvList);
-            bpane.setRight(prevCommandListView);
-            sendUserInput(textBox, prevCommandListView);
+            tabA.setContent(bpane);
+            tabPane.getTabs().add(tabA);
 
-            // Add Feature buttons on top
-            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, mainPenHandler, testTurtle,
-                                           root, frontImageUpdater));
+            Tab tabB = new Tab();
+            tabB.setText("TabB");
+            tabPane.getTabs().add(tabB);
+            mainbpane.setCenter(tabPane);
 
-            // Setting up layers
-            root.getChildren().add(bpane);
+            root.getChildren().add(mainbpane);
             primaryStage.setScene(myScene);
             primaryStage.show();
 
-            // Testing Turtle rotation/moving
-            testTurtle.updateTurtleOrientation(90);
+            // // Add back display canvas
+            // myBackDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            // gcBack = myBackDisplay.getGraphicsContext2D();
+            // pane.getChildren().add(myBackDisplay);
+            //
+            // // Add line display canvas
+            // myLineCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            // pane.getChildren().add(myLineCanvas);
+            //
+            // // Add turtle display canvas
+            // myTurtleCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            // pane.getChildren().add(myTurtleCanvas);
+            //
+            // // Setting display positions
+            // myBackDisplay.toBack();
+            // myTurtleCanvas.toFront();
+            //
+            // // Setting pane(containing the displays) to the center of the borderpane.
+            // bpane.setCenter(pane);
+            //
+            // // making penHandler
+            // PenHandler mainPenHandler = new PenHandler();
+            //
+            // // adding imageUpdater
+            // ImageUpdater frontImageUpdater =
+            // new ImageUpdater(myTurtleCanvas, myLineCanvas, mainPenHandler);
+            //
+            // // adding my turtle
+            // TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
+            // testTurtle.updateImage(new
+            // Image(getClass().getResourceAsStream("/images/turtle.png")));
+            //
+            // // Add textbox at bottom (temporary)
+            // TextField textBox = new TextField("");
+            // commandsFactory = new CommandsFactory();
+            // commandsFactory.setTurtleHandler(testTurtle);
+            // parser = new Parser(commandsFactory);
+            // parser.createLogoParser();
+            // bpane.setBottom(textBox);
+            //
+            // // Add previousCommands box
+            // ListView<Text> prevCommandListView = new ListView<Text>();
+            // prevCommandList = new ArrayList<Text>();
+            // prevCommandMap = new HashMap<Text,ICommand>();
+            // prevCommandList.add(new Text("Previous Commands: "));
+            // prevCommandObsvList = FXCollections.observableArrayList(prevCommandList);
+            // prevCommandListView.setItems(prevCommandObsvList);
+            // bpane.setRight(prevCommandListView);
+            // sendUserInput(textBox, prevCommandListView);
+            //
+            // // Add Feature buttons on top
+            // bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, mainPenHandler, testTurtle,
+            // root, frontImageUpdater));
+
+            // Setting up layers
+            // root.getChildren().add(bpane);
+            // primaryStage.setScene(myScene);
+            // primaryStage.show();
+
+            // // Testing Turtle rotation/moving
+            // testTurtle.updateTurtleOrientation(90);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -131,33 +162,50 @@ public class Main extends Application {
     /**
      * Adds features.
      */
-    public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane, PenHandler penHandler,
-                                   TurtleHandler turtleHandler, Group root, ImageUpdater iu) {
-        
+    public Node addFeatureButtons (BorderPane bpane,
+                                   Stage primaryStage,
+                                   Pane pane,
+                                   PenHandler penHandler,
+                                   TurtleHandler turtleHandler,
+                                   Group root,
+                                   ImageUpdater iu) {
+
         HBox featureButtons = new HBox();
 
         // pen color chooser and canvas color chooser
         ColorFeature ColorOptions = new ColorFeature();
-        featureButtons.getChildren().addAll(new Text(" Pen:"), ColorOptions.changePenColor(penHandler),
-                                            new Text(" Canvas:"), ColorOptions.changeBGColor(gcBack, DISPLAY_WIDTH, DISPLAY_HEIGHT));
+        featureButtons.getChildren().addAll(new Text(" Pen:"),
+                                            ColorOptions.changePenColor(penHandler),
+                                            new Text(" Canvas:"),
+                                            ColorOptions.changeBGColor(gcBack, DISPLAY_WIDTH,
+                                                                       DISPLAY_HEIGHT));
 
         RefGridFeature RefGrid = new RefGridFeature();
-        RefGridButton = RefGrid.makeButton("RefGrid On/Off", 
-                                           event -> RefGrid .showReferenceGrid(RefGridButton, pane, DISPLAY_WIDTH, DISPLAY_HEIGHT));
+        RefGridButton =
+                RefGrid.makeButton("RefGrid On/Off",
+                                   event -> RefGrid
+                                           .showReferenceGrid(RefGridButton, pane, DISPLAY_WIDTH,
+                                                              DISPLAY_HEIGHT));
 
         HelpPageFeature HelpPage = new HelpPageFeature();
         HelpPageButton = HelpPage.makeButton("Help Page",
                                              event -> HelpPage.openHelpPage(HelpPageButton, bpane));
 
         TurtleChooserFeature TurtleChooser = new TurtleChooserFeature();
-        TCButton = TurtleChooser.makeButton("Turtle Image", 
-                                            event -> TurtleChooser.openTurtleChooser(TCButton, root, iu, turtleHandler));
-        
+        TCButton =
+                TurtleChooser.makeButton("Turtle Image",
+                                         event -> TurtleChooser
+                                                 .openTurtleChooser(TCButton, root, iu,
+                                                                    turtleHandler));
+
         TurtleDataFeature TurtleData = new TurtleDataFeature();
-        TurtleDataButton = TurtleData.makeButton("Turtle Data", 
-                                                 event -> TurtleData.openTurtleDataPage(TurtleDataButton,turtleHandler));
-        
-        featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton, TurtleDataButton);
+        TurtleDataButton =
+                TurtleData.makeButton("Turtle Data",
+                                      event -> TurtleData.openTurtleDataPage(TurtleDataButton,
+                                                                             turtleHandler));
+
+        featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton,
+                                            TurtleDataButton);
         return featureButtons;
     }
 
@@ -205,9 +253,9 @@ public class Main extends Application {
     public void setUpPreviousCommands (ListView<Text> prevCommandListView) {
         prevCommandObsvList = FXCollections.observableArrayList(prevCommandList);
         prevCommandListView.setItems(prevCommandObsvList);
-        for (int i=0; i<prevCommandObsvList.size(); i++){
+        for (int i = 0; i < prevCommandObsvList.size(); i++) {
             Text text = prevCommandObsvList.get(i);
-            text.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            text.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle (MouseEvent arg0) {
                     // TODO Auto-generated method stub
@@ -217,7 +265,6 @@ public class Main extends Application {
             });
         }
     }
-
 
     /**
      * the main entry point for the program.
