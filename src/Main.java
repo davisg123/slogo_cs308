@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import commands.CommandsFactory;
 import commands.ICommand;
 import MovementAndImageAPI.src.ImageUpdater;
@@ -19,6 +20,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,21 +35,23 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private static final int PREV_COMMANDBOX_HEIGHT = 200;
+    private static final int PREV_COMMANDBOX_WIDTH = 200;
     private static final int SCREEN_WIDTH = 1000;
     private static final int SCREEN_HEIGHT = 700;
 
-    private static final int DISPLAY_WIDTH = 1000;
+    private static final int DISPLAY_WIDTH = 700;
     private static final int DISPLAY_HEIGHT = 600;
     private Scene myScene;
     private Canvas myBackDisplay;
-    private Canvas myFrontDisplay;
+    private Canvas myTurtleCanvas;
+    private Canvas myLineCanvas;
     private Button BGColorButton;
     private Button RefGridButton;
     private Button HelpPageButton;
     private Button PenColorButton;
     private Button TCButton;
     private GraphicsContext gcBack;
-    private GraphicsContext gcFront;
     private String userInput;
     private boolean validInput;
 //    private InputExecutor inputExecutor = null;
@@ -55,6 +59,7 @@ public class Main extends Application {
     private Parser parser = null;
     private ArrayDeque<ICommand> commands = new ArrayDeque<>();
     private Button StartButton;
+    private ArrayList<String> prevCommandList;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -72,45 +77,60 @@ public class Main extends Application {
             gcBack = myBackDisplay.getGraphicsContext2D();
             pane.getChildren().add(myBackDisplay);
             
-            //Add front display canvas
-            myFrontDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            gcFront = myFrontDisplay.getGraphicsContext2D();
-            pane.getChildren().add(myFrontDisplay);
+            //Add line display canvas
+            myLineCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            pane.getChildren().add(myLineCanvas);
+            
+            //Add turtle display canvas
+            myTurtleCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            pane.getChildren().add(myTurtleCanvas);
 
             //Setting display positions
             myBackDisplay.toBack();
-            myFrontDisplay.toFront();
+            myTurtleCanvas.toFront();
 
             //Setting pane(containing the displays) to the center of the borderpane.
             bpane.setCenter(pane);
             
-               
+            //making penHandler
+            PenHandler mainPenHandler = new PenHandler();
+            
+            //adding imageUpdater
+            ImageUpdater frontImageUpdater = new ImageUpdater(myTurtleCanvas, myLineCanvas, mainPenHandler);
+            
+            //adding my turtle
+            TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
+            testTurtle.updateImage(new Image(getClass().getResourceAsStream("/images/turtle.png")));
+            
+            // Add previousCommands box
+            TextArea prevCommandBox = new TextArea("Previous Commands: ");
+            prevCommandBox.setPrefSize(PREV_COMMANDBOX_WIDTH, PREV_COMMANDBOX_HEIGHT);
+            prevCommandBox.editableProperty().set(false);
+            bpane.setRight(prevCommandBox);
+            prevCommandList = new ArrayList<String>();
+            
+
             // Add textbox at bottom (temporary)
             TextField textBox = new TextField("");
+            commandsFactory = new CommandsFactory();
+            commandsFactory.setTurtleHandler(testTurtle);
             parser = new Parser(commandsFactory);
             parser.createLogoParser();
             bpane.setBottom(textBox);
-            sendUserInput(textBox);
+            sendUserInput(textBox, prevCommandBox);
            
 
-            //adding imageUpdater
-            ImageUpdater frontImageUpdater = new ImageUpdater(myFrontDisplay);
 
-            //adding my turtle
-            TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
-            testTurtle.updateImage("/images/turtle.png");
 
-            
             //adding my penHandler and pen
-            PenHandler penHandler = new PenHandler();
+            mainPenHandler.setPenColor(Color.RED);
+            
+
+
             
             // Add Feature buttons on top
-            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, penHandler, testTurtle, root, frontImageUpdater));
+            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, mainPenHandler, testTurtle, root, frontImageUpdater));
             
-            
-//            (test) turtle knows how to move -- YESSS
-            testTurtle.updateTurtleAbsoluteLocation(new Point2D(50,100));
-            testTurtle.updateTurtleAbsoluteLocation(new Point2D(100,100));
             
             // Setting up layers
             root.getChildren().add(bpane);
@@ -165,7 +185,7 @@ public class Main extends Application {
      valid)
      * returns false otherwise.
      */
-     public boolean sendUserInput(TextField textBox){
+     public boolean sendUserInput(TextField textBox, TextArea prevCommandBox){
          validInput = false;      
          textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
              @Override
@@ -177,16 +197,19 @@ public class Main extends Application {
 //                     userInput += "\r\n";
                      System.out.println("userInput: " + userInput);
                      try {
-                         commandsFactory.turtleGoForward(20);
-//                         command = parser.parse(userInput);
-//                         command.execute();
+
+//                         commandsFactory.turtleGoForward(500);
+                         command = parser.parse(userInput);
+                         command.execute();
+                         System.out.println("i should've moved forward");
                         validInput = true;
-                        System.out.println("userInput went through myParser");
+                        prevCommandList.add("\n" + userInput);
+                        showPreviousCommands(prevCommandBox);
                     }
                     catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
-                    }          
+                    }           
                      textBox.clear();
                  }
              }
@@ -194,13 +217,17 @@ public class Main extends Application {
          return validInput;
      }
 
-    // /**
-    // * Displays a list of valid commands (valid userInputs that the XMLparser could parse)
-    // * @param userInput the user input
-    // */
-    // public void showPreviousCommands(String userInput){
-    //
-    // }
+     /**
+     * Displays a list of valid commands (that the parser could parse)
+     * @param userInput the user input
+     */
+     public void showPreviousCommands(TextArea prevCommandBox){
+         String text = "Previous Commands: ";
+         for (int i=0; i<prevCommandList.size(); i++){
+             text = text + prevCommandList.get(i);
+         }
+         prevCommandBox.setText(text);
+     }
 
     /**
      * the main entry point for the program.

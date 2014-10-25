@@ -24,9 +24,9 @@ import java.util.logging.Logger;
 public class TurtleChooserFeature extends Feature {
     
     public void openTurtleChooser(Button button, Group root, ImageUpdater imageUpdater, TurtleHandler turtleHandler){
-        button.setOnAction(new EventHandler<ActionEvent>() {
+        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(MouseEvent event) {
                 FileChooser fileChooser = new FileChooser();
                 
                 //Set extension filter
@@ -45,10 +45,7 @@ public class TurtleChooserFeature extends Feature {
                 }
                 Image image = SwingFXUtils.toFXImage(bufferedImage, null);
                 
-                ImageView iv = new ImageView();
-                iv.setImage(image);
-                
-                imageUpdater.updateTurtleImage(turtleHandler.getTurtleLocation(), iv);
+                turtleHandler.updateImage(image);
                 
                 
             }

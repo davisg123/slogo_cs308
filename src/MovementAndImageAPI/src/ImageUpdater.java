@@ -16,14 +16,19 @@ import javafx.scene.shape.Line;
  *         Scene.
  */
 public class ImageUpdater {
-	private Canvas myCanvas;
-	private GraphicsContext gc;
-	
-	private Pen mainPen = new Pen();
+	private Canvas myTurtleCanvas, myLineCanvas;
+	private GraphicsContext turtleGC, lineGC;
+	private PenHandler mainPenHandler;
+	private static double X_OFFSET, Y_OFFSET;
 
-	public ImageUpdater(Canvas newCanvas) {
-		myCanvas = newCanvas;
-		gc = myCanvas.getGraphicsContext2D();
+	public ImageUpdater(Canvas turtleCanvas, Canvas lineCanvas, PenHandler penHandler) {
+		myTurtleCanvas = turtleCanvas;
+		turtleGC = myTurtleCanvas.getGraphicsContext2D();
+		myLineCanvas = lineCanvas;
+		lineGC = myLineCanvas.getGraphicsContext2D();
+		mainPenHandler = penHandler;
+		X_OFFSET = turtleCanvas.getWidth() / 2;
+		Y_OFFSET = turtleCanvas.getHeight() / 2;
 	}
 
 	/**
@@ -35,8 +40,8 @@ public class ImageUpdater {
 	 *            because that should be handled by the TurtleHandler.
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
-	    gc.clearRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());    
-	    gc.drawImage(turtleImage.getImage(), newLocation.getX(), newLocation.getY());
+	    turtleGC.clearRect(0, 0, myTurtleCanvas.getWidth(), myTurtleCanvas.getHeight());    
+	    turtleGC.drawImage(turtleImage.getImage(), newLocation.getX() + X_OFFSET, newLocation.getY() - (turtleImage.getImage().getHeight() / 2) + Y_OFFSET);
 	}
 	
 
@@ -48,13 +53,13 @@ public class ImageUpdater {
 	 *            the ending point of the line
 	 */
 	public void drawLine(Point2D from, Point2D to) {
-		if (isValidPoint(to)) {
+		if (isValidPoint(to) && mainPenHandler.getPenPosition() == 1) {
 //			Line toDraw = new Line(from.getX(), from.getY(), to.getX(),
 //					to.getY());
 //			toDraw.setStroke(mainPen.getPenColor());
-			gc.setStroke(mainPen.getPenColor());
-			gc.strokeLine(from.getX(), from.getY(), to.getX(),
-					to.getY());
+			lineGC.setStroke(mainPenHandler.getPenColor());
+			lineGC.strokeLine(from.getX() + X_OFFSET, from.getY() + Y_OFFSET, to.getX() + X_OFFSET,
+					to.getY() + Y_OFFSET);
 			
 		}
 //		else{
@@ -72,7 +77,7 @@ public class ImageUpdater {
 	 * @return true if the point is within the scene
 	 */
 	public boolean isValidPoint(Point2D newLocation) {
-		return (newLocation.getX() <= myCanvas.getWidth() && newLocation.getY() <= myCanvas.getHeight());
+		return (newLocation.getX() <= myTurtleCanvas.getWidth() && newLocation.getY() <= myTurtleCanvas.getHeight());
 	}
 
 }
