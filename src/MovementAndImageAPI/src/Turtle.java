@@ -93,6 +93,10 @@ public class Turtle {
 			myImage.setImage(newImage);
 	}
 
+	public void setPenPosition(int penPosition){
+		myPenHandler.setPenPosition(penPosition);
+	}
+	
 	/**
 	 * 
 	 * @return the Turtle's current point
@@ -117,11 +121,17 @@ public class Turtle {
 		return myImage;
 	}
 
+	public int getPenPosition(){
+		return myPenHandler.getPenPosition();
+	}
 	/**
 	 * 
-	 * @param show true if should show the turtle, false if should hide the turtle
+	 * @param show 1 if should show the turtle, 0 if should hide the turtle
 	 */
-	public void show(boolean show) {
-		myImage.setVisible(show);
+	public void show(int show) {
+		if(show == 1)
+			myImage.setVisible(true);
+		else if(show == 0)
+			myImage.setVisible(false);
 	}
 }
