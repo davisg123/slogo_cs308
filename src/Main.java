@@ -48,6 +48,7 @@ public class Main extends Application {
     private GraphicsContext gcBack;
     private String userInput;
     private boolean validInput;
+//    private InputExecutor inputExecutor = null;
     private CommandsFactory commandsFactory = null;
     private Parser parser = null;
     private ArrayList<Text> prevCommandList;
