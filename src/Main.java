@@ -74,8 +74,7 @@ public class Main extends Application {
             Tab workspace2 = createWorkspace(primaryStage, root, tabPane);
             workspace2.setText("Workspace 2");
             tabPane.getTabs().add(workspace2);
-            
-            
+                
             // using arrow keys to move my turtle 
             tabPane.setOnKeyPressed(new EventHandler<KeyEvent>(){
                 @Override
