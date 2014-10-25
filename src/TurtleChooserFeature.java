@@ -3,21 +3,15 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import Feature.Feature;
-import HelpPage.HelpPage;
 import MovementAndImageAPI.src.ImageUpdater;
 import MovementAndImageAPI.src.TurtleHandler;
-import java.util.logging.Logger;
 
 public class TurtleChooserFeature extends Feature {
 
