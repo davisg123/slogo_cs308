@@ -61,72 +61,13 @@ public class Main extends Application {
     public void start (Stage primaryStage) {
         try {
             Group root = new Group();
-            Pane pane = new Pane();
-            BorderPane bpane = new BorderPane();
+            // Pane pane = new Pane();
+            // BorderPane bpane = new BorderPane();
             BorderPane mainbpane = new BorderPane();
             myScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
 
             TabPane tabPane = new TabPane();
-            // Create Tabs
-            Tab tabA = new Tab();
-            tabA.setText("Tab A");
-
-            // Add back display canvas
-            myBackDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            gcBack = myBackDisplay.getGraphicsContext2D();
-            pane.getChildren().add(myBackDisplay);
-
-            // Add line display canvas
-            myLineCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            pane.getChildren().add(myLineCanvas);
-
-            // Add turtle display canvas
-            myTurtleCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            pane.getChildren().add(myTurtleCanvas);
-
-            // Setting display positions
-            myBackDisplay.toBack();
-            myTurtleCanvas.toFront();
-
-            // Setting pane(containing the displays) to the center of the borderpane.
-            bpane.setCenter(pane);
-
-            // making penHandler
-            PenHandler mainPenHandler = new PenHandler();
-
-            // adding imageUpdater
-            ImageUpdater frontImageUpdater =
-                    new ImageUpdater(myTurtleCanvas, myLineCanvas, mainPenHandler);
-
-            // adding my turtle
-            TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
-            testTurtle.updateImage(new
-                    Image(getClass().getResourceAsStream("/images/turtle.png")));
-
-            // Add textbox at bottom (temporary)
-            TextField textBox = new TextField("");
-            commandsFactory = new CommandsFactory();
-            commandsFactory.setTurtleHandler(testTurtle);
-            parser = new Parser(commandsFactory);
-            parser.createLogoParser();
-            bpane.setBottom(textBox);
-
-            // Add previousCommands box
-            ListView<Text> prevCommandListView = new ListView<Text>();
-            prevCommandList = new ArrayList<Text>();
-            prevCommandMap = new HashMap<Text, ICommand>();
-            prevCommandList.add(new Text("Previous Commands: "));
-            prevCommandObsvList = FXCollections.observableArrayList(prevCommandList);
-            prevCommandListView.setItems(prevCommandObsvList);
-            bpane.setRight(prevCommandListView);
-            sendUserInput(textBox, prevCommandListView);
-
-            // Add Feature buttons on top
-            bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, mainPenHandler, testTurtle,
-                                           root, frontImageUpdater));
-
-            tabA.setContent(bpane);
-            tabPane.getTabs().add(tabA);
+            tabPane.getTabs().add(createWorkspace(primaryStage, root));
 
             Tab tabB = new Tab();
             tabB.setText("TabB");
@@ -143,6 +84,73 @@ public class Main extends Application {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Tab createWorkspace (Stage primaryStage, Group root) {
+        // Create Tab
+        Tab tab = new Tab();
+        tab.setText("Tab");
+
+        Pane pane = new Pane();
+        BorderPane bpane = new BorderPane();
+
+        // Add back display canvas
+        myBackDisplay = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+        gcBack = myBackDisplay.getGraphicsContext2D();
+        pane.getChildren().add(myBackDisplay);
+
+        // Add line display canvas
+        myLineCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+        pane.getChildren().add(myLineCanvas);
+
+        // Add turtle display canvas
+        myTurtleCanvas = new Canvas(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+        pane.getChildren().add(myTurtleCanvas);
+
+        // Setting display positions
+        myBackDisplay.toBack();
+        myTurtleCanvas.toFront();
+
+        // Setting pane(containing the displays) to the center of the borderpane.
+        bpane.setCenter(pane);
+
+        // making penHandler
+        PenHandler mainPenHandler = new PenHandler();
+
+        // adding imageUpdater
+        ImageUpdater frontImageUpdater =
+                new ImageUpdater(myTurtleCanvas, myLineCanvas, mainPenHandler);
+
+        // adding my turtle
+        TurtleHandler testTurtle = new TurtleHandler(frontImageUpdater);
+        testTurtle.updateImage(new
+                Image(getClass().getResourceAsStream("/images/turtle.png")));
+
+        // Add textbox at bottom (temporary)
+        TextField textBox = new TextField("");
+        commandsFactory = new CommandsFactory();
+        commandsFactory.setTurtleHandler(testTurtle);
+        parser = new Parser(commandsFactory);
+        parser.createLogoParser();
+        bpane.setBottom(textBox);
+
+        // Add previousCommands box
+        ListView<Text> prevCommandListView = new ListView<Text>();
+        prevCommandList = new ArrayList<Text>();
+        prevCommandMap = new HashMap<Text, ICommand>();
+        prevCommandList.add(new Text("Previous Commands: "));
+        prevCommandObsvList = FXCollections.observableArrayList(prevCommandList);
+        prevCommandListView.setItems(prevCommandObsvList);
+        bpane.setRight(prevCommandListView);
+        sendUserInput(textBox, prevCommandListView);
+
+        // Add Feature buttons on top
+        bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, mainPenHandler, testTurtle,
+                                       root, frontImageUpdater));
+
+        // final step
+        tab.setContent(bpane);
+        return tab;
     }
 
     /**
