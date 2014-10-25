@@ -72,12 +72,12 @@ public class CommandsFactory {
     }
     
     public ICommand rotateTurtleLeft(double angle) {
-        double[] val = {angle};
+        double[] val = {-1.0 * angle};
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, val);
     }
     
     public ICommand rotateTurtleRight(double angle) {
-        double[] val = {-1.0 * angle};
+        double[] val = {angle};
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, val);
     }
 
