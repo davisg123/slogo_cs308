@@ -12,9 +12,13 @@ public class TurtleHandler {
 
 	private Turtle mainTurtle = new Turtle();
 	private ImageUpdater mainImageUpdater;
+	private static int turtleID = 1;
+	private int myID;
 
 	public TurtleHandler(ImageUpdater imageUpdater) {
 		mainImageUpdater = imageUpdater;
+		myID = turtleID;
+		turtleID++;
 	}
 
 	/**
@@ -171,7 +175,24 @@ public class TurtleHandler {
 		return mainTurtle.getPenHandler();
 	}
 	
+	/**
+	 * 
+	 * @param width the line width in pixels
+	 */
 	public void setLineWidth(double width){
 		mainTurtle.getPenHandler().setLineWidth(width);
+	}
+	
+	/**
+	 * 
+	 * @return the ID associated with this turtle.  Making a new TurtleHandler increments the static ID counter by 1.
+	 */
+	public int getID(){
+		return myID;
+	}
+	
+	public void towards(Point2D location){
+		Point2D canvasLocation = getTurtleLocationInCanvas();
+		updateTurtleAbsoluteOrientation(canvasLocation.angle(location));
 	}
 }
