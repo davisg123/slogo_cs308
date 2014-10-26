@@ -34,4 +34,11 @@ public class PenHandler {
 	public int getPenPosition(){
 	    return mainPen.getPenPosition();
 	}
+	
+	public void setLineWidth(double width){
+		mainPen.setLineWidth(width);
+	}
+	public double getLineWidth(){
+		return mainPen.getLineWidth();
+	}
 }

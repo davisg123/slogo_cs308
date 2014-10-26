@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -9,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
@@ -47,6 +50,7 @@ public class Workspace {
     private Button HelpPageButton;
     private Button TCButton;
     private Button TurtleDataButton;
+    private Button FileChooserButton;
     
     public Workspace(){
     }
@@ -121,8 +125,19 @@ public class Workspace {
     /**
      * Adds features.
      */
+<<<<<<< HEAD
     public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane, PenHandler penHandler,
                                    TurtleHandler turtleHandler, Group root, ImageUpdater iu) {
+=======
+    @SuppressWarnings("unchecked")
+    public Node addFeatureButtons (BorderPane bpane,
+                                   Stage primaryStage,
+                                   Pane pane,
+                                   PenHandler penHandler,
+                                   TurtleHandler turtleHandler,
+                                   Group root,
+                                   ImageUpdater iu) {
+>>>>>>> master
 
         HBox featureButtons = new HBox();
 
@@ -146,10 +161,45 @@ public class Workspace {
                                             event -> TurtleChooser.openTurtleChooser(TCButton, root, iu, turtleHandler));
 
         TurtleDataFeature TurtleData = new TurtleDataFeature();
+<<<<<<< HEAD
         TurtleDataButton = TurtleData.makeButton("Turtle Data", 
                                                  event -> TurtleData.openTurtleDataPage(TurtleDataButton, turtleHandler));
 
         featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton, TurtleDataButton);
+=======
+        TurtleDataButton =
+                TurtleData.makeButton("Turtle Data",
+                                      event -> TurtleData.openTurtleDataPage(TurtleDataButton,
+                                                                             turtleHandler));
+        
+        
+        FileChooserFeature FileChooser = new FileChooserFeature();
+        FileChooserButton = TurtleData.makeButton("Open File", event -> FileChooser.openFileChooser(FileChooserButton, parser));
+
+        //also add a language selector combobox, and handle the event here
+        ObservableList<String> options = 
+                FXCollections.observableArrayList(
+                    "English",
+                    "Chinese",
+                    "French",
+                    "Italian",
+                    "Portuguese",
+                    "Russian"
+                );
+        @SuppressWarnings({ "rawtypes", "unchecked" })
+        final ComboBox languageComboBox = new ComboBox(options);
+        languageComboBox.setPromptText("Choose a language");
+        languageComboBox.valueProperty().addListener(new ChangeListener<String>() {
+            @SuppressWarnings("rawtypes")
+            @Override 
+            public void changed(ObservableValue ov, String t, String t1) {                
+                parser.setForeignLanguage(t1);              
+            }    
+        });
+
+        featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton,
+                                            TurtleDataButton,FileChooserButton,languageComboBox);
+>>>>>>> master
         return featureButtons;
     }
     

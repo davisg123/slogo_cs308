@@ -10,7 +10,7 @@ public class LogoParser implements LogoParserConstants {
   }
 
 /* entire line */
-  static final public ICommand expression(CommandsFactory factory) throws ParseException {
+  final public ICommand expression(CommandsFactory factory) throws ParseException {
   Token t;
   String name;
   ICommand command;
@@ -21,7 +21,7 @@ public class LogoParser implements LogoParserConstants {
   }
 
 /* block statements */
-  static final public ICommand list(CommandsFactory factory) throws ParseException {
+  final public ICommand list(CommandsFactory factory) throws ParseException {
   ICommand command;
   ICommand altCommand;
   ICommand result;
@@ -263,7 +263,7 @@ public class LogoParser implements LogoParserConstants {
   }
 
 /* instructions */
-  static final public ICommand statement(CommandsFactory factory) throws ParseException {
+  final public ICommand statement(CommandsFactory factory) throws ParseException {
   double parameter;
   double parameter2;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -309,7 +309,7 @@ public class LogoParser implements LogoParserConstants {
       break;
     case HOME:
       jj_consume_token(HOME);
-    {if (true) return factory.setTurtlePosition(0,0);}
+    {if (true) return factory.setTurtlePosition(0, 0);}
       break;
     case SETXY:
       jj_consume_token(SETXY);
@@ -326,7 +326,7 @@ public class LogoParser implements LogoParserConstants {
   }
 
 /* evaluated expression - either arithmetical or logical */
-  static final public double eval() throws ParseException {
+  final public double eval() throws ParseException {
   double val;
   double result;
     val = arithm();
@@ -378,7 +378,7 @@ public class LogoParser implements LogoParserConstants {
   }
 
 /* addition and substraction*/
-  static final public double arithm() throws ParseException {
+  final public double arithm() throws ParseException {
   double term;
   double result;
     term = term();
@@ -416,7 +416,7 @@ public class LogoParser implements LogoParserConstants {
   }
 
 /* division and multiplication */
-  static final public double term() throws ParseException {
+  final public double term() throws ParseException {
   double pow;
   double result;
     pow = pow();
@@ -454,7 +454,7 @@ public class LogoParser implements LogoParserConstants {
   }
 
 /* exponentation */
-  static final public double pow() throws ParseException {
+  final public double pow() throws ParseException {
   Token t;
   double num;
   double result;
@@ -480,17 +480,16 @@ public class LogoParser implements LogoParserConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static private boolean jj_initialized_once = false;
   /** Generated Token Manager. */
-  static public LogoParserTokenManager token_source;
-  static SimpleCharStream jj_input_stream;
+  public LogoParserTokenManager token_source;
+  SimpleCharStream jj_input_stream;
   /** Current token. */
-  static public Token token;
+  public Token token;
   /** Next token. */
-  static public Token jj_nt;
-  static private int jj_ntk;
-  static private int jj_gen;
-  static final private int[] jj_la1 = new int[14];
+  public Token jj_nt;
+  private int jj_ntk;
+  private int jj_gen;
+  final private int[] jj_la1 = new int[14];
   static private int[] jj_la1_0;
   static private int[] jj_la1_1;
   static {
@@ -498,10 +497,10 @@ public class LogoParser implements LogoParserConstants {
       jj_la1_init_1();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x1ffd320,0x1ffd320,0x1ffd320,0x1ffd320,0x1ffd320,0x1ffd320,0x1ffc000,0x80000000,0x80000000,0xc000000,0xc000000,0x30000000,0x30000000,0x40000000,};
+      jj_la1_0 = new int[] {0x1ffd320,0x1ffd320,0x1ffd320,0x1ffd320,0x1ffd320,0x1ffd320,0x1ffc000,0x0,0x0,0x30000000,0x30000000,0xc0000000,0xc0000000,0x0,};
    }
    private static void jj_la1_init_1() {
-      jj_la1_1 = new int[] {0x10,0x10,0x10,0x10,0x10,0x10,0x0,0xf,0xf,0x0,0x0,0x0,0x0,0x0,};
+      jj_la1_1 = new int[] {0x40,0x40,0x40,0x40,0x40,0x40,0x0,0x3e,0x3e,0x0,0x0,0x0,0x0,0x1,};
    }
 
   /** Constructor with InputStream. */
@@ -510,13 +509,6 @@ public class LogoParser implements LogoParserConstants {
   }
   /** Constructor with InputStream and supplied encoding */
   public LogoParser(java.io.InputStream stream, String encoding) {
-//    if (jj_initialized_once) {
-//      System.out.println("ERROR: Second call to constructor of static parser.  ");
-//      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
-//      System.out.println("       during parser generation.");
-//      throw new Error();
-//    }
-    jj_initialized_once = true;
     try { jj_input_stream = new SimpleCharStream(stream, encoding, 1, 1); } catch(java.io.UnsupportedEncodingException e) { throw new RuntimeException(e); }
     token_source = new LogoParserTokenManager(jj_input_stream);
     token = new Token();
@@ -526,11 +518,11 @@ public class LogoParser implements LogoParserConstants {
   }
 
   /** Reinitialise. */
-  static public void ReInit(java.io.InputStream stream) {
+  public void ReInit(java.io.InputStream stream) {
      ReInit(stream, null);
   }
   /** Reinitialise. */
-  static public void ReInit(java.io.InputStream stream, String encoding) {
+  public void ReInit(java.io.InputStream stream, String encoding) {
     try { jj_input_stream.ReInit(stream, encoding, 1, 1); } catch(java.io.UnsupportedEncodingException e) { throw new RuntimeException(e); }
     token_source.ReInit(jj_input_stream);
     token = new Token();
@@ -541,13 +533,6 @@ public class LogoParser implements LogoParserConstants {
 
   /** Constructor. */
   public LogoParser(java.io.Reader stream) {
-//    if (jj_initialized_once) {
-//      System.out.println("ERROR: Second call to constructor of static parser. ");
-//      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
-//      System.out.println("       during parser generation.");
-//      throw new Error();
-//    }
-    jj_initialized_once = true;
     jj_input_stream = new SimpleCharStream(stream, 1, 1);
     token_source = new LogoParserTokenManager(jj_input_stream);
     token = new Token();
@@ -557,7 +542,7 @@ public class LogoParser implements LogoParserConstants {
   }
 
   /** Reinitialise. */
-  static public void ReInit(java.io.Reader stream) {
+  public void ReInit(java.io.Reader stream) {
     jj_input_stream.ReInit(stream, 1, 1);
     token_source.ReInit(jj_input_stream);
     token = new Token();
@@ -568,13 +553,6 @@ public class LogoParser implements LogoParserConstants {
 
   /** Constructor with generated Token Manager. */
   public LogoParser(LogoParserTokenManager tm) {
-//    if (jj_initialized_once) {
-//      System.out.println("ERROR: Second call to constructor of static parser. ");
-//      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
-//      System.out.println("       during parser generation.");
-//      throw new Error();
-//    }
-    jj_initialized_once = true;
     token_source = tm;
     token = new Token();
     jj_ntk = -1;
@@ -582,7 +560,7 @@ public class LogoParser implements LogoParserConstants {
     for (int i = 0; i < 14; i++) jj_la1[i] = -1;
   }
 
-  /** Reinitialize. */
+  /** Reinitialise. */
   public void ReInit(LogoParserTokenManager tm) {
     token_source = tm;
     token = new Token();
@@ -591,7 +569,7 @@ public class LogoParser implements LogoParserConstants {
     for (int i = 0; i < 14; i++) jj_la1[i] = -1;
   }
 
-  static private Token jj_consume_token(int kind) throws ParseException {
+  private Token jj_consume_token(int kind) throws ParseException {
     Token oldToken;
     if ((oldToken = token).next != null) token = token.next;
     else token = token.next = token_source.getNextToken();
@@ -607,7 +585,7 @@ public class LogoParser implements LogoParserConstants {
 
 
 /** Get the next Token. */
-  static final public Token getNextToken() {
+  final public Token getNextToken() {
     if (token.next != null) token = token.next;
     else token = token.next = token_source.getNextToken();
     jj_ntk = -1;
@@ -616,7 +594,7 @@ public class LogoParser implements LogoParserConstants {
   }
 
 /** Get the specific Token. */
-  static final public Token getToken(int index) {
+  final public Token getToken(int index) {
     Token t = token;
     for (int i = 0; i < index; i++) {
       if (t.next != null) t = t.next;
@@ -625,21 +603,21 @@ public class LogoParser implements LogoParserConstants {
     return t;
   }
 
-  static private int jj_ntk() {
+  private int jj_ntk() {
     if ((jj_nt=token.next) == null)
       return (jj_ntk = (token.next=token_source.getNextToken()).kind);
     else
       return (jj_ntk = jj_nt.kind);
   }
 
-  static private java.util.List<int[]> jj_expentries = new java.util.ArrayList<int[]>();
-  static private int[] jj_expentry;
-  static private int jj_kind = -1;
+  private java.util.List<int[]> jj_expentries = new java.util.ArrayList<int[]>();
+  private int[] jj_expentry;
+  private int jj_kind = -1;
 
   /** Generate ParseException. */
-  static public ParseException generateParseException() {
+  public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[40];
+    boolean[] la1tokens = new boolean[42];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -656,7 +634,7 @@ public class LogoParser implements LogoParserConstants {
         }
       }
     }
-    for (int i = 0; i < 40; i++) {
+    for (int i = 0; i < 42; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;
@@ -671,11 +649,11 @@ public class LogoParser implements LogoParserConstants {
   }
 
   /** Enable tracing. */
-  static final public void enable_tracing() {
+  final public void enable_tracing() {
   }
 
   /** Disable tracing. */
-  static final public void disable_tracing() {
+  final public void disable_tracing() {
   }
 
 }
