@@ -8,6 +8,8 @@ import MovementAndImageAPI.src.PenHandler;
 import MovementAndImageAPI.src.TurtleHandler;
 import parser.*;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -17,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -146,6 +149,7 @@ public class Main extends Application {
     /**
      * Adds features.
      */
+    @SuppressWarnings("unchecked")
     public Node addFeatureButtons (BorderPane bpane,
                                    Stage primaryStage,
                                    Pane pane,
@@ -191,8 +195,28 @@ public class Main extends Application {
         FileChooserFeature FileChooser = new FileChooserFeature();
         FileChooserButton = TurtleData.makeButton("Open File", event -> FileChooser.openFileChooser(FileChooserButton, parser));
 
+        //also add a language selector combobox, and handle the event here
+        ObservableList<String> options = 
+                FXCollections.observableArrayList(
+                    "English",
+                    "Chinese",
+                    "French",
+                    "Italian",
+                    "Portuguese",
+                    "Russian"
+                );
+        @SuppressWarnings({ "rawtypes", "unchecked" })
+        final ComboBox languageComboBox = new ComboBox(options);
+        languageComboBox.setPromptText("Choose a language");
+        languageComboBox.valueProperty().addListener(new ChangeListener<String>() {
+            @SuppressWarnings("rawtypes")
+            @Override 
+            public void changed(ObservableValue ov, String t, String t1) {                
+                parser.setForeignLanguage(t1);              
+            }    
+        });
         featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton,
-                                            TurtleDataButton, FileChooserButton);
+                                            TurtleDataButton, FileChooserButton, languageComboBox);
         return featureButtons;
     }
 
