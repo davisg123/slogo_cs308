@@ -86,6 +86,7 @@ public class ImageUpdater {
 	public void drawLine(Point2D from, Point2D to, PenHandler mainPenHandler) {
 		if (mainPenHandler.getPenPosition() == 1) {
 			if (from != null) {
+				lineGC.setLineWidth(mainPenHandler.getLineWidth());
 				lineGC.setStroke(mainPenHandler.getPenColor());
 				Point2D fromInCanvas = new Point2D(ensurePositive(
 						(from.getX() + X_OFFSET) % myLineCanvas.getWidth(),

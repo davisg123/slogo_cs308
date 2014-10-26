@@ -170,4 +170,8 @@ public class TurtleHandler {
 	public PenHandler getPenHandler(){
 		return mainTurtle.getPenHandler();
 	}
+	
+	public void setLineWidth(double width){
+		mainTurtle.getPenHandler().setLineWidth(width);
+	}
 }
