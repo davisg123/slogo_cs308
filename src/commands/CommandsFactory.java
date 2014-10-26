@@ -106,6 +106,11 @@ public class CommandsFactory {
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_TOWARDS, vals);
     }
     
+    public ICommand setPenSize (double pixels) {
+        double[] val = {pixels};
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_PEN_SIZE, val);
+    }
+    
     public ICommand clearScreen(){
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.CLEAR_SCREEN, null);
     }

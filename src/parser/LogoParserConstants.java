@@ -57,35 +57,37 @@ public interface LogoParserConstants {
   /** RegularExpression Id. */
   int TOWARDS = 26;
   /** RegularExpression Id. */
-  int NUM = 27;
+  int SETPENSIZE = 27;
   /** RegularExpression Id. */
-  int SUM = 28;
+  int NUM = 28;
   /** RegularExpression Id. */
-  int SUB = 29;
+  int SUM = 29;
   /** RegularExpression Id. */
-  int MULT = 30;
+  int SUB = 30;
   /** RegularExpression Id. */
-  int DIV = 31;
+  int MULT = 31;
   /** RegularExpression Id. */
-  int POW = 32;
+  int DIV = 32;
   /** RegularExpression Id. */
-  int GT = 33;
+  int POW = 33;
   /** RegularExpression Id. */
-  int LT = 34;
+  int GT = 34;
   /** RegularExpression Id. */
-  int GE = 35;
+  int LT = 35;
   /** RegularExpression Id. */
-  int LE = 36;
+  int GE = 36;
   /** RegularExpression Id. */
-  int EQ = 37;
+  int LE = 37;
   /** RegularExpression Id. */
-  int STRING = 38;
+  int EQ = 38;
   /** RegularExpression Id. */
-  int COLON = 39;
+  int STRING = 39;
   /** RegularExpression Id. */
-  int LBRACKET = 40;
+  int COLON = 40;
   /** RegularExpression Id. */
-  int RBRACKET = 41;
+  int LBRACKET = 41;
+  /** RegularExpression Id. */
+  int RBRACKET = 42;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -119,6 +121,7 @@ public interface LogoParserConstants {
     "<SETXY>",
     "<SETHEADING>",
     "\"towards\"",
+    "<SETPENSIZE>",
     "<NUM>",
     "<SUM>",
     "<SUB>",

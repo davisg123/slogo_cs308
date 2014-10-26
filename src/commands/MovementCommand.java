@@ -5,7 +5,7 @@ import MovementAndImageAPI.*;
 import MovementAndImageAPI.src.TurtleHandler;
 
 public class MovementCommand extends CommandsTurtle { 
-    public enum CommandType {ROTATE, GO_FORWARD, GO_BACK, SET_POSITION, CLEAR_SCREEN, SET_HEADING, SET_TOWARDS};
+    public enum CommandType {ROTATE, GO_FORWARD, GO_BACK, SET_POSITION, CLEAR_SCREEN, SET_HEADING, SET_TOWARDS, SET_PEN_SIZE};
     private CommandType command;
     private double[] value = {0.0};
     private static double RADIAL_CONVERT = 180/Math.PI;
@@ -48,6 +48,8 @@ public class MovementCommand extends CommandsTurtle {
                 double angle = Math.atan2(deltaY, deltaX) * RADIAL_CONVERT;
                 turtleHandler.updateTurtleAbsoluteOrientation(angle);
                 break;
+            case SET_PEN_SIZE:
+                turtleHandler.setLineWidth(value[0]);
         }
     }
 }

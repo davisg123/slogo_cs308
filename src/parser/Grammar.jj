@@ -65,6 +65,7 @@ TOKEN : /* functions */
 | < SETXY : "setxy" | "goto" | "setposition" >
 | < SETHEADING : "setheading" | "seth" >
 | < TOWARDS : "towards" >
+| < SETPENSIZE : "setpensize" | "setps" >
 }
 
 TOKEN : /* maths */
