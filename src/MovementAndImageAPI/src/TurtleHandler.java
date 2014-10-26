@@ -162,4 +162,12 @@ public class TurtleHandler {
 			return 1;
 		return 0;
 	}
+	
+	/**
+	 * 
+	 * @return the PenHandler associated with the Turtle
+	 */
+	public PenHandler getPenHandler(){
+		return mainTurtle.getPenHandler();
+	}
 }
