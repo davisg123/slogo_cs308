@@ -86,7 +86,7 @@ public class Workspace {
 
         // adding imageUpdater
         ImageUpdater frontImageUpdater =
-                new ImageUpdater(myTurtleCanvas, myLineCanvas, mainPenHandler);
+                new ImageUpdater(myTurtleCanvas, myLineCanvas);
 
         // adding my turtle
         myTurtleHandler = new TurtleHandler(frontImageUpdater);
