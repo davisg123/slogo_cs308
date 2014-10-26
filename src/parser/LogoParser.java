@@ -289,7 +289,7 @@ public class LogoParser implements LogoParserConstants {
       break;
     case CLEAR:
       jj_consume_token(CLEAR);
-    {if (true) return factory.showTurtle();}
+    {if (true) return factory.clearScreen();}
       break;
     case PENUP:
       jj_consume_token(PENUP);
@@ -309,13 +309,13 @@ public class LogoParser implements LogoParserConstants {
       break;
     case HOME:
       jj_consume_token(HOME);
-    {if (true) return factory.showTurtle();}
+    {if (true) return factory.setTurtlePosition(0,0);}
       break;
     case SETXY:
       jj_consume_token(SETXY);
       parameter = eval();
       parameter2 = eval();
-    {if (true) return factory.showTurtle();}
+    {if (true) return factory.setTurtlePosition(parameter, parameter2);}
       break;
     default:
       jj_la1[6] = jj_gen;

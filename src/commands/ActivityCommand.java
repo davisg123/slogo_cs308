@@ -24,10 +24,10 @@ public class ActivityCommand extends CommandsTurtle {
                 turtleHandler().showTurtle(1);
                 break;
             case PICK_UP:
-                //turtleHandler().pickUp();
+                turtleHandler().setPenPosition(0);
                 break;
             case PUT:
-                //turtleHandler().put();
+                turtleHandler().setPenPosition(1);
                 break;
         }
     }   
