@@ -32,8 +32,9 @@ public class MovementCommand extends CommandsTurtle {
                 break;
             case CLEAR_SCREEN:
                 turtleHandler.clearLines();
-                turtleHandler.updateTurtleAbsoluteLocation(new Point2D(0,0));
                 turtleHandler.setPenPosition(0);
+                turtleHandler.updateTurtleAbsoluteLocation(new Point2D(0,0));
+                turtleHandler.setPenPosition(1);
         }
     }
 }
