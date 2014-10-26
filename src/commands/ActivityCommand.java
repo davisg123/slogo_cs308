@@ -4,19 +4,26 @@ import MovementAndImageAPI.*;
 import MovementAndImageAPI.src.Turtle;
 import MovementAndImageAPI.src.TurtleHandler;
 
+/**
+ * executes commands related to turtle activities
+ * 
+ * @author Davis, Keng
+ *
+ */
+
 public class ActivityCommand extends CommandsTurtle {
 
-    public enum CommandType {HIDE, SHOW, PICK_UP, PUT};
-    private CommandType command;
+    public enum CommandType { HIDE, SHOW, PICK_UP, PUT };
+    private CommandType myCommand;
     
-    public ActivityCommand(TurtleHandler turtleHandler, CommandType command) {
+    public ActivityCommand (TurtleHandler turtleHandler, CommandType command) {
         super(turtleHandler);
-        this.command = command;
+        myCommand = command;
     }
     
     @Override
-    public void execute() {
-        switch(command) {
+    public void execute () {
+        switch(myCommand) {
             case HIDE:
                 turtleHandler().showTurtle(0);
                 break;
@@ -28,6 +35,8 @@ public class ActivityCommand extends CommandsTurtle {
                 break;
             case PUT:
                 turtleHandler().setPenPosition(1);
+                break;
+            default:
                 break;
         }
     }   
