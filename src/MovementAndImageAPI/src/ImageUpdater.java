@@ -19,16 +19,13 @@ import javafx.scene.transform.Rotate;
 public class ImageUpdater {
 	private Canvas myTurtleCanvas, myLineCanvas;
 	private GraphicsContext turtleGC, lineGC;
-	private PenHandler mainPenHandler;
 	private static double X_OFFSET, Y_OFFSET;
 
-	public ImageUpdater(Canvas turtleCanvas, Canvas lineCanvas,
-			PenHandler penHandler) {
+	public ImageUpdater(Canvas turtleCanvas, Canvas lineCanvas) {
 		myTurtleCanvas = turtleCanvas;
 		turtleGC = myTurtleCanvas.getGraphicsContext2D();
 		myLineCanvas = lineCanvas;
 		lineGC = myLineCanvas.getGraphicsContext2D();
-		mainPenHandler = penHandler;
 		X_OFFSET = turtleCanvas.getWidth() / 2;
 		Y_OFFSET = turtleCanvas.getHeight() / 2;
 	}
@@ -44,12 +41,16 @@ public class ImageUpdater {
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
 		turtleGC.clearRect(0, 0, myTurtleCanvas.getWidth(),
 				myTurtleCanvas.getHeight());
-		Point2D endLocation = new Point2D(ensurePositive(
-				(newLocation.getX() + X_OFFSET) % myTurtleCanvas.getWidth(),
-				myTurtleCanvas.getWidth()), ensurePositive(
-				(newLocation.getY() + Y_OFFSET) % myTurtleCanvas.getHeight(),
-				myTurtleCanvas.getHeight()));
-		drawRotatedImage(turtleImage, endLocation);
+		if (turtleImage.isVisible()) {
+			Point2D endLocation = new Point2D(
+					ensurePositive((newLocation.getX() + X_OFFSET)
+							% myTurtleCanvas.getWidth(),
+							myTurtleCanvas.getWidth()), ensurePositive(
+							(newLocation.getY() + Y_OFFSET)
+									% myTurtleCanvas.getHeight(),
+							myTurtleCanvas.getHeight()));
+			drawRotatedImage(turtleImage, endLocation);
+		}
 	}
 
 	private double ensurePositive(double numToCheck, double maxSize) {
@@ -82,7 +83,7 @@ public class ImageUpdater {
 	 * @param to
 	 *            the ending point of the line
 	 */
-	public void drawLine(Point2D from, Point2D to) {
+	public void drawLine(Point2D from, Point2D to, PenHandler mainPenHandler) {
 		if (mainPenHandler.getPenPosition() == 1) {
 			if (from != null) {
 				lineGC.setStroke(mainPenHandler.getPenColor());
@@ -98,7 +99,7 @@ public class ImageUpdater {
 						+ (to.getY() - from.getY()));
 				lineGC.strokeLine(fromInCanvas.getX(), fromInCanvas.getY(),
 						endPoint.getX(), endPoint.getY());
-				
+
 				Point2D beginning = fromInCanvas;
 
 				while (xOutOfBounds(endPoint) || yOutOfBounds(endPoint)) {
@@ -207,4 +208,18 @@ public class ImageUpdater {
 				.getY() <= myTurtleCanvas.getHeight());
 	}
 
+	/**
+	 * 
+	 * @return a Point2D with the x being the turtle canvas width, the y being
+	 *         the turtle canvas height
+	 */
+	public Point2D getTurtleCanvasSize() {
+		return new Point2D(myTurtleCanvas.getWidth(),
+				myTurtleCanvas.getHeight());
+	}
+
+	public void clearLines() {
+		lineGC.clearRect(0, 0, myLineCanvas.getWidth(),
+				myLineCanvas.getHeight());
+	}
 }
