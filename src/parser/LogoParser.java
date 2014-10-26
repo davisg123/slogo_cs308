@@ -53,6 +53,9 @@ public class LogoParser implements LogoParserConstants {
       case SHOW:
       case HOME:
       case SETXY:
+      case SETHEADING:
+      case TOWARDS:
+      case SETPENSIZE:
       case STRING:
         rest = list(factory);
         break;
@@ -95,6 +98,9 @@ public class LogoParser implements LogoParserConstants {
       case SHOW:
       case HOME:
       case SETXY:
+      case SETHEADING:
+      case TOWARDS:
+      case SETPENSIZE:
       case STRING:
         rest = list(factory);
         break;
@@ -141,6 +147,9 @@ public class LogoParser implements LogoParserConstants {
       case SHOW:
       case HOME:
       case SETXY:
+      case SETHEADING:
+      case TOWARDS:
+      case SETPENSIZE:
       case STRING:
         rest = list(factory);
         break;
@@ -176,6 +185,9 @@ public class LogoParser implements LogoParserConstants {
     case SHOW:
     case HOME:
     case SETXY:
+    case SETHEADING:
+    case TOWARDS:
+    case SETPENSIZE:
       command = statement(factory);
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case REPEAT:
@@ -193,6 +205,9 @@ public class LogoParser implements LogoParserConstants {
       case SHOW:
       case HOME:
       case SETXY:
+      case SETHEADING:
+      case TOWARDS:
+      case SETPENSIZE:
       case STRING:
         rest = list(factory);
         break;
@@ -235,6 +250,9 @@ public class LogoParser implements LogoParserConstants {
       case SHOW:
       case HOME:
       case SETXY:
+      case SETHEADING:
+      case TOWARDS:
+      case SETPENSIZE:
       case STRING:
         rest = list(factory);
         break;
@@ -317,6 +335,22 @@ public class LogoParser implements LogoParserConstants {
       parameter2 = eval();
     {if (true) return factory.setTurtlePosition(parameter, parameter2);}
       break;
+    case SETHEADING:
+      jj_consume_token(SETHEADING);
+      parameter = eval();
+    {if (true) return factory.setTurtleHeading(parameter);}
+      break;
+    case TOWARDS:
+      jj_consume_token(TOWARDS);
+      parameter = eval();
+      parameter2 = eval();
+    {if (true) return factory.setTurtleTowards(parameter, parameter2);}
+      break;
+    case SETPENSIZE:
+      jj_consume_token(SETPENSIZE);
+      parameter = eval();
+    {if (true) return factory.setPenSize(parameter);}
+      break;      
     default:
       jj_la1[6] = jj_gen;
       jj_consume_token(-1);

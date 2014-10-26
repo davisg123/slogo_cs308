@@ -1,149 +1,129 @@
 package commands;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import MovementAndImageAPI.src.TurtleHandler;
+import MovementAndImageAPI.src.GeneralTurtleHandler;
 
+
+/**
+ * the factory responsible for creating and executing commands
+ * 
+ * @author Davis
+ *
+ */
 
 public class CommandsFactory {
 
-    private static ResourceBundle ourCommandClasses;
-    private static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
-    private static final String DOT = ".";
-    private List<Command> myCommandList;
-    private TurtleHandler myTurtleHandler;
+    private GeneralTurtleHandler myTurtleHandler;
 
     public CommandsFactory () {
-        myCommandList = new ArrayList<Command>();
-        ourCommandClasses = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + "ClassConversion");
     }
-    
-    public void setTurtleHandler(TurtleHandler turtleHandler){
+
+    public void setTurtleHandler (GeneralTurtleHandler turtleHandler) {
         myTurtleHandler = turtleHandler;
     }
 
-   public CommandsQueue CommandsQueue() { 
-       return new CommandsQueue();
-   }
-    
-   public ICommand CommandsRepeat(int times, ICommand command) { 
-       return new CommandsRepeat(times, command);
-   }
-    
-  public ICommand CommandMake(String name, ICommand command) { 
-      return new CommandMake(name, command);
-  }
-  
-  public ICommand CommandExecute(String commandName) {
-      return new CommandExecute(commandName);
-  }
-   
-    /**
-     * parses command with getCommand method to get type of command
-     * 
-     * @param command
-     * @return parsed command
-     */
-    public Command getCommand (Command command) {
-        return command;
+    public CommandsQueue CommandsQueue () {
+        return new CommandsQueue();
     }
 
-    public ICommand pickUpTurtle() {
+    public ICommand CommandsRepeat (int times, ICommand command) {
+        return new CommandsRepeat(times, command);
+    }
+
+    public ICommand CommandMake (String name, ICommand command) {
+        return new CommandMake(name, command);
+    }
+
+    public ICommand CommandExecute (String commandName) {
+        return new CommandExecute(commandName);
+    }
+
+    /**
+     * creates an activity command to pick up the turtle
+     */
+    public ICommand pickUpTurtle () {
         return new ActivityCommand(myTurtleHandler, ActivityCommand.CommandType.PICK_UP);
     }
     
-    public ICommand putTurtle() {
+    /**
+     * creates an activity command to put down the turtle
+     */
+    public ICommand putTurtle () {
         return new ActivityCommand(myTurtleHandler, ActivityCommand.CommandType.PUT);
     }
     
-    public ICommand showTurtle() {
+    /**
+     * creates an activity command to show the turtle
+     */
+    public ICommand showTurtle () {
         return new ActivityCommand(myTurtleHandler, ActivityCommand.CommandType.SHOW);
     }
     
-    public ICommand hideTurtle() {
+    /**
+     * creates an activity command to hide the turtle
+     */
+    public ICommand hideTurtle () {
         return new ActivityCommand(myTurtleHandler, ActivityCommand.CommandType.HIDE);
     }
-    
-    public ICommand rotateTurtle(double angle) {
-        double[] val = {angle};
-        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, val);
-    }
-    
-    public ICommand rotateTurtleLeft(double angle) {
-        double[] val = {-1.0 * angle};
-        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, val);
-    }
-    
-    public ICommand rotateTurtleRight(double angle) {
-        double[] val = {angle};
+
+    /**
+     * creates a movement command to rotate the turtle
+     */
+    public ICommand rotateTurtle (double angle) {
+        double[] val = { angle };
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, val);
     }
 
-    public ICommand turtleGoForward(double distance) {
-        double[] val = {distance};
+    public ICommand rotateTurtleLeft (double angle) {
+        double[] val = { -1.0 * angle };
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, val);
+    }
+
+    public ICommand rotateTurtleRight (double angle) {
+        double[] val = { angle };
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, val);
+    }
+
+    /**
+     * creates an activity command to move the turtle
+     */
+    public ICommand turtleGoForward (double distance) {
+        double[] val = { distance };
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.GO_FORWARD, val);
     }
-    
-    public ICommand turtleGoBack(double distance) {
-        double[] val = {distance};
+
+    public ICommand turtleGoBack (double distance) {
+        double[] val = { distance };
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.GO_BACK, val);
     }
-    
-    public ICommand setTurtlePosition(double positionX, double positionY){
-        double[] vals = {positionX, positionY};
+
+    public ICommand setTurtlePosition (double positionX, double positionY) {
+        double[] vals = { positionX, positionY };
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_POSITION, vals);
     }
-    
+
+    /**
+     * creates a movement command to set turtle's orientation
+     */
     public ICommand setTurtleHeading (double degrees) {
-        double[] val = {degrees};
+        double[] val = { degrees };
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_HEADING, val);
     }
-    
-    public ICommand setTurtleTowards (double positionX, double positionY){
-        double[] vals = {positionX, positionY};
+
+    public ICommand setTurtleTowards (double positionX, double positionY) {
+        double[] vals = { positionX, positionY };
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_TOWARDS, vals);
     }
-    
-    public ICommand clearScreen(){
+
+    /**
+     * creates a movement command to set the pen size
+     */
+    public ICommand setPenSize (double pixels) {
+        double[] val = { pixels };
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_PEN_SIZE, val);
+    }
+
+    public ICommand clearScreen () {
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.CLEAR_SCREEN, null);
-    }
-    
-    /**
-     * adds a command to the queue for processing
-     * 
-     * @param command
-     */
-    public void addCommand (String command) {
-        // command should be in form 'Forward 50'
-        String[] commandParams = command.split(" ");
-        String commandBundleName = ourCommandClasses.getString("command_package");
-        String commandClassName = ourCommandClasses.getString(commandParams[0]);
-        Command commandInstance =
-                instantiateClassFromString(commandBundleName + DOT + commandClassName,
-                                           Double.parseDouble(commandParams[1]));
-        myCommandList.add(commandInstance);
-    }
-
-    /**
-     * cycles through the queue of command objects,
-     * and determines the order for processing
-     */
-    public void processQueuedCommands () {
-
-    }
-
-    private Command instantiateClassFromString (String commandClassName, double arg) {
-        try {
-            Class<?> commandClass = Class.forName(commandClassName);
-            return (Command)commandClass.getConstructors()[0].newInstance(arg);
-        }
-        catch (ClassNotFoundException | IllegalArgumentException | SecurityException
-                | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
 }

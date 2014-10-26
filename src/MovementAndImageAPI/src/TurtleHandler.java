@@ -8,13 +8,18 @@ import javafx.scene.image.Image;
  * @author Eirika Sawh This class handles the actual position of the Turtle, but
  *         not updating the image.
  */
-public class TurtleHandler {
+public class TurtleHandler extends GeneralTurtleHandler{
 
 	private Turtle mainTurtle = new Turtle();
 	private ImageUpdater mainImageUpdater;
+	private static int turtleID = 1;
+	private int myID;
+	private static double RADIAL_CONVERT = 180 / Math.PI;
 
 	public TurtleHandler(ImageUpdater imageUpdater) {
 		mainImageUpdater = imageUpdater;
+		myID = turtleID;
+		turtleID++;
 	}
 
 	/**
@@ -39,7 +44,7 @@ public class TurtleHandler {
 	 * @return the Point2D where the Turtle would be in the canvas, as opposed
 	 *         to its actual location (although the two might be the same).
 	 */
-	public Point2D getTurtleLocationInCanvas() {
+	private Point2D getTurtleLocationInCanvas() {
 		Point2D turtlePoint = mainTurtle.getPoint();
 		Point2D canvasSize = mainImageUpdater.getTurtleCanvasSize();
 		return new Point2D(turtlePoint.getX() % canvasSize.getX(),
@@ -162,16 +167,46 @@ public class TurtleHandler {
 			return 1;
 		return 0;
 	}
-	
+
 	/**
 	 * 
 	 * @return the PenHandler associated with the Turtle
 	 */
-	public PenHandler getPenHandler(){
+	public PenHandler getPenHandler() {
 		return mainTurtle.getPenHandler();
 	}
-	
-	public void setLineWidth(double width){
+
+	/**
+	 * 
+	 * @param width
+	 *            the line width in pixels
+	 */
+	public void setLineWidth(double width) {
 		mainTurtle.getPenHandler().setLineWidth(width);
+	}
+
+	/**
+	 * 
+	 * @return the ID associated with this turtle. Making a new TurtleHandler
+	 *         increments the static ID counter by 1.
+	 */
+	public int getID() {
+		return myID;
+	}
+
+	/**
+	 * 
+	 * @param location
+	 *            the point to be looking towards. If the location is outside
+	 *            the canvas, the turtle faces where that point would lie
+	 *            outside of the canvas (the destination doesn't loop to fit
+	 *            within the canvas).
+	 */
+	public void towards(Point2D location) {
+		Point2D canvasLocation = getTurtleLocationInCanvas();
+		double deltaY = location.getY() - canvasLocation.getY();
+		double deltaX = location.getX() - canvasLocation.getX();
+		double angle = Math.atan2(deltaY, deltaX) * RADIAL_CONVERT;
+		updateTurtleAbsoluteOrientation(angle);
 	}
 }
