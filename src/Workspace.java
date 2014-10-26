@@ -32,6 +32,7 @@ import commands.CommandsFactory;
 import commands.ICommand;
 
 public class Workspace {
+    
     private static final int DISPLAY_WIDTH = 700;
     private static final int DISPLAY_HEIGHT = 600; 
     private Canvas myBackDisplay;
@@ -119,6 +120,7 @@ public class Workspace {
 
         // final step
         tab.setContent(bpane);
+
         return tab;
     }
     
@@ -244,7 +246,5 @@ public class Workspace {
                 }
             });
         }
-    }
-    
-    
+    }  
 } 
