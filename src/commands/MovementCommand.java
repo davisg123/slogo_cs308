@@ -1,7 +1,7 @@
 package commands;
 
 import javafx.geometry.Point2D;
-import MovementAndImageAPI.src.TurtleHandler;
+import MovementAndImageAPI.src.GeneralTurtleHandler;
 
 
 /**
@@ -26,7 +26,7 @@ public class MovementCommand extends CommandsTurtle {
     private CommandType myCommand;
     private double[] myValue = { 0.0 };
 
-    public MovementCommand (TurtleHandler turtleHandler, CommandType command, double[] value) {
+    public MovementCommand (GeneralTurtleHandler turtleHandler, CommandType command, double[] value) {
         super(turtleHandler);
         myCommand = command;
         myValue = value;

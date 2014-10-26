@@ -1,17 +1,16 @@
 package commands;
 
-import MovementAndImageAPI.*;
-import MovementAndImageAPI.src.TurtleHandler;
+import MovementAndImageAPI.src.GeneralTurtleHandler;
 
 abstract class CommandsTurtle implements ICommand{
 
-   TurtleHandler turtleHandler = null; 
+   GeneralTurtleHandler turtleHandler = null; 
    
-   public CommandsTurtle(TurtleHandler turtleHandler) { 
+   public CommandsTurtle(GeneralTurtleHandler turtleHandler) { 
        this.turtleHandler = turtleHandler;
    }
    
-   protected TurtleHandler turtleHandler() {
+   protected GeneralTurtleHandler turtleHandler() {
        return turtleHandler;
    }
    

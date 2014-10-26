@@ -1,6 +1,6 @@
 package commands;
 
-import MovementAndImageAPI.src.TurtleHandler;
+import MovementAndImageAPI.src.GeneralTurtleHandler;
 
 
 /**
@@ -12,12 +12,12 @@ import MovementAndImageAPI.src.TurtleHandler;
 
 public class CommandsFactory {
 
-    private TurtleHandler myTurtleHandler;
+    private GeneralTurtleHandler myTurtleHandler;
 
     public CommandsFactory () {
     }
 
-    public void setTurtleHandler (TurtleHandler turtleHandler) {
+    public void setTurtleHandler (GeneralTurtleHandler turtleHandler) {
         myTurtleHandler = turtleHandler;
     }
 

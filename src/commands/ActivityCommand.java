@@ -1,8 +1,6 @@
 package commands;
 
-import MovementAndImageAPI.*;
-import MovementAndImageAPI.src.Turtle;
-import MovementAndImageAPI.src.TurtleHandler;
+import MovementAndImageAPI.src.GeneralTurtleHandler;
 
 /**
  * executes commands related to turtle activities
@@ -16,7 +14,7 @@ public class ActivityCommand extends CommandsTurtle {
     public enum CommandType { HIDE, SHOW, PICK_UP, PUT };
     private CommandType myCommand;
     
-    public ActivityCommand (TurtleHandler turtleHandler, CommandType command) {
+    public ActivityCommand (GeneralTurtleHandler turtleHandler, CommandType command) {
         super(turtleHandler);
         myCommand = command;
     }
