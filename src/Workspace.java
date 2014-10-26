@@ -51,6 +51,9 @@ public class Workspace {
     private Button TCButton;
     private Button TurtleDataButton;
     
+    public TurtleHandler getTurtleHandler() {
+        return myTurtleHandler;
+    }
     
     public Tab createWorkspace (Stage primaryStage, Group root, TabPane tabPane) {
         // Create Tab
