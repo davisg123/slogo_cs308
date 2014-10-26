@@ -51,12 +51,9 @@ public class Workspace {
     private Button TCButton;
     private Button TurtleDataButton;
     private Button FileChooserButton;
-<<<<<<< HEAD
     
     public Workspace(){
     }
-=======
->>>>>>> d3d2a9e927337586cbb8d97fa0449fa8e7ee1b56
     
     public TurtleHandler getTurtleHandler() {
         return myTurtleHandler;
@@ -128,22 +125,9 @@ public class Workspace {
     /**
      * Adds features.
      */
-<<<<<<< HEAD
-<<<<<<< HEAD
+    @SuppressWarnings("unchecked")
     public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane, PenHandler penHandler,
                                    TurtleHandler turtleHandler, Group root, ImageUpdater iu) {
-=======
-=======
->>>>>>> d3d2a9e927337586cbb8d97fa0449fa8e7ee1b56
-    @SuppressWarnings("unchecked")
-    public Node addFeatureButtons (BorderPane bpane,
-                                   Stage primaryStage,
-                                   Pane pane,
-                                   PenHandler penHandler,
-                                   TurtleHandler turtleHandler,
-                                   Group root,
-                                   ImageUpdater iu) {
->>>>>>> master
 
         HBox featureButtons = new HBox();
 
@@ -167,12 +151,6 @@ public class Workspace {
                                             event -> TurtleChooser.openTurtleChooser(TCButton, root, iu, turtleHandler));
 
         TurtleDataFeature TurtleData = new TurtleDataFeature();
-<<<<<<< HEAD
-        TurtleDataButton = TurtleData.makeButton("Turtle Data", 
-                                                 event -> TurtleData.openTurtleDataPage(TurtleDataButton, turtleHandler));
-
-        featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton, TurtleDataButton);
-=======
         TurtleDataButton =
                 TurtleData.makeButton("Turtle Data",
                                       event -> TurtleData.openTurtleDataPage(TurtleDataButton,
@@ -205,10 +183,6 @@ public class Workspace {
 
         featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton,
                                             TurtleDataButton,FileChooserButton,languageComboBox);
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> d3d2a9e927337586cbb8d97fa0449fa8e7ee1b56
         return featureButtons;
     }
     

@@ -28,18 +28,16 @@ public class Main extends Application {
             
             TabPane tabPane = new TabPane();
             
-            Workspace workspace1 = new Workspace();
-            Tab tab1 = workspace1.createWorkspace(primaryStage, root);
-            tab1.setText("Workspace 1");
-            tabPane.getTabs().add(tab1);
+            for (int i=0; i<3; i++){
+                Workspace workspace = new Workspace();
+                Tab tab = workspace.createWorkspace(primaryStage, root);
+                String tabLabel = "Workspace " + (i+1);
+                tab.setText(tabLabel);
+                tabPane.getTabs().add(tab);
+                
+            }
             
-            Workspace workspace2 = new Workspace();
-
-            Tab tab2 = workspace2.createWorkspace(primaryStage, root);
-
-            tabPane.getTabs().add(tab2);
-            
-            myActiveTurtle = workspace1.getTurtleHandler();
+//            myActiveTurtle = workspace1.getTurtleHandler();
             
             // using arrow keys to move my turtle 
             tabPane.setOnKeyPressed(new EventHandler<KeyEvent>(){
