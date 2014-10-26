@@ -81,8 +81,6 @@ public class Workspace {
         // Setting pane(containing the displays) to the center of the borderpane.
         bpane.setCenter(pane);
 
-        // making penHandler
-        PenHandler mainPenHandler = new PenHandler();
 
         // adding imageUpdater
         ImageUpdater frontImageUpdater =
@@ -114,7 +112,7 @@ public class Workspace {
         sendUserInput(textBox, prevCommandListView);
 
         // Add Feature buttons on top
-        bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, mainPenHandler, myTurtleHandler,
+        bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, myTurtleHandler.getPenHandler(), myTurtleHandler,
                                        root, frontImageUpdater));
 
         // final step
