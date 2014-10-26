@@ -34,7 +34,9 @@ public class Main extends Application {
             tabPane.getTabs().add(tab1);
             
             Workspace workspace2 = new Workspace();
+
             Tab tab2 = workspace2.createWorkspace(primaryStage, root);
+
             tabPane.getTabs().add(tab2);
             
             myActiveTurtle = workspace1.getTurtleHandler();

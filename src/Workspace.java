@@ -51,9 +51,12 @@ public class Workspace {
     private Button TCButton;
     private Button TurtleDataButton;
     private Button FileChooserButton;
+<<<<<<< HEAD
     
     public Workspace(){
     }
+=======
+>>>>>>> d3d2a9e927337586cbb8d97fa0449fa8e7ee1b56
     
     public TurtleHandler getTurtleHandler() {
         return myTurtleHandler;
@@ -126,9 +129,12 @@ public class Workspace {
      * Adds features.
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
     public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane, PenHandler penHandler,
                                    TurtleHandler turtleHandler, Group root, ImageUpdater iu) {
 =======
+=======
+>>>>>>> d3d2a9e927337586cbb8d97fa0449fa8e7ee1b56
     @SuppressWarnings("unchecked")
     public Node addFeatureButtons (BorderPane bpane,
                                    Stage primaryStage,
@@ -199,7 +205,10 @@ public class Workspace {
 
         featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton,
                                             TurtleDataButton,FileChooserButton,languageComboBox);
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> d3d2a9e927337586cbb8d97fa0449fa8e7ee1b56
         return featureButtons;
     }
     
