@@ -11,10 +11,12 @@ import javafx.scene.paint.Color;
 public class Pen {
 	private Color myPenColor;
 	private int myPenPosition;
+	private double myLineWidth;
 	
 	public Pen(){
 		myPenColor = Color.BLACK;
 		myPenPosition = 1;
+		myLineWidth = 1;
 	}
 	
 	/**
@@ -49,6 +51,14 @@ public class Pen {
 	 */
 	public int getPenPosition() {
 		return myPenPosition;
+	}
+	
+	public void setLineWidth(double width){
+		myLineWidth = width;
+	}
+
+	public double getLineWidth() {
+		return myLineWidth;
 	}
 
 }

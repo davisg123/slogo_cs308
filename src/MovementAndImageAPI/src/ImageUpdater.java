@@ -19,16 +19,13 @@ import javafx.scene.transform.Rotate;
 public class ImageUpdater {
 	private Canvas myTurtleCanvas, myLineCanvas;
 	private GraphicsContext turtleGC, lineGC;
-	private PenHandler mainPenHandler;
 	private static double X_OFFSET, Y_OFFSET;
 
-	public ImageUpdater(Canvas turtleCanvas, Canvas lineCanvas,
-			PenHandler penHandler) {
+	public ImageUpdater(Canvas turtleCanvas, Canvas lineCanvas) {
 		myTurtleCanvas = turtleCanvas;
 		turtleGC = myTurtleCanvas.getGraphicsContext2D();
 		myLineCanvas = lineCanvas;
 		lineGC = myLineCanvas.getGraphicsContext2D();
-		mainPenHandler = penHandler;
 		X_OFFSET = turtleCanvas.getWidth() / 2;
 		Y_OFFSET = turtleCanvas.getHeight() / 2;
 	}
@@ -86,9 +83,10 @@ public class ImageUpdater {
 	 * @param to
 	 *            the ending point of the line
 	 */
-	public void drawLine(Point2D from, Point2D to) {
+	public void drawLine(Point2D from, Point2D to, PenHandler mainPenHandler) {
 		if (mainPenHandler.getPenPosition() == 1) {
 			if (from != null) {
+				lineGC.setLineWidth(mainPenHandler.getLineWidth());
 				lineGC.setStroke(mainPenHandler.getPenColor());
 				Point2D fromInCanvas = new Point2D(ensurePositive(
 						(from.getX() + X_OFFSET) % myLineCanvas.getWidth(),

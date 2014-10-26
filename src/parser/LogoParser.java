@@ -533,12 +533,12 @@ public class LogoParser implements LogoParserConstants {
   }
   /** Constructor with InputStream and supplied encoding */
   public LogoParser(java.io.InputStream stream, String encoding) {
-    if (jj_initialized_once) {
-      System.out.println("ERROR: Second call to constructor of static parser.  ");
-      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
-      System.out.println("       during parser generation.");
-      throw new Error();
-    }
+//    if (jj_initialized_once) {
+//      System.out.println("ERROR: Second call to constructor of static parser.  ");
+//      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
+//      System.out.println("       during parser generation.");
+//      throw new Error();
+//    }
     jj_initialized_once = true;
     try { jj_input_stream = new SimpleCharStream(stream, encoding, 1, 1); } catch(java.io.UnsupportedEncodingException e) { throw new RuntimeException(e); }
     token_source = new LogoParserTokenManager(jj_input_stream);
