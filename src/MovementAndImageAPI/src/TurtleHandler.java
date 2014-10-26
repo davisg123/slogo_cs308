@@ -14,6 +14,7 @@ public class TurtleHandler {
 	private ImageUpdater mainImageUpdater;
 	private static int turtleID = 1;
 	private int myID;
+	private static double RADIAL_CONVERT = 180/Math.PI;
 
 	public TurtleHandler(ImageUpdater imageUpdater) {
 		mainImageUpdater = imageUpdater;
@@ -192,7 +193,10 @@ public class TurtleHandler {
 	}
 	
 	public void towards(Point2D location){
-		Point2D canvasLocation = getTurtleLocationInCanvas();
-		updateTurtleAbsoluteOrientation(canvasLocation.angle(location));
+            Point2D canvasLocation = getTurtleLocationInCanvas();
+            double deltaY = location.getY() - canvasLocation.getY();
+            double deltaX = location.getX() - canvasLocation.getX();
+            double angle = Math.atan2(deltaY, deltaX) * RADIAL_CONVERT;
+            updateTurtleAbsoluteOrientation(angle);
 	}
 }

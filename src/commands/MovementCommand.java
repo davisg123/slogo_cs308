@@ -8,7 +8,6 @@ public class MovementCommand extends CommandsTurtle {
     public enum CommandType {ROTATE, GO_FORWARD, GO_BACK, SET_POSITION, CLEAR_SCREEN, SET_HEADING, SET_TOWARDS, SET_PEN_SIZE};
     private CommandType command;
     private double[] value = {0.0};
-    private static double RADIAL_CONVERT = 180/Math.PI;
     
     public MovementCommand(TurtleHandler turtleHandler, CommandType command, double[] value) {
         super(turtleHandler);
@@ -41,12 +40,8 @@ public class MovementCommand extends CommandsTurtle {
                 turtleHandler.updateTurtleAbsoluteOrientation(value[0]);
                 break;
             case SET_TOWARDS:
-                Point2D turtlePos = turtleHandler.getTurtleLocationInCanvas();
                 Point2D towardsPos = new Point2D(value[0],value[1]);
-                double deltaY = towardsPos.getY() - turtlePos.getY();
-                double deltaX = towardsPos.getX() - turtlePos.getX();
-                double angle = Math.atan2(deltaY, deltaX) * RADIAL_CONVERT;
-                turtleHandler.updateTurtleAbsoluteOrientation(angle);
+                turtleHandler.towards(towardsPos);
                 break;
             case SET_PEN_SIZE:
                 turtleHandler.setLineWidth(value[0]);
