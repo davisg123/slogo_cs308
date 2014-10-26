@@ -93,6 +93,10 @@ public class Turtle {
 			myImage.setImage(newImage);
 	}
 
+	/**
+	 * 
+	 * @param penPosition 0 if pen is up, 1 if pen is down
+	 */
 	public void setPenPosition(int penPosition){
 		myPenHandler.setPenPosition(penPosition);
 	}
@@ -121,6 +125,10 @@ public class Turtle {
 		return myImage;
 	}
 
+	/**
+	 * 
+	 * @return 0 if pen is up, 1 if pen is down
+	 */
 	public int getPenPosition(){
 		return myPenHandler.getPenPosition();
 	}
@@ -135,6 +143,10 @@ public class Turtle {
 			myImage.setVisible(false);
 	}
 	
+	/**
+	 * 
+	 * @return the Turtle's PenHandler
+	 */
 	public PenHandler getPenHandler(){
 		return myPenHandler;
 	}

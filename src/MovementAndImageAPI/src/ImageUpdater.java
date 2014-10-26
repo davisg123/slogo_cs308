@@ -35,8 +35,7 @@ public class ImageUpdater {
 	 * @param newLocation
 	 *            the location to move the Turtle's image to.
 	 * @param turtleImage
-	 *            the actual image to move. Doesn't throw an OutOfSceneException
-	 *            because that should be handled by the TurtleHandler.
+	 *            the actual image to draw/move
 	 */
 	public void updateTurtleImage(Point2D newLocation, ImageView turtleImage) {
 		turtleGC.clearRect(0, 0, myTurtleCanvas.getWidth(),
@@ -60,6 +59,13 @@ public class ImageUpdater {
 		return numToCheck;
 	}
 
+	/**
+	 * 
+	 * @param turtleImage
+	 *            the image to draw
+	 * @param destination
+	 *            the location to draw the image
+	 */
 	private void drawRotatedImage(ImageView turtleImage, Point2D destination) {
 		turtleGC.save();
 		rotate(turtleImage.getRotate(), destination.getX()
@@ -82,6 +88,8 @@ public class ImageUpdater {
 	 *            the starting point of the line
 	 * @param to
 	 *            the ending point of the line
+	 * @param mainPenHandler
+	 *            the PenHandler associated with the Turtle that is being drawn
 	 */
 	public void drawLine(Point2D from, Point2D to, PenHandler mainPenHandler) {
 		if (mainPenHandler.getPenPosition() == 1) {
@@ -120,6 +128,12 @@ public class ImageUpdater {
 		}
 	}
 
+	/**
+	 * 
+	 * @param boundary
+	 *            where the line hits the edge of the canvas
+	 * @return the point where the line would loop around from
+	 */
 	private Point2D findNewStartPoint(Point2D boundary) {
 		double newX;
 		double newY;
@@ -138,6 +152,15 @@ public class ImageUpdater {
 		return new Point2D(newX, newY);
 	}
 
+	/**
+	 * 
+	 * @param startPoint
+	 *            the starting point of the line
+	 * @param endPoint
+	 *            the ending point of the line
+	 * @return where the line goes out of the canvas bounds, or simply the
+	 *         endPoint if it doesn't go outside of the bounds
+	 */
 	private Point2D findBoundaryPoint(Point2D startPoint, Point2D endPoint) {
 		double slope = -1 * (endPoint.getY() - startPoint.getY())
 				/ (endPoint.getX() - startPoint.getX());
@@ -199,18 +222,6 @@ public class ImageUpdater {
 
 	/**
 	 * 
-	 * @param newLocation
-	 *            The point which is being checked to be within the scene's
-	 *            limits
-	 * @return true if the point is within the scene
-	 */
-	public boolean isValidPoint(Point2D newLocation) {
-		return (newLocation.getX() <= myTurtleCanvas.getWidth() && newLocation
-				.getY() <= myTurtleCanvas.getHeight());
-	}
-
-	/**
-	 * 
 	 * @return a Point2D with the x being the turtle canvas width, the y being
 	 *         the turtle canvas height
 	 */
@@ -219,6 +230,9 @@ public class ImageUpdater {
 				myTurtleCanvas.getHeight());
 	}
 
+	/**
+	 * Clears all lines drawn by the Turtle
+	 */
 	public void clearLines() {
 		lineGC.clearRect(0, 0, myLineCanvas.getWidth(),
 				myLineCanvas.getHeight());

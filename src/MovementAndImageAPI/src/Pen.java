@@ -1,4 +1,5 @@
 package MovementAndImageAPI.src;
+
 import javafx.scene.paint.Color;
 
 /**
@@ -12,13 +13,13 @@ public class Pen {
 	private Color myPenColor;
 	private int myPenPosition;
 	private double myLineWidth;
-	
-	public Pen(){
+
+	public Pen() {
 		myPenColor = Color.BLACK;
 		myPenPosition = 1;
 		myLineWidth = 1;
 	}
-	
+
 	/**
 	 * 
 	 * @param newPenColor
@@ -52,11 +53,20 @@ public class Pen {
 	public int getPenPosition() {
 		return myPenPosition;
 	}
-	
-	public void setLineWidth(double width){
+
+	/**
+	 * 
+	 * @param width
+	 *            the width in pixels
+	 */
+	public void setLineWidth(double width) {
 		myLineWidth = width;
 	}
 
+	/**
+	 * 
+	 * @return the width of the pen in pixels
+	 */
 	public double getLineWidth() {
 		return myLineWidth;
 	}

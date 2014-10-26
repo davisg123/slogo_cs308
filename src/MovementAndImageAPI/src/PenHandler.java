@@ -27,17 +27,34 @@ public class PenHandler {
 		mainPen.setPenPosition(penPosition);
 	}
 	
+	/**
+	 * 
+	 * @return the Pen's color
+	 */
 	public Color getPenColor(){
 	    return mainPen.getPenColor();
 	}
 	
+	/**
+	 * 
+	 * @return 0 if pen is up, 1 if pen is down
+	 */
 	public int getPenPosition(){
 	    return mainPen.getPenPosition();
 	}
 	
+	/**
+	 * 
+	 * @param width the width of the pen in pixels
+	 */
 	public void setLineWidth(double width){
 		mainPen.setLineWidth(width);
 	}
+	
+	/**
+	 * 
+	 * @return the width of the pen in pixels
+	 */
 	public double getLineWidth(){
 		return mainPen.getLineWidth();
 	}
