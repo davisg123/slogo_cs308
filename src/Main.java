@@ -13,8 +13,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-
+/**
+ * The main entry point for Slogo. 
+ * Creates the Scene and adds Slogo workspaces.
+ * @author Yoonhyung Choi
+ *
+ */
 public class Main extends Application {
+    private static final int NUMBER_OF_WORKSPACES = 3;
     private static final int BACK_INCREMENT = -10;
     private static final int FORWARD_INCREMENT = 10;
     private static final int RIGHT_ROTATION = 45;
@@ -37,7 +43,7 @@ public class Main extends Application {
             TabPane tabPane = new TabPane();
             workspaceMap = new HashMap<String,Workspace>();
             
-            for (int i=0; i<3; i++){
+            for (int i=0; i<NUMBER_OF_WORKSPACES; i++){
                 Workspace workspace = new Workspace();
                 Tab tab = workspace.createWorkspace(primaryStage, root);
                 String tabLabel = "Workspace " + (i+1);
@@ -65,6 +71,10 @@ public class Main extends Application {
             primaryStage.show();
     }
     
+    /**
+     * Adds keyboard control for the turtles.
+     * @param tabPane TabPane where the tabs for the workspaces are located.
+     */
     public void addKeyboardControl(TabPane tabPane){
         tabPane.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
