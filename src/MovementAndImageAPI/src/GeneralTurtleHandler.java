@@ -19,4 +19,5 @@ public abstract class GeneralTurtleHandler {
 	public abstract int getShowing();
 	public abstract PenHandler getPenHandler();
 	public abstract void setLineWidth(double width);
+	public abstract void towards(Point2D location);
 }

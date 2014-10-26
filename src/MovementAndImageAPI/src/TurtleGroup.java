@@ -165,6 +165,11 @@ public class TurtleGroup extends GeneralTurtleHandler{
 			turtle.setLineWidth(width);
 	}
 	
+	public void towards(Point2D location){
+		for(TurtleHandler turtle : activeTurtles.values())
+			turtle.towards(location);
+	}
+	
 	public void addNewTurtle(TurtleHandler newTurtle){
 		allTurtles.put(newTurtle.getID(), newTurtle);
 		activeTurtles.put(newTurtle.getID(), newTurtle);
