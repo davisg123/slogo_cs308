@@ -9,7 +9,7 @@ import java.util.Map;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
-public class TurtleGroup {
+public class TurtleGroup extends GeneralTurtleHandler{
 	
 	private Map<Integer, TurtleHandler> allTurtles;
 	private Map<Integer, TurtleHandler> activeTurtles;
@@ -22,6 +22,7 @@ public class TurtleGroup {
 	/**
 	 * 
 	 * @return the Turtle's current orientation angle.
+	 * Returns the value of the last active Turtle.
 	 */
 	public double getOrientation() {
 		double lastOrientation = 0;
@@ -34,6 +35,7 @@ public class TurtleGroup {
 	 * 
 	 * @return the Point2D associated with the Turtle's actual location,
 	 *         regardless of the bounds of the canvas it's in.
+	 *         Returns the value of the last active Turtle.
 	 */
 	public Point2D getTurtleLocation() {
 		Point2D lastPosition = new Point2D(0, 0);
@@ -42,17 +44,6 @@ public class TurtleGroup {
 		return lastPosition;
 	}
 
-	/**
-	 * 
-	 * @return the Point2D where the Turtle would be in the canvas, as opposed
-	 *         to its actual location (although the two might be the same).
-	 */
-	public Point2D getTurtleLocationInCanvas() {
-		Point2D lastPosition = new Point2D(0, 0);
-		for(TurtleHandler turtle : activeTurtles.values())
-			lastPosition = turtle.getTurtleLocationInCanvas();
-		return lastPosition;
-	}
 
 	/**
 	 * 
@@ -136,6 +127,7 @@ public class TurtleGroup {
 	/**
 	 * 
 	 * @return 0 if pen is up, 1 if pen is down
+	 * Returns the value of the last active Turtle.
 	 */
 	public int getPenPosition() {
 		int lastPosition = 0;
@@ -147,6 +139,7 @@ public class TurtleGroup {
 	/**
 	 * 
 	 * @return 1 if the turtle is showing (visible), 0 if hiding (invisible)
+	 * Returns the value of the last active Turtle.
 	 */
 	public int getShowing() {
 		int lastShowing = 0;
@@ -158,6 +151,7 @@ public class TurtleGroup {
 	/**
 	 * 
 	 * @return the PenHandler associated with the Turtle
+	 * Returns the value of the last active Turtle.
 	 */
 	public PenHandler getPenHandler(){
 		PenHandler lastPenHandler = new PenHandler();
