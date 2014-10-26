@@ -5,12 +5,12 @@ options
 {
   JDK_VERSION = "1.5";
 
-  static = true;
+  static = false;
 }
 
 PARSER_BEGIN(LogoParser)
 package parser;
-import pl.edu.agh.student.jfik.commands.*;
+import commands.*;
 import java.io.InputStream;
 
 public class LogoParser
@@ -126,7 +126,7 @@ ICommand list(CommandsFactory factory) :
   ICommand altCommand;
   ICommand result;
   ICommand rest = null;
-  CommandsSequence seqCommand;
+  CommandsQueue commandsQueue;
   double val;
   Token t;
   String name;
@@ -137,13 +137,13 @@ ICommand list(CommandsFactory factory) :
     rest = list(factory)
   )?
   {
-    result = factory.repeatCommand((int) val, command);
+    result = factory.CommandsRepeat((int) val, command);
     if (rest != null)
     {
-      seqCommand = factory.commandsSequence();
-      seqCommand.addCommand(result);
-      seqCommand.addCommand(rest);
-      return seqCommand;
+      commandsQueue = factory.CommandsQueue();
+      commandsQueue.addCommand(result);
+      commandsQueue.addCommand(rest);
+      return commandsQueue;
     }
     return result;
   }
@@ -162,10 +162,10 @@ ICommand list(CommandsFactory factory) :
     }
     if (rest != null)
     {
-      seqCommand = factory.commandsSequence();
-      seqCommand.addCommand(result);
-      seqCommand.addCommand(rest);
-      return seqCommand;
+      commandsQueue = factory.CommandsQueue();
+      commandsQueue.addCommand(result);
+      commandsQueue.addCommand(rest);
+      return commandsQueue;
     }
     return result;
   }
@@ -186,10 +186,10 @@ ICommand list(CommandsFactory factory) :
     }
     if (rest != null)
     {
-      seqCommand = factory.commandsSequence();
-      seqCommand.addCommand(result);
-      seqCommand.addCommand(rest);
-      return seqCommand;
+      commandsQueue = factory.CommandsQueue();
+      commandsQueue.addCommand(result);
+      commandsQueuecommandsQueue.addCommand(rest);
+      return commandsQueue;
     }
     return result;
   }
@@ -200,17 +200,17 @@ ICommand list(CommandsFactory factory) :
   {
     if (rest != null)
     {
-      seqCommand = factory.commandsSequence();
-      seqCommand.addCommand(command);
-      seqCommand.addCommand(rest);
-      return seqCommand;
+      commandsQueue = factory.CommandsQueue();
+      commandsQueue.addCommand(command);
+      commandsQueue.addCommand(rest);
+      return commandsQueue;
     }
     return command;
   }
 | < TO > t = < STRING > command = list(factory) < END >
   {
     name = t.toString();
-    return factory.defineProcedure(name, command);
+    return factory.CommandMake(name, command);
   }
 | t = < STRING >
   (
@@ -218,14 +218,14 @@ ICommand list(CommandsFactory factory) :
   )?
   {
     name = t.toString();
-    result = factory.ExecuteProcedure(name);
+    result = factory.CommandExecute(name);
 
     if (rest != null)
     {
-      seqCommand = factory.commandsSequence();
-      seqCommand.addCommand(result);
-      seqCommand.addCommand(rest);
-      return seqCommand;
+      commandsQueue = factory.CommandsQueue();
+      commandsQueue.addCommand(result);
+      commandsQueue.addCommand(rest);
+      return commandsQueue;
     }
     return result;
   }
@@ -235,13 +235,13 @@ ICommand list(CommandsFactory factory) :
   )?
   {
     name = t.toString();
-    result = factory.ExecuteProcedure(name);
+    result = factory.CommandExecute(name);
     if (rest != null)
     {
-      seqCommand = factory.commandsSequence();
-      seqCommand.addCommand(result);
-      seqCommand.addCommand(rest);
-      return seqCommand;
+      commandsQueue = factory.CommandsQueue();
+      commandsQueue.addCommand(result);
+      commandsQueue.addCommand(rest);
+      return commandsQueue;
     }
     return result;
   }*/
@@ -272,7 +272,7 @@ ICommand statement(CommandsFactory factory) :
   }
 | < CLEAR >
   {
-    return factory.clearCanvas();
+    return factory.clearScreen();
   }
 | < PENUP >
   {
@@ -292,11 +292,11 @@ ICommand statement(CommandsFactory factory) :
   }
 | < HOME >
   {
-    return factory.turtleGoTo(0, 0);
+    return factory.setTurtlePosition(0, 0);
   }
 | < SETXY > parameter = eval() parameter2 = eval()
   {
-    return factory.turtleGoTo(parameter, parameter2);
+    return factory.setTurtlePosition(parameter, parameter2);
   }
 }
 
