@@ -96,6 +96,11 @@ public class CommandsFactory {
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_POSITION, vals);
     }
     
+    public ICommand setTurtleHeading (double degrees) {
+        double[] val = {degrees};
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_HEADING, val);
+    }
+    
     public ICommand clearScreen(){
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.CLEAR_SCREEN, null);
     }

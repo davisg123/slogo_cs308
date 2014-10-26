@@ -5,7 +5,7 @@ import MovementAndImageAPI.*;
 import MovementAndImageAPI.src.TurtleHandler;
 
 public class MovementCommand extends CommandsTurtle { 
-    public enum CommandType {ROTATE, GO_FORWARD, GO_BACK, SET_POSITION, CLEAR_SCREEN};
+    public enum CommandType {ROTATE, GO_FORWARD, GO_BACK, SET_POSITION, CLEAR_SCREEN, SET_HEADING};
     private CommandType command;
     private double[] value = {0.0};
     
@@ -35,6 +35,10 @@ public class MovementCommand extends CommandsTurtle {
                 turtleHandler.setPenPosition(0);
                 turtleHandler.updateTurtleAbsoluteLocation(new Point2D(0,0));
                 turtleHandler.setPenPosition(1);
+                break;
+            case SET_HEADING:
+                turtleHandler.updateTurtleAbsoluteOrientation(value[0]);
+                break;
         }
     }
 }
