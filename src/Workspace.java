@@ -14,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -32,11 +31,10 @@ import MovementAndImageAPI.src.TurtleHandler;
 import commands.CommandsFactory;
 import commands.ICommand;
 
-
 public class Workspace {
-    private static final int DISPLAY_WIDTH = 700;
-    private static final int DISPLAY_HEIGHT = 600;
     
+    private static final int DISPLAY_WIDTH = 700;
+    private static final int DISPLAY_HEIGHT = 600; 
     private Canvas myBackDisplay;
     private Canvas myLineCanvas;
     private Canvas myTurtleCanvas;
@@ -55,11 +53,14 @@ public class Workspace {
     private Button TurtleDataButton;
     private Button FileChooserButton;
     
+    public Workspace(){
+    }
+    
     public TurtleHandler getTurtleHandler() {
         return myTurtleHandler;
     }
     
-    public Tab createWorkspace (Stage primaryStage, Group root, TabPane tabPane) {
+    public Tab createWorkspace (Stage primaryStage, Group root) {
         // Create Tab
         Tab tab = new Tab();
         Pane pane = new Pane();
@@ -85,7 +86,6 @@ public class Workspace {
         // Setting pane(containing the displays) to the center of the borderpane.
         bpane.setCenter(pane);
 
-
         // adding imageUpdater
         ImageUpdater frontImageUpdater =
                 new ImageUpdater(myTurtleCanvas, myLineCanvas);
@@ -94,7 +94,6 @@ public class Workspace {
         myTurtleHandler = new TurtleHandler(frontImageUpdater);
         myTurtleHandler.updateImage(new
                 Image(getClass().getResourceAsStream("/images/turtle.png")));
-
 
         // setting textbox settings
         TextField textBox = new TextField("");
@@ -121,6 +120,7 @@ public class Workspace {
 
         // final step
         tab.setContent(bpane);
+
         return tab;
     }
     
@@ -128,17 +128,11 @@ public class Workspace {
      * Adds features.
      */
     @SuppressWarnings("unchecked")
-    public Node addFeatureButtons (BorderPane bpane,
-                                   Stage primaryStage,
-                                   Pane pane,
-                                   PenHandler penHandler,
-                                   TurtleHandler turtleHandler,
-                                   Group root,
-                                   ImageUpdater iu) {
+    public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane, PenHandler penHandler,
+                                   TurtleHandler turtleHandler, Group root, ImageUpdater iu) {
 
         HBox featureButtons = new HBox();
 
-        // pen color chooser and canvas color chooser
         ColorFeature ColorOptions = new ColorFeature();
         featureButtons.getChildren().addAll(new Text(" Pen:"),
                                             ColorOptions.changePenColor(penHandler),
@@ -147,22 +141,16 @@ public class Workspace {
                                                                        DISPLAY_HEIGHT));
 
         RefGridFeature RefGrid = new RefGridFeature();
-        RefGridButton =
-                RefGrid.makeButton("RefGrid On/Off",
-                                   event -> RefGrid
-                                           .showReferenceGrid(RefGridButton, pane, DISPLAY_WIDTH,
-                                                              DISPLAY_HEIGHT));
+        RefGridButton = RefGrid.makeButton("RefGrid On/Off",
+                                           event -> RefGrid.showReferenceGrid(RefGridButton, pane, DISPLAY_WIDTH, DISPLAY_HEIGHT));
 
         HelpPageFeature HelpPage = new HelpPageFeature();
         HelpPageButton = HelpPage.makeButton("Help Page",
                                              event -> HelpPage.openHelpPage(HelpPageButton, bpane));
 
         TurtleChooserFeature TurtleChooser = new TurtleChooserFeature();
-        TCButton =
-                TurtleChooser.makeButton("Turtle Image",
-                                         event -> TurtleChooser
-                                                 .openTurtleChooser(TCButton, root, iu,
-                                                                    turtleHandler));
+        TCButton = TurtleChooser.makeButton("Turtle Image",
+                                            event -> TurtleChooser.openTurtleChooser(TCButton, root, iu, turtleHandler));
 
         TurtleDataFeature TurtleData = new TurtleDataFeature();
         TurtleDataButton =
@@ -253,13 +241,10 @@ public class Workspace {
             text.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle (MouseEvent arg0) {
-                    // TODO Auto-generated method stub
                     ICommand command = prevCommandMap.get(text);
                     command.execute();
                 }
             });
         }
-    }
-    
-    
+    }  
 } 

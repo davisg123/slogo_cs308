@@ -29,7 +29,7 @@ public class ColorFeature extends Feature {
         BGColorPicker.setOnAction(new EventHandler<ActionEvent>() {
             public void handle (ActionEvent arg0) {
                 gc.setFill(BGColorPicker.getValue());
-                gc.fillRect(0, 0, displayWidth, displayHeight);  // 0 and 0 here are x,y
+                gc.fillRect(0, 0, displayWidth, displayHeight);
             }
         });
         return BGColorPicker;

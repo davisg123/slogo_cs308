@@ -10,6 +10,8 @@ import Feature.Feature;
 
 public class RefGridFeature extends Feature {
    
+private static final double REFERENCE_LINE_OPACITY = 0.1;
+private static final int REFERENCE_LINE_GAP = 10;
 private ArrayList<Line> lineList;
 boolean gridOn = true;
     public void showReferenceGrid(Button button,Pane pane, int displayWidth, int displayHeight){
@@ -25,23 +27,16 @@ boolean gridOn = true;
             }
     });
     }
-            
-//    //Need to clean this code...but code works for now.
+    
      public void drawRefGrid(Pane pane, int displayWidth, int displayHeight){
          lineList = new ArrayList<Line>();
-         //vertical lines
-         for (int i=0; i<=displayWidth; i=i+10){
-             Line line = new Line(i, 0, i, displayHeight);
-             line.setOpacity(0.1);
+         for (int i=0; i<=displayWidth; i=i+REFERENCE_LINE_GAP){
+             lineList.add(new Line(i, 0, i, displayHeight));
+             lineList.add(new Line(0,i,displayWidth,i));
+         } 
+         for (Line line:lineList){
+             line.setOpacity(REFERENCE_LINE_OPACITY);
              pane.getChildren().add(line);
-             lineList.add(line);
-         }
-         //horizontal lines
-         for (int i=0; i<=displayHeight; i=i+10) {
-             Line line = new Line(0,i,displayWidth,i);
-             line.setOpacity(0.1);
-             pane.getChildren().add(line);
-             lineList.add(line);
          }
          gridOn = false;
      }

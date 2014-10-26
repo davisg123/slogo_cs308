@@ -1,5 +1,8 @@
+import java.util.HashMap;
+import java.util.Map;
 import MovementAndImageAPI.src.TurtleHandler;
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -12,10 +15,15 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
+    private static final int BACK_INCREMENT = -10;
+    private static final int FORWARD_INCREMENT = 10;
+    private static final int RIGHT_ROTATION = 45;
+    private static final int LEFT_ROTATION = -45;
     private static final int SCREEN_WIDTH = 1000;
     private static final int SCREEN_HEIGHT = 700;
     private Scene myScene;
     private TurtleHandler myActiveTurtle;
+    private Map<String,Workspace> workspaceMap;
 
     /**
      * the JavaFX thread entry point. Creates the Stage and scene.
@@ -27,42 +35,55 @@ public class Main extends Application {
             myScene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
             
             TabPane tabPane = new TabPane();
+            workspaceMap = new HashMap<String,Workspace>();
             
-            Workspace workspace1 = new Workspace();
-            Tab tab1 = workspace1.createWorkspace(primaryStage, root, tabPane);
-            tab1.setText("Workspace 1");
-            tabPane.getTabs().add(tab1);
-            
-            Workspace workspace2 = new Workspace();
-            Tab tab2 = workspace2.createWorkspace(primaryStage, root, tabPane);
-            tabPane.getTabs().add(tab2);
-            
-            myActiveTurtle = workspace1.getTurtleHandler();
-            
-            // using arrow keys to move my turtle 
-            tabPane.setOnKeyPressed(new EventHandler<KeyEvent>(){
-                @Override
-                public void handle (KeyEvent key) {
-                    // TODO Auto-generated method stub
-                    if (key.getCode() == KeyCode.LEFT){
-                        myActiveTurtle.updateTurtleOrientation(-45);
+            for (int i=0; i<3; i++){
+                Workspace workspace = new Workspace();
+                Tab tab = workspace.createWorkspace(primaryStage, root);
+                String tabLabel = "Workspace " + (i+1);
+                tab.setText(tabLabel);
+                tabPane.getTabs().add(tab);
+                workspaceMap.put(tab.getText(), workspace);
+            }
+
+            myActiveTurtle = workspaceMap.get("Workspace 1").getTurtleHandler();
+            addKeyboardControl(tabPane);
+            for (Tab tab: tabPane.getTabs()){
+                tab.setOnSelectionChanged(new EventHandler<Event>(){
+                    @Override
+                    public void handle (Event e) {
+                        Workspace currentWorkspace = workspaceMap.get(tab.getText());
+                        myActiveTurtle = currentWorkspace.getTurtleHandler();
                     }
-                    if (key.getCode() == KeyCode.RIGHT){
-                        myActiveTurtle.updateTurtleOrientation(45);
-                    }
-                    if (key.getCode() == KeyCode.UP){
-                        myActiveTurtle.updateTurtleLocation(10);
-                    }
-                    if (key.getCode() == KeyCode.DOWN){
-                        myActiveTurtle.updateTurtleLocation(-10);
-                    }
-                }
-            });
+                    
+                });
+            }
               
             mainbpane.setCenter(tabPane);
             root.getChildren().add(mainbpane);
             primaryStage.setScene(myScene);
             primaryStage.show();
+    }
+    
+    public void addKeyboardControl(TabPane tabPane){
+        tabPane.setOnKeyPressed(new EventHandler<KeyEvent>(){
+            @Override
+            public void handle (KeyEvent key) {
+                // TODO Auto-generated method stub
+                if (key.getCode() == KeyCode.A){
+                    myActiveTurtle.updateTurtleOrientation(LEFT_ROTATION);
+                }
+                if (key.getCode() == KeyCode.D){
+                    myActiveTurtle.updateTurtleOrientation(RIGHT_ROTATION);
+                }
+                if (key.getCode() == KeyCode.W){
+                    myActiveTurtle.updateTurtleLocation(FORWARD_INCREMENT);
+                }
+                if (key.getCode() == KeyCode.S){
+                    myActiveTurtle.updateTurtleLocation(BACK_INCREMENT);
+                }
+            }
+        });
     }
 
 

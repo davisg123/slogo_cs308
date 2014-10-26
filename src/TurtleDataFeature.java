@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import Feature.Feature;
 import MovementAndImageAPI.src.TurtleHandler;
 
-
 public class TurtleDataFeature extends Feature {
     private static final int DISPLAY_HEIGHT = 300;
     private static final int DISPLAY_WIDTH = 300;
