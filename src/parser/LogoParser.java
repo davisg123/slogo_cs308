@@ -289,7 +289,7 @@ public class LogoParser implements LogoParserConstants {
       break;
     case CLEAR:
       jj_consume_token(CLEAR);
-    {if (true) return factory.showTurtle();}
+    {if (true) return factory.clearScreen();}
       break;
     case PENUP:
       jj_consume_token(PENUP);

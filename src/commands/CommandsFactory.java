@@ -96,6 +96,10 @@ public class CommandsFactory {
         return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_POSITION, vals);
     }
     
+    public ICommand clearScreen(){
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.CLEAR_SCREEN, null);
+    }
+    
     /**
      * adds a command to the queue for processing
      * 
