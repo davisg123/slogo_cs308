@@ -67,23 +67,47 @@ public class CommandsFactory {
     }
     
     public ICommand rotateTurtle(double angle) {
-        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, angle);
+        double[] val = {angle};
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, val);
     }
     
     public ICommand rotateTurtleLeft(double angle) {
-        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, angle);
+        double[] val = {-1.0 * angle};
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, val);
     }
     
     public ICommand rotateTurtleRight(double angle) {
-        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, -1.0 * angle);
+        double[] val = {angle};
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.ROTATE, val);
     }
 
     public ICommand turtleGoForward(double distance) {
-        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.GO_FORWARD, distance);
+        double[] val = {distance};
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.GO_FORWARD, val);
     }
     
     public ICommand turtleGoBack(double distance) {
-        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.GO_BACK, distance);
+        double[] val = {distance};
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.GO_BACK, val);
+    }
+    
+    public ICommand setTurtlePosition(double positionX, double positionY){
+        double[] vals = {positionX, positionY};
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_POSITION, vals);
+    }
+    
+    public ICommand setTurtleHeading (double degrees) {
+        double[] val = {degrees};
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_HEADING, val);
+    }
+    
+    public ICommand setTurtleTowards (double positionX, double positionY){
+        double[] vals = {positionX, positionY};
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.SET_TOWARDS, vals);
+    }
+    
+    public ICommand clearScreen(){
+        return new MovementCommand(myTurtleHandler, MovementCommand.CommandType.CLEAR_SCREEN, null);
     }
     
     /**

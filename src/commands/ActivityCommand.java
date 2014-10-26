@@ -18,16 +18,16 @@ public class ActivityCommand extends CommandsTurtle {
     public void execute() {
         switch(command) {
             case HIDE:
-                turtleHandler().showTurtle(false);
+                turtleHandler().showTurtle(0);
                 break;
             case SHOW:
-                turtleHandler().showTurtle(true);
+                turtleHandler().showTurtle(1);
                 break;
             case PICK_UP:
-                //turtleHandler().pickUp();
+                turtleHandler().setPenPosition(0);
                 break;
             case PUT:
-                //turtleHandler().put();
+                turtleHandler().setPenPosition(1);
                 break;
         }
     }   

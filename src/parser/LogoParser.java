@@ -53,6 +53,8 @@ public class LogoParser implements LogoParserConstants {
       case SHOW:
       case HOME:
       case SETXY:
+      case SETHEADING:
+      case TOWARDS:
       case STRING:
         rest = list(factory);
         break;
@@ -95,6 +97,8 @@ public class LogoParser implements LogoParserConstants {
       case SHOW:
       case HOME:
       case SETXY:
+      case SETHEADING:
+      case TOWARDS:
       case STRING:
         rest = list(factory);
         break;
@@ -141,6 +145,8 @@ public class LogoParser implements LogoParserConstants {
       case SHOW:
       case HOME:
       case SETXY:
+      case SETHEADING:
+      case TOWARDS:
       case STRING:
         rest = list(factory);
         break;
@@ -176,6 +182,8 @@ public class LogoParser implements LogoParserConstants {
     case SHOW:
     case HOME:
     case SETXY:
+    case SETHEADING:
+    case TOWARDS:
       command = statement(factory);
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case REPEAT:
@@ -193,6 +201,8 @@ public class LogoParser implements LogoParserConstants {
       case SHOW:
       case HOME:
       case SETXY:
+      case SETHEADING:
+      case TOWARDS:
       case STRING:
         rest = list(factory);
         break;
@@ -235,6 +245,8 @@ public class LogoParser implements LogoParserConstants {
       case SHOW:
       case HOME:
       case SETXY:
+      case SETHEADING:
+      case TOWARDS:
       case STRING:
         rest = list(factory);
         break;
@@ -289,7 +301,7 @@ public class LogoParser implements LogoParserConstants {
       break;
     case CLEAR:
       jj_consume_token(CLEAR);
-    {if (true) return factory.showTurtle();}
+    {if (true) return factory.clearScreen();}
       break;
     case PENUP:
       jj_consume_token(PENUP);
@@ -309,13 +321,24 @@ public class LogoParser implements LogoParserConstants {
       break;
     case HOME:
       jj_consume_token(HOME);
-    {if (true) return factory.showTurtle();}
+    {if (true) return factory.setTurtlePosition(0,0);}
       break;
     case SETXY:
       jj_consume_token(SETXY);
       parameter = eval();
       parameter2 = eval();
-    {if (true) return factory.showTurtle();}
+    {if (true) return factory.setTurtlePosition(parameter, parameter2);}
+      break;
+    case SETHEADING:
+      jj_consume_token(SETHEADING);
+      parameter = eval();
+    {if (true) return factory.setTurtleHeading(parameter);}
+      break;
+    case TOWARDS:
+      jj_consume_token(TOWARDS);
+      parameter = eval();
+      parameter2 = eval();
+    {if (true) return factory.setTurtleTowards(parameter, parameter2);}
       break;
     default:
       jj_la1[6] = jj_gen;

@@ -1,11 +1,224 @@
 /**
  * JavaCC template file created by SF JavaCC plugin 1.5.17+ wizard for JavaCC 1.5.0+
- */options{  JDK_VERSION = "1.5";  static = true;}PARSER_BEGIN(LogoParser)package parser;import java.io.InputStream;public class LogoParser{  public ICommand parse(CommandsFactory factory) throws ParseException  {    return this.list(factory);  }}PARSER_END(LogoParser)SKIP :{  " "| "\r"| "\t"}TOKEN : /* eol symbols */{  < EOL :    "\r\n"  | "\n" >}TOKEN : /* keywords */{  < REPEAT : "repeat" >| < UNTIL : "until" >| < WHILE : "while" >| < IF : "if" >| < IFELSE : "ifelse" >| < LABEL : "label" >| < MAKE : "make" >| < TO : "to" >| < END : "end" >}TOKEN : /* functions */{  < FORWARD : "fd" | "forward" >| < BACK : "bk" | "back" | "backward" >| < RIGHT : "rt" | "right" >| < LEFT : "lt" | "left" >| < CLEAR : "cs" | "clearscreen" >| < PENUP : "pu" | "penup" >| < PENDOWN : "pd" | "pendown" >| < HIDE : "ht" | "hideturtle" >| < SHOW : "st" | "showturtle" >| < HOME : "home" >| < SETXY : "setxy" | "goto" | "setposition" >}TOKEN : /* maths */{  < NUM :    ("-")? ([ "0"-"9" ])+    (      "." ([ "0"-"9" ])+    )? >  /* arithmetical operators */| < SUM : "+" | "sum" >| < SUB : "-" | "difference" >| < MULT : "*" | "product" >| < DIV : "/" | "quotient" >| < POW : "^" | "power" >  /* comparison operators */| < GT : " >" | "lessthan" >| < LT : " < " | "greaterthan" >| < GE : " >=" >| < LE : " <=" >| < EQ : " = " | "equal" >}TOKEN : /* string */{  < STRING : ([ "A"-"Z", "a"-"z", "0"-"9" ])+ >}//TOKEN: /*proc*/
+ */
+options
+{
+  JDK_VERSION = "1.5";
+
+  static = true;
+}
+
+PARSER_BEGIN(LogoParser)
+package parser;
+import pl.edu.agh.student.jfik.commands.*;
+import java.io.InputStream;
+
+public class LogoParser
+{
+  public ICommand parse(CommandsFactory factory) throws ParseException
+  {
+    return this.list(factory);
+  }
+}
+
+PARSER_END(LogoParser)
+
+SKIP :
+{
+  " "
+| "\r"
+| "\t"
+}
+
+TOKEN : /* eol symbols */
+{
+  < EOL :
+    "\r\n"
+  | "\n" >
+}
+
+TOKEN : /* keywords */
+{
+  < REPEAT : "repeat" >
+| < UNTIL : "until" >
+| < WHILE : "while" >
+| < IF : "if" >
+| < IFELSE : "ifelse" >
+| < LABEL : "label" >
+| < MAKE : "make" >
+| < TO : "to" >
+| < END : "end" >
+}
+
+TOKEN : /* functions */
+{
+  < FORWARD : "fd" | "forward" >
+| < BACK : "bk" | "back" | "backward" >
+| < RIGHT : "rt" | "right" >
+| < LEFT : "lt" | "left" >
+| < CLEAR : "cs" | "clearscreen" >
+| < PENUP : "pu" | "penup" >
+| < PENDOWN : "pd" | "pendown" >
+| < HIDE : "ht" | "hideturtle" >
+| < SHOW : "st" | "showturtle" >
+| < HOME : "home" >
+| < SETXY : "setxy" | "goto" | "setposition" >
+| < SETHEADING : "setheading" | "seth" >
+| < TOWARDS : "towards" >
+}
+
+TOKEN : /* maths */
+{
+  < NUM :
+    ("-")? ([ "0"-"9" ])+
+    (
+      "." ([ "0"-"9" ])+
+    )? >
+  /* arithmetical operators */
+| < SUM : "+" | "sum" >
+| < SUB : "-" | "difference" >
+| < MULT : "*" | "product" >
+| < DIV : "/" | "quotient" >
+| < POW : "^" | "power" >
+  /* comparison operators */
+| < GT : " >" | "lessthan" >
+| < LT : " < " | "greaterthan" >
+| < GE : " >=" >
+| < LE : " <=" >
+| < EQ : " = " | "equal" >
+}
+
+TOKEN : /* string */
+{
+  < STRING : ([ "A"-"Z", "a"-"z", "0"-"9" ])+ >
+}
+
+//TOKEN: /*proc*/
 /*
-{  < PROC  : "proc" >
-}*/TOKEN : /* supplementary symbols */{  < COLON : ":" >| < LBRACKET : "[" >| < RBRACKET : "]" >}/* entire line */ICommand expression(CommandsFactory factory) :{  Token t;  String name;  ICommand command;}{ command = list(factory) < EOL >  {    return command;  }}/* block statements */ICommand list(CommandsFactory factory) :{  ICommand command;  ICommand altCommand;  ICommand result;  ICommand rest = null;  CommandsSequence seqCommand;  double val;  Token t;  String name;}{  < REPEAT > val = eval() < LBRACKET > command = list(factory) < RBRACKET >  (    rest = list(factory)  )?  {    result = factory.repeatCommand((int) val, command);    if (rest != null)    {      seqCommand = factory.commandsSequence();      seqCommand.addCommand(result);      seqCommand.addCommand(rest);      return seqCommand;    }    return result;  }| < IFELSE > val = eval() < LBRACKET > command = list(factory) < RBRACKET > < LBRACKET > altCommand = list(factory) < RBRACKET >  (    rest = list(factory)  )?  {    if (val != 0)    {      result = command;    }    else    {      result = altCommand;    }    if (rest != null)    {      seqCommand = factory.commandsSequence();      seqCommand.addCommand(result);      seqCommand.addCommand(rest);      return seqCommand;    }    return result;  }  /*| < UNTIL > eval() < LBRACKET > list() < RBRACKET >
+{
+  < PROC  : "proc" >
+}*/
+TOKEN : /* supplementary symbols */
+{
+  < COLON : ":" >
+| < LBRACKET : "[" >
+| < RBRACKET : "]" >
+}
+
+/* entire line */
+ICommand expression(CommandsFactory factory) :
+{
+  Token t;
+  String name;
+  ICommand command;
+}
+{
+ command = list(factory) < EOL >
+  {
+    return command;
+  }
+}
+
+/* block statements */
+ICommand list(CommandsFactory factory) :
+{
+  ICommand command;
+  ICommand altCommand;
+  ICommand result;
+  ICommand rest = null;
+  CommandsSequence seqCommand;
+  double val;
+  Token t;
+  String name;
+}
+{
+  < REPEAT > val = eval() < LBRACKET > command = list(factory) < RBRACKET >
+  (
+    rest = list(factory)
+  )?
+  {
+    result = factory.repeatCommand((int) val, command);
+    if (rest != null)
+    {
+      seqCommand = factory.commandsSequence();
+      seqCommand.addCommand(result);
+      seqCommand.addCommand(rest);
+      return seqCommand;
+    }
+    return result;
+  }
+| < IFELSE > val = eval() < LBRACKET > command = list(factory) < RBRACKET > < LBRACKET > altCommand = list(factory) < RBRACKET >
+  (
+    rest = list(factory)
+  )?
+  {
+    if (val != 0)
+    {
+      result = command;
+    }
+    else
+    {
+      result = altCommand;
+    }
+    if (rest != null)
+    {
+      seqCommand = factory.commandsSequence();
+      seqCommand.addCommand(result);
+      seqCommand.addCommand(rest);
+      return seqCommand;
+    }
+    return result;
+  }
+  /*| < UNTIL > eval() < LBRACKET > list() < RBRACKET >
 | < WHILE > eval() < LBRACKET > list() < RBRACKET >*/ //TODO
-| < IF > val = eval() < LBRACKET > command = list(factory) < RBRACKET >  (    rest = list(factory)  )?  {    if (val != 0)    {      result = command;    }    else    {      result = null;    }    if (rest != null)    {      seqCommand = factory.commandsSequence();      seqCommand.addCommand(result);      seqCommand.addCommand(rest);      return seqCommand;    }    return result;  }| command = statement(factory)  (    rest = list(factory)  )?  {    if (rest != null)    {      seqCommand = factory.commandsSequence();      seqCommand.addCommand(command);      seqCommand.addCommand(rest);      return seqCommand;    }    return command;  }| < TO > t = < STRING > command = list(factory) < END >  {    name = t.toString();    return factory.defineProcedure(name, command);  }| t = < STRING >  (    rest = list(factory)  )?  {    name = t.toString();    result = factory.ExecuteProcedure(name);
+| < IF > val = eval() < LBRACKET > command = list(factory) < RBRACKET >
+  (
+    rest = list(factory)
+  )?
+  {
+    if (val != 0)
+    {
+      result = command;
+    }
+    else
+    {
+      result = null;
+    }
+    if (rest != null)
+    {
+      seqCommand = factory.commandsSequence();
+      seqCommand.addCommand(result);
+      seqCommand.addCommand(rest);
+      return seqCommand;
+    }
+    return result;
+  }
+| command = statement(factory)
+  (
+    rest = list(factory)
+  )?
+  {
+    if (rest != null)
+    {
+      seqCommand = factory.commandsSequence();
+      seqCommand.addCommand(command);
+      seqCommand.addCommand(rest);
+      return seqCommand;
+    }
+    return command;
+  }
+| < TO > t = < STRING > command = list(factory) < END >
+  {
+    name = t.toString();
+    return factory.defineProcedure(name, command);
+  }
+| t = < STRING >
+  (
+    rest = list(factory)
+  )?
+  {
+    name = t.toString();
+    result = factory.ExecuteProcedure(name);
 
     if (rest != null)
     {
@@ -14,7 +227,9 @@
       seqCommand.addCommand(rest);
       return seqCommand;
     }
-    return result;  }  /*| t = < PROC >
+    return result;
+  }
+  /*| t = < PROC >
   (
     rest = list(factory)
   )?
@@ -29,4 +244,177 @@
       return seqCommand;
     }
     return result;
-  }*/}/* instructions */ICommand statement(CommandsFactory factory) :{  double parameter;  double parameter2;}{  < FORWARD > parameter = eval()  {    return factory.turtleGoForward(parameter);  }| < BACK > parameter = eval()  {    return factory.turtleGoBack(parameter);  }| < RIGHT > parameter = eval()  {    return factory.rotateTurtleRight(parameter);  }| < LEFT > parameter = eval()  {    return factory.rotateTurtleLeft(parameter);  }| < CLEAR >  {    return factory.clearCanvas();  }| < PENUP >  {    return factory.pickUpTurtle();  }| < PENDOWN >  {    return factory.putTurtle();  }| < HIDE >  {    return factory.hideTurtle();  }| < SHOW >  {    return factory.showTurtle();  }| < HOME >  {    return factory.turtleGoTo(0, 0);  }| < SETXY > parameter = eval() parameter2 = eval()  {    return factory.turtleGoTo(parameter, parameter2);  }}/* evaluated expression - either arithmetical or logical */double eval() :{  double val;  double result;}{  val = arithm()  {    result = val;  }  (    < GT > val = arithm()    {      result = result > val ? 1.0 : 0.0;    }  | < LT > val = arithm()    {      result = result < val ? 1.0 : 0.0;    }  | < GE > val = arithm()    {      result = result >= val ? 1.0 : 0.0;    }  | < LE > val = arithm()    {      result = result <= val ? 1.0 : 0.0;    }  | < EQ > val = arithm()    {      result = result == val ? 1.0 : 0.0;    }  )?  {    return result;  }}/* addition and substraction*/double arithm() :{  double term;  double result;}{  term = term()  {    result = term;  }  (    < SUM > term = term()    {      result += term;    }  | < SUB > term = term()    {      result -= term;    }  )*  {    return result;  }}/* division and multiplication */double term() :{  double pow;  double result;}{  pow = pow()  {    result = pow;  }  (    < MULT > pow = pow()    {      result *= pow;    }  | < DIV > pow = pow()    {      result /= pow;    }  )*  {    return result;  }}/* exponentation */double pow() :{  Token t;  double num;  double result;}{  t = < NUM >  {    num = Double.parseDouble(t.toString());  }  {    result = num;  }  (    < POW > t = < NUM >    {      num = Double.parseDouble(t.toString());    }    {      result = Math.pow(result, num);    }  )*  {    return result;  }}
+  }*/
+}
+
+/* instructions */
+ICommand statement(CommandsFactory factory) :
+{
+  double parameter;
+  double parameter2;
+}
+{
+  < FORWARD > parameter = eval()
+  {
+    return factory.turtleGoForward(parameter);
+  }
+| < BACK > parameter = eval()
+  {
+    return factory.turtleGoBack(parameter);
+  }
+| < RIGHT > parameter = eval()
+  {
+    return factory.rotateTurtleRight(parameter);
+  }
+| < LEFT > parameter = eval()
+  {
+    return factory.rotateTurtleLeft(parameter);
+  }
+| < CLEAR >
+  {
+    return factory.clearCanvas();
+  }
+| < PENUP >
+  {
+    return factory.pickUpTurtle();
+  }
+| < PENDOWN >
+  {
+    return factory.putTurtle();
+  }
+| < HIDE >
+  {
+    return factory.hideTurtle();
+  }
+| < SHOW >
+  {
+    return factory.showTurtle();
+  }
+| < HOME >
+  {
+    return factory.turtleGoTo(0, 0);
+  }
+| < SETXY > parameter = eval() parameter2 = eval()
+  {
+    return factory.turtleGoTo(parameter, parameter2);
+  }
+}
+
+/* evaluated expression - either arithmetical or logical */
+double eval() :
+{
+  double val;
+  double result;
+}
+{
+  val = arithm()
+  {
+    result = val;
+  }
+  (
+    < GT > val = arithm()
+    {
+      result = result > val ? 1.0 : 0.0;
+    }
+  | < LT > val = arithm()
+    {
+      result = result < val ? 1.0 : 0.0;
+    }
+  | < GE > val = arithm()
+    {
+      result = result >= val ? 1.0 : 0.0;
+    }
+  | < LE > val = arithm()
+    {
+      result = result <= val ? 1.0 : 0.0;
+    }
+  | < EQ > val = arithm()
+    {
+      result = result == val ? 1.0 : 0.0;
+    }
+  )?
+  {
+    return result;
+  }
+}
+
+/* addition and substraction*/
+double arithm() :
+{
+  double term;
+  double result;
+}
+{
+  term = term()
+  {
+    result = term;
+  }
+  (
+    < SUM > term = term()
+    {
+      result += term;
+    }
+  | < SUB > term = term()
+    {
+      result -= term;
+    }
+  )*
+  {
+    return result;
+  }
+}
+
+/* division and multiplication */
+double term() :
+{
+  double pow;
+  double result;
+}
+{
+  pow = pow()
+  {
+    result = pow;
+  }
+  (
+    < MULT > pow = pow()
+    {
+      result *= pow;
+    }
+  | < DIV > pow = pow()
+    {
+      result /= pow;
+    }
+  )*
+  {
+    return result;
+  }
+}
+
+/* exponentation */
+double pow() :
+{
+  Token t;
+  double num;
+  double result;
+}
+{
+  t = < NUM >
+  {
+    num = Double.parseDouble(t.toString());
+  }
+  {
+    result = num;
+  }
+  (
+    < POW > t = < NUM >
+    {
+      num = Double.parseDouble(t.toString());
+    }
+    {
+      result = Math.pow(result, num);
+    }
+  )*
+  {
+    return result;
+  }
+}
