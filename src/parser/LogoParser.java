@@ -54,6 +54,7 @@ public class LogoParser implements LogoParserConstants {
       case HOME:
       case SETXY:
       case SETHEADING:
+      case TOWARDS:
       case STRING:
         rest = list(factory);
         break;
@@ -97,6 +98,7 @@ public class LogoParser implements LogoParserConstants {
       case HOME:
       case SETXY:
       case SETHEADING:
+      case TOWARDS:
       case STRING:
         rest = list(factory);
         break;
@@ -144,6 +146,7 @@ public class LogoParser implements LogoParserConstants {
       case HOME:
       case SETXY:
       case SETHEADING:
+      case TOWARDS:
       case STRING:
         rest = list(factory);
         break;
@@ -180,6 +183,7 @@ public class LogoParser implements LogoParserConstants {
     case HOME:
     case SETXY:
     case SETHEADING:
+    case TOWARDS:
       command = statement(factory);
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case REPEAT:
@@ -198,6 +202,7 @@ public class LogoParser implements LogoParserConstants {
       case HOME:
       case SETXY:
       case SETHEADING:
+      case TOWARDS:
       case STRING:
         rest = list(factory);
         break;
@@ -241,6 +246,7 @@ public class LogoParser implements LogoParserConstants {
       case HOME:
       case SETXY:
       case SETHEADING:
+      case TOWARDS:
       case STRING:
         rest = list(factory);
         break;
@@ -327,6 +333,12 @@ public class LogoParser implements LogoParserConstants {
       jj_consume_token(SETHEADING);
       parameter = eval();
     {if (true) return factory.setTurtleHeading(parameter);}
+      break;
+    case TOWARDS:
+      jj_consume_token(TOWARDS);
+      parameter = eval();
+      parameter2 = eval();
+    {if (true) return factory.setTurtleTowards(parameter, parameter2);}
       break;
     default:
       jj_la1[6] = jj_gen;
