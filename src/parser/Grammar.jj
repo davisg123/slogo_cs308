@@ -188,7 +188,7 @@ ICommand list(CommandsFactory factory) :
     {
       commandsQueue = factory.CommandsQueue();
       commandsQueue.addCommand(result);
-      commandsQueuecommandsQueue.addCommand(rest);
+      commandsQueue.addCommand(rest);
       return commandsQueue;
     }
     return result;

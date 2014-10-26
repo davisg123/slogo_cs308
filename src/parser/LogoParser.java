@@ -160,7 +160,7 @@ public class LogoParser implements LogoParserConstants {
     {
       commandsQueue = factory.CommandsQueue();
       commandsQueue.addCommand(result);
-      commandsQueuecommandsQueue.addCommand(rest);
+      commandsQueue.addCommand(rest);
       {if (true) return commandsQueue;}
     }
     {if (true) return result;}
