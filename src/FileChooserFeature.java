@@ -19,7 +19,9 @@ public class FileChooserFeature extends Feature {
         //Show open file dialog
         loadedFile = fileChooser.showOpenDialog(null);
         try {
-            parser.parseFile(loadedFile);
+            if (loadedFile != null){
+                parser.parseFile(loadedFile);
+            }
         }
         catch (Exception e) {
             // TODO Auto-generated catch block
