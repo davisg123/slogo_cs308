@@ -82,7 +82,7 @@ public class TurtleHandler {
 	private void moveAndDraw(Point2D from, Point2D to) {
 		mainImageUpdater.updateTurtleImage(to, mainTurtle.getImage());
 		if (mainTurtle.getPenPosition() == 1)
-			mainImageUpdater.drawLine(from, to);
+			mainImageUpdater.drawLine(from, to, mainTurtle.getPenHandler());
 	};
 
 	/**

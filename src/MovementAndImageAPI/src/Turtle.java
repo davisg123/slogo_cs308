@@ -134,4 +134,8 @@ public class Turtle {
 		else if(show == 0)
 			myImage.setVisible(false);
 	}
+	
+	public PenHandler getPenHandler(){
+		return myPenHandler;
+	}
 }
