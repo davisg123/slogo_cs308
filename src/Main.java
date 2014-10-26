@@ -45,6 +45,7 @@ public class Main extends Application {
     private Button HelpPageButton;
     private Button TCButton;
     private Button TurtleDataButton;
+    private Button FileChooserButton;
     private GraphicsContext gcBack;
     private String userInput;
     private boolean validInput;
@@ -186,9 +187,12 @@ public class Main extends Application {
                 TurtleData.makeButton("Turtle Data",
                                       event -> TurtleData.openTurtleDataPage(TurtleDataButton,
                                                                              turtleHandler));
+        
+        FileChooserFeature FileChooser = new FileChooserFeature();
+        FileChooserButton = TurtleData.makeButton("Open File", event -> FileChooser.openFileChooser(FileChooserButton, parser));
 
         featureButtons.getChildren().addAll(RefGridButton, HelpPageButton, TCButton,
-                                            TurtleDataButton);
+                                            TurtleDataButton, FileChooserButton);
         return featureButtons;
     }
 

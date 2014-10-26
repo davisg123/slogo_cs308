@@ -1,7 +1,15 @@
 package parser;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 import commands.*;
@@ -30,6 +38,11 @@ public class Parser {
    
     public void createLogoParser() {
         logoParser = new LogoParser(System.in);
+    }
+    
+    public ICommand parseFile(File input) throws Exception {
+        String fileAsString = readFile(input.getAbsolutePath(), StandardCharsets.UTF_8);
+        return parse(fileAsString);
     }
     
     public ICommand parse(String input) throws Exception {
@@ -76,5 +89,12 @@ public class Parser {
         }
         return builder.toString();
     }
+    
+    static String readFile(String path, Charset encoding) 
+            throws IOException 
+          {
+            byte[] encoded = Files.readAllBytes(Paths.get(path));
+            return new String(encoded, encoding);
+          }
     
 }
