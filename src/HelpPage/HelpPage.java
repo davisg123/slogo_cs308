@@ -1,9 +1,6 @@
 package HelpPage;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
@@ -15,7 +12,7 @@ import javafx.stage.Stage;
 /**
  * Builds the JavaFX stage and scene for the HTML-formatted Help page.
  * 
- * @author Yoonhyung
+ * @author Yoonhyung Choi
  *
  */
 public class HelpPage extends Application {
@@ -41,7 +38,7 @@ public class HelpPage extends Application {
 /**
  * Creates Browser for the help page.
  * 
- * @author Yoonhyung
+ * @author Yoonhyung Choi
  *
  */
 class Browser extends Region {
@@ -50,8 +47,6 @@ class Browser extends Region {
     public Browser () {
                 webEngine
                         .load("http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php");
-//                    webEngine
-//                    .load("http://www.cs.dukddu/courses/compsci308/current/assign/03_slogo/commands.php");
                 getChildren().add(browser);
         
     }

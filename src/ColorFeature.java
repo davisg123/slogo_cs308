@@ -8,13 +8,18 @@ import javafx.scene.paint.Color;
 
 /**
  * Implements ColorPicker to let the user choose pen color and background color.
- * @author Yoonhyung
+ * @author Yoonhyung Choi
  *
  */
 public class ColorFeature extends Feature {
     final ColorPicker penColorPicker = new ColorPicker();
     final ColorPicker BGColorPicker = new ColorPicker();
 
+    /**
+     * Changes pen color.
+     * @param penHandler PenHandler that controls the pen
+     * @return Colorpicker for the pen
+     */
     public ColorPicker changePenColor (PenHandler penHandler) {
         penColorPicker.setOnAction(new EventHandler<ActionEvent>() {
             public void handle (ActionEvent arg0) {
@@ -25,6 +30,13 @@ public class ColorFeature extends Feature {
         return penColorPicker;
     }
 
+    /**
+     * Changes background color of the canvas.
+     * @param gc GraphicsContext for the background canvas
+     * @param displayWidth Canvas Width
+     * @param displayHeight Canvas Height
+     * @return Colorpicker for the background 
+     */
     public ColorPicker changeBGColor (GraphicsContext gc, int displayWidth, int displayHeight) {
         BGColorPicker.setOnAction(new EventHandler<ActionEvent>() {
             public void handle (ActionEvent arg0) {

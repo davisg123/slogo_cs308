@@ -31,6 +31,12 @@ import MovementAndImageAPI.src.TurtleHandler;
 import commands.CommandsFactory;
 import commands.ICommand;
 
+/**
+ * Sets up the Slogo workspace 
+ * which contains the feature buttons, display, previous commands list, and user input area.
+ * @author Yoonhyung Choi
+ *
+ */
 public class Workspace {
     
     private static final int DISPLAY_WIDTH = 700;
@@ -46,22 +52,27 @@ public class Workspace {
     private ObservableList<Text> prevCommandObsvList;
     private Map<Text, ICommand> prevCommandMap;
     private String userInput;
-    private boolean validInput;
     private Button RefGridButton;
     private Button HelpPageButton;
     private Button TCButton;
     private Button TurtleDataButton;
     private Button FileChooserButton;
     
-    public Workspace(){
-    }
-    
+    /**
+     * Returns the turtleHandler in the workspace
+     * @return
+     */
     public TurtleHandler getTurtleHandler() {
         return myTurtleHandler;
     }
     
+    /**
+     * Creates the Slogo workspace
+     * @param primaryStage Stage where the workspace is located
+     * @param root Group where the workspace is located
+     * @return Tab that contains the workspace
+     */
     public Tab createWorkspace (Stage primaryStage, Group root) {
-        // Create Tab
         Tab tab = new Tab();
         Pane pane = new Pane();
         BorderPane bpane = new BorderPane();
@@ -118,14 +129,14 @@ public class Workspace {
         bpane.setTop(addFeatureButtons(bpane, primaryStage, pane, myTurtleHandler.getPenHandler(), myTurtleHandler,
                                        root, frontImageUpdater));
 
-        // final step
+        // Set borderpane to tab
         tab.setContent(bpane);
 
         return tab;
     }
     
     /**
-     * Adds features.
+     * Adds features and associated buttons.
      */
     @SuppressWarnings("unchecked")
     public Node addFeatureButtons (BorderPane bpane, Stage primaryStage, Pane pane, PenHandler penHandler,
@@ -146,7 +157,7 @@ public class Workspace {
 
         HelpPageFeature HelpPage = new HelpPageFeature();
         HelpPageButton = HelpPage.makeButton("Help Page",
-                                             event -> HelpPage.openHelpPage(HelpPageButton, bpane));
+                                             event -> HelpPage.openHelpPage(HelpPageButton));
 
         TurtleChooserFeature TurtleChooser = new TurtleChooserFeature();
         TCButton = TurtleChooser.makeButton("Turtle Image",
@@ -189,20 +200,13 @@ public class Workspace {
     }
     
     
-    
-    
     /**
-     * Tells the parser to parse the userInput String
-     * (determined by whatever was typed in the TextField)
-     * 
-     * @param userInput the user input
-     * @return returns true if XMLparser can parse the userInput (which means the userInput is
-     *         valid)
-     *         returns false otherwise.
+     * Sends the user input to the parse, which then executes the command.
+     * Adds the command to the previous command list.
+     * @param textBox TextField where the user will enter the command
+     * @param prevCommandListView ListView for the previous commands
      */
-
-    public boolean sendUserInput (TextField textBox, ListView<Text> prevCommandListView) {
-        validInput = false;
+    public void sendUserInput (TextField textBox, ListView<Text> prevCommandListView) {
         textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle (KeyEvent key) {
@@ -212,7 +216,6 @@ public class Workspace {
                     try {
                         command = parser.parse(userInput);
                         command.execute();
-                        validInput = true;
                         Text userInputText = new Text(userInput);
                         prevCommandList.add(userInputText);
                         prevCommandMap.put(userInputText, command);
@@ -225,13 +228,12 @@ public class Workspace {
                 }
             }
         });
-        return validInput;
     }
 
     /**
-     * Displays a list of valid commands (that the parser could parse)
-     * 
-     * @param userInput the user input
+     * Displays a listview of clickable previous commands.
+     * Command executes when clicked.
+     * @param prevCommandListView Listview for the previous commands
      */
     public void setUpPreviousCommands (ListView<Text> prevCommandListView) {
         prevCommandObsvList = FXCollections.observableArrayList(prevCommandList);

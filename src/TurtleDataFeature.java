@@ -7,10 +7,20 @@ import javafx.stage.Stage;
 import Feature.Feature;
 import MovementAndImageAPI.src.TurtleHandler;
 
+/**
+ * Allows the user to access the turtle information (x position, y position, rotation)
+ * @author Yoonhyung Choi
+ *
+ */
 public class TurtleDataFeature extends Feature {
-    private static final int DISPLAY_HEIGHT = 300;
-    private static final int DISPLAY_WIDTH = 300;
+    private static final int PAGE_HEIGHT = 300;
+    private static final int PAGE_WIDTH = 300;
 
+    /**
+     * Opens the turtle data page when the button is clicked.
+     * @param button Associated button
+     * @param myTurtleHandler TurtleHandler that controls the turtle
+     */
     public void openTurtleDataPage(Button button, TurtleHandler myTurtleHandler){
         button.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
@@ -20,6 +30,10 @@ public class TurtleDataFeature extends Feature {
     });
     }
     
+    /**
+     * Displays the turtle data
+     * @param myTurtleHandler TurtleHandler that controls the turtle
+     */
     public void showStage(TurtleHandler myTurtleHandler){
         Stage turtleDataStage = new Stage();
         turtleDataStage.setTitle("Turtle Data");
@@ -28,7 +42,7 @@ public class TurtleDataFeature extends Feature {
         String turtleY = "\n Turtle's Y-Position: " + (int) myTurtleHandler.getTurtleLocation().getY();
         String turtleRotation = "\n Turtle's Rotation: " + (int) myTurtleHandler.getOrientation() + " degrees";
         textArea.setText(turtleX + turtleY + turtleRotation);
-        Scene scene = new Scene(textArea, DISPLAY_WIDTH, DISPLAY_HEIGHT);
+        Scene scene = new Scene(textArea, PAGE_WIDTH, PAGE_HEIGHT);
         turtleDataStage.setScene(scene);
         turtleDataStage.show();
         }

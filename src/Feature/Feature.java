@@ -6,8 +6,7 @@ import javafx.scene.control.Button;
 
 /**
  * Used for adding different UI features.
- * (such as setting background color, setting pen color, loading, turning on/off reference grid)
- * @author Yoonhyung
+ * @author Yoonhyung Choi
  *
  */
 public abstract class Feature{
