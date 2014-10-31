@@ -23,14 +23,15 @@ import commands.*;
 
 public class Parser {
     
-    private static ResourceBundle ourLanguageBundle;
     private static final String RESOURCELOCATION = "resources.languages";
     private static final String DOT = ".";
     private CommandsFactory commandsFactory = null;
     private LogoParser myLogoParser;
+    private ParserTranslation myParserTranslation;
 
 
     public Parser (CommandsFactory commandsFactory) {
+        myParserTranslation = new ParserTranslation();
         this.commandsFactory = commandsFactory;
     }
     
@@ -40,13 +41,7 @@ public class Parser {
      * language string of a matching resource bundle
      */
     public void setForeignLanguage (String language) {
-        if (language.equals("English")) {
-            //don't bother translating, the parser handles english
-            ourLanguageBundle = null;
-        }
-        else {
-            ourLanguageBundle = ResourceBundle.getBundle(RESOURCELOCATION + DOT + language);
-        }
+        myParserTranslation.setForeignLanguage(language);
     }
    
     public void createLogoParser () {
@@ -70,60 +65,12 @@ public class Parser {
      */
     public ICommand parse (String input) throws Exception {
         String finalInput = input;
-        if (ourLanguageBundle != null) {
-            finalInput = translateInput(finalInput);
-        }
+        finalInput = myParserTranslation.translateInput(finalInput);
         //now drop case
         finalInput = finalInput.toLowerCase();
         InputStream inputStream = new ByteArrayInputStream(finalInput.getBytes());
         myLogoParser.ReInit(inputStream);
         return myLogoParser.parse(commandsFactory);
-    }
-    
-    /**
-     * translate a given input by looking at words and checking for matches in the resource bundle
-     * @param input
-     * string to translate
-     */
-    private String translateInput (String input) {
-        String[] splitInput = input.split("\\s+");
-        for (int i = 0; i < splitInput.length; i++) {
-            //do we have a matching entry in the resource bundle?
-            // get the keys
-            Enumeration<String> enumeration = ourLanguageBundle.getKeys();
-            // check keys for matches
-            while (enumeration.hasMoreElements()) {
-               String nextKey = enumeration.nextElement();
-               String csValues = ourLanguageBundle.getString(nextKey);
-               String[] separatedValues = csValues.split("\\s*,\\s*");
-               for (int j = 0; j < separatedValues.length; j++) {
-                   if (splitInput[i].equals(separatedValues[j])) {
-                       //replace the foreign value with the matching key
-                       splitInput[i] = nextKey;
-                   }
-               }
-            }
-        }
-        //space separated string has been processed
-        return buildSpaceSeparatedString(splitInput);
-    }
-    
-    /**
-     * helper method to turn an array of strings into a space-seperated string
-     * @param splitString
-     * string array
-     * @return
-     * joined string
-     */
-    private String buildSpaceSeparatedString (String[] splitString) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < splitString.length; i++) {
-            builder.append(splitString[i]);
-            if (i != splitString.length - 1) {
-                builder.append(" ");
-            }
-        }
-        return builder.toString();
     }
     
     /**
