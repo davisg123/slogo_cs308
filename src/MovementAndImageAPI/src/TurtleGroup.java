@@ -1,3 +1,5 @@
+// This entire file is part of my masterpiece.
+// Eirika Sawh
 package MovementAndImageAPI.src;
 
 import java.util.ArrayList;
@@ -151,5 +153,13 @@ public class TurtleGroup extends GeneralTurtleHandler {
 			System.out.println("Valid Turtle IDs: "
 					+ Arrays.toString(allTurtles.keySet().toArray()));
 		}
+	}
+	
+	public Map<Integer, TurtleHandler> getAllTurtles(){
+		return allTurtles;
+	}
+	
+	public Map<Integer, TurtleHandler> getActiveTurtles(){
+		return activeTurtles;
 	}
 }

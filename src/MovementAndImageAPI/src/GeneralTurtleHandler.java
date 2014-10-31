@@ -1,3 +1,5 @@
+// This entire file is part of my masterpiece.
+// Eirika Sawh
 package MovementAndImageAPI.src;
 
 import javafx.geometry.Point2D;
