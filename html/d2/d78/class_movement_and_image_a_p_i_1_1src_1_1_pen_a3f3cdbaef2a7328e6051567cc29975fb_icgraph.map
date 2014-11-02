@@ -1,0 +1,11 @@
+<map id="MovementAndImageAPI.src.Pen.getPenPosition" name="MovementAndImageAPI.src.Pen.getPenPosition">
+<area shape="rect" id="node2" href="$da/d8f/class_movement_and_image_a_p_i_1_1src_1_1_pen_handler.html#ad3f35e8b9605bde22fcbb5bc3e15cbf5" title="MovementAndImageAPI.src.\lPenHandler.getPenPosition" alt="" coords="256,74,459,115"/>
+<area shape="rect" id="node3" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a194a73bcc0c675e5d7d9182847805455" title="MovementAndImageAPI.src.\lImageUpdater.drawLine" alt="" coords="507,41,709,82"/>
+<area shape="rect" id="node9" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a6a340f7cbda09ca810d01a1767150ba9" title="MovementAndImageAPI.src.\lTurtle.getPenPosition" alt="" coords="507,106,709,147"/>
+<area shape="rect" id="node4" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#adf01534451c018bc6b767aa8d42689bb" title="MovementAndImageAPI.src.\lTurtleHandler.moveAndDraw" alt="" coords="759,41,961,82"/>
+<area shape="rect" id="node5" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a47aab93cef3fa6ddcebacd40db48090b" title="MovementAndImageAPI.src.\lTurtleHandler.updateTurtleLocation" alt="" coords="1012,5,1255,46"/>
+<area shape="rect" id="node8" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a508472221e2ec6de1f1fae9b04a661c4" title="MovementAndImageAPI.src.\lTurtleHandler.updateTurtleAbsolute\lLocation" alt="" coords="1011,69,1255,125"/>
+<area shape="rect" id="node6" href="$d0/d4b/class_main.html#a9aab0955c478f8846fae079b0c56e8d3" title="Main.addKeyboardControl" alt="" coords="1305,12,1490,39"/>
+<area shape="rect" id="node7" href="$d0/d4b/class_main.html#aaa75b38812324d0f17c89f139bde6ada" title="Main.start" alt="" coords="1539,12,1626,39"/>
+<area shape="rect" id="node10" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a970fe0c9687fe615d73223a0e4a99027" title="MovementAndImageAPI.src.\lTurtleHandler.getPenPosition" alt="" coords="758,106,962,147"/>
+</map>

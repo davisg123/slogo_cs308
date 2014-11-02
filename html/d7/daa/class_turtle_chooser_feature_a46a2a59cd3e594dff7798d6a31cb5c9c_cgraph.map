@@ -1,0 +1,10 @@
+<map id="TurtleChooserFeature.openTurtleChooser" name="TurtleChooserFeature.openTurtleChooser">
+<area shape="rect" id="node2" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#ae7bd62e67c6a572a4efef91176eb370e" title="MovementAndImageAPI.src.\lTurtleHandler.updateImage" alt="" coords="248,103,451,145"/>
+<area shape="rect" id="node3" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a8b7348625438380a184c287ba3eda20d" title="MovementAndImageAPI.src.\lTurtle.updateImage" alt="" coords="516,5,719,46"/>
+<area shape="rect" id="node4" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#adea0730f4ec25ebf5b16940420f9af0b" title="MovementAndImageAPI.src.\lImageUpdater.updateTurtleImage" alt="" coords="499,70,735,111"/>
+<area shape="rect" id="node8" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#af438d3cf63dc7584f43e470e56592cbb" title="MovementAndImageAPI.src.\lTurtle.getPoint" alt="" coords="516,135,719,177"/>
+<area shape="rect" id="node9" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a75d31c1ce4fcba5a04aec065d2403d39" title="MovementAndImageAPI.src.\lTurtle.getImage" alt="" coords="516,201,719,242"/>
+<area shape="rect" id="node5" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a08e8ba7624dbce157332a73670072c78" title="MovementAndImageAPI.src.\lImageUpdater.ensurePositive" alt="" coords="797,38,1008,79"/>
+<area shape="rect" id="node6" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a581e045297ecf935c75512c1198703b3" title="MovementAndImageAPI.src.\lImageUpdater.drawRotatedImage" alt="" coords="785,103,1021,145"/>
+<area shape="rect" id="node7" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a2368721809649636ad6dce3c008a6d62" title="MovementAndImageAPI.src.\lImageUpdater.rotate" alt="" coords="1069,103,1272,145"/>
+</map>

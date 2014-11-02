@@ -1,0 +1,9 @@
+<map id="MovementAndImageAPI.src.Pen.getLineWidth" name="MovementAndImageAPI.src.Pen.getLineWidth">
+<area shape="rect" id="node2" href="$da/d8f/class_movement_and_image_a_p_i_1_1src_1_1_pen_handler.html#ab73c37fd9bab639a2253b5a5817387a9" title="MovementAndImageAPI.src.\lPenHandler.getLineWidth" alt="" coords="256,41,459,82"/>
+<area shape="rect" id="node3" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a194a73bcc0c675e5d7d9182847805455" title="MovementAndImageAPI.src.\lImageUpdater.drawLine" alt="" coords="507,41,709,82"/>
+<area shape="rect" id="node4" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#adf01534451c018bc6b767aa8d42689bb" title="MovementAndImageAPI.src.\lTurtleHandler.moveAndDraw" alt="" coords="757,41,960,82"/>
+<area shape="rect" id="node5" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a47aab93cef3fa6ddcebacd40db48090b" title="MovementAndImageAPI.src.\lTurtleHandler.updateTurtleLocation" alt="" coords="1009,5,1252,46"/>
+<area shape="rect" id="node8" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a508472221e2ec6de1f1fae9b04a661c4" title="MovementAndImageAPI.src.\lTurtleHandler.updateTurtleAbsolute\lLocation" alt="" coords="1009,69,1253,125"/>
+<area shape="rect" id="node6" href="$d0/d4b/class_main.html#a9aab0955c478f8846fae079b0c56e8d3" title="Main.addKeyboardControl" alt="" coords="1302,12,1487,39"/>
+<area shape="rect" id="node7" href="$d0/d4b/class_main.html#aaa75b38812324d0f17c89f139bde6ada" title="Main.start" alt="" coords="1537,12,1623,39"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="parser.LogoParser.term" name="parser.LogoParser.term">
+<area shape="rect" id="node2" href="$d5/d0e/classparser_1_1_logo_parser.html#a82acce8328e52f3b2bcb90542cc800b7" title="parser.LogoParser.arithm" alt="" coords="225,45,407,72"/>
+<area shape="rect" id="node3" href="$d5/d0e/classparser_1_1_logo_parser.html#a397c25c39976e5a1fb689e1f0dd40160" title="parser.LogoParser.eval" alt="" coords="457,45,623,72"/>
+<area shape="rect" id="node4" href="$d5/d0e/classparser_1_1_logo_parser.html#a6b0ba0c2b5b0bc8c2ef76863fffdb6a3" title="parser.LogoParser.list" alt="" coords="929,45,1087,72"/>
+<area shape="rect" id="node15" href="$d5/d0e/classparser_1_1_logo_parser.html#ad6ed8e51959a6e19a2323444aa8331c8" title="parser.LogoParser.statement" alt="" coords="673,71,879,97"/>
+<area shape="rect" id="node5" href="$d5/d0e/classparser_1_1_logo_parser.html#a4a8825534e0488215d22bcd947bc4d41" title="parser.LogoParser.expression" alt="" coords="1137,20,1346,47"/>
+<area shape="rect" id="node6" href="$d5/d0e/classparser_1_1_logo_parser.html#adefe3b97ad0d2d7fd0dcd13f7ef2c75e" title="parser.LogoParser.parse" alt="" coords="1153,71,1329,97"/>
+<area shape="rect" id="node7" href="$d6/d95/classparser_1_1_parser.html#af3d0cef45b9f02f1707959c08d8f3797" title="parser.Parser.parse" alt="" coords="1395,71,1541,97"/>
+<area shape="rect" id="node8" href="$d4/d06/classinput_1_1_input_executor.html#a687a9f2cbed5d27a2c7b1336a1cab8aa" title="input.InputExecutor.process\lInput" alt="" coords="1590,5,1789,46"/>
+<area shape="rect" id="node9" href="$d6/d95/classparser_1_1_parser.html#ae90f8410be9931ec3f349085c8fdae71" title="parser.Parser.parseFile" alt="" coords="1607,71,1772,97"/>
+<area shape="rect" id="node14" href="$d5/d56/class_workspace.html#a0ed8fb487512971086b6f3ed0d74e4ae" title="Workspace.sendUserInput" alt="" coords="1844,127,2031,153"/>
+<area shape="rect" id="node10" href="$d9/de8/class_file_chooser_feature.html#ad742b8e9d07e8151f0a9ff1972867ce8" title="FileChooserFeature.openFile\lChooser" alt="" coords="1838,61,2037,102"/>
+<area shape="rect" id="node11" href="$d5/d56/class_workspace.html#a6babd032d9af86fbc23812272d59a2d2" title="Workspace.addFeatureButtons" alt="" coords="2085,71,2301,97"/>
+<area shape="rect" id="node12" href="$d5/d56/class_workspace.html#a429d535dfd8427637b7715f0b1e1df1b" title="Workspace.createWorkspace" alt="" coords="2349,97,2552,124"/>
+<area shape="rect" id="node13" href="$d0/d4b/class_main.html#aaa75b38812324d0f17c89f139bde6ada" title="Main.start" alt="" coords="2601,97,2687,124"/>
+</map>

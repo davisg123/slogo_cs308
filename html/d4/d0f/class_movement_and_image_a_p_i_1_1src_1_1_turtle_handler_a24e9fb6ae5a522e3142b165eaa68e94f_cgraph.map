@@ -1,0 +1,11 @@
+<map id="MovementAndImageAPI.src.TurtleHandler.updateTurtleAbsoluteOrientation" name="MovementAndImageAPI.src.TurtleHandler.updateTurtleAbsoluteOrientation">
+<area shape="rect" id="node2" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a75d31c1ce4fcba5a04aec065d2403d39" title="MovementAndImageAPI.src.\lTurtle.getImage" alt="" coords="316,5,519,46"/>
+<area shape="rect" id="node3" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#af438d3cf63dc7584f43e470e56592cbb" title="MovementAndImageAPI.src.\lTurtle.getPoint" alt="" coords="316,70,519,111"/>
+<area shape="rect" id="node4" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a0fcf334951cc9357c73e968707cab8d0" title="MovementAndImageAPI.src.\lTurtle.updateAbsoluteOrientation" alt="" coords="301,135,533,177"/>
+<area shape="rect" id="node7" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#adea0730f4ec25ebf5b16940420f9af0b" title="MovementAndImageAPI.src.\lImageUpdater.updateTurtleImage" alt="" coords="299,201,535,242"/>
+<area shape="rect" id="node5" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a79610d6c6d05b070331c32cee99d69a9" title="MovementAndImageAPI.src.\lTurtle.finishRotation" alt="" coords="601,135,804,177"/>
+<area shape="rect" id="node6" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a1e1b79caf9191f2b467d6a50bfeca3df" title="MovementAndImageAPI.src.\lTurtle.ensurePositiveOrientation" alt="" coords="869,135,1093,177"/>
+<area shape="rect" id="node8" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a581e045297ecf935c75512c1198703b3" title="MovementAndImageAPI.src.\lImageUpdater.drawRotatedImage" alt="" coords="585,201,821,242"/>
+<area shape="rect" id="node10" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a08e8ba7624dbce157332a73670072c78" title="MovementAndImageAPI.src.\lImageUpdater.ensurePositive" alt="" coords="597,266,808,307"/>
+<area shape="rect" id="node9" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a2368721809649636ad6dce3c008a6d62" title="MovementAndImageAPI.src.\lImageUpdater.rotate" alt="" coords="880,201,1083,242"/>
+</map>

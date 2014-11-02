@@ -1,0 +1,36 @@
+<map id="parser.LogoParserTokenManager.ReInitRounds" name="parser.LogoParserTokenManager.ReInitRounds">
+<area shape="rect" id="node2" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a0071f141b41b403c8ab151c8c014a709" title="parser.LogoParserTokenManager.jj\lMoveNfa_0" alt="" coords="286,479,525,521"/>
+<area shape="rect" id="node33" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a27d2bf5d91d27141ec3923c89284e1bc" title="parser.LogoParserTokenManager.\lReInit" alt="" coords="289,617,521,658"/>
+<area shape="rect" id="node3" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a2b55f093fc0200c57a099eba2d9b37e2" title="parser.LogoParserTokenManager.jj\lMoveStringLiteralDfa0_0" alt="" coords="2590,450,2829,491"/>
+<area shape="rect" id="node25" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#aa065c8b0c977d3c1c9d9058f96664080" title="parser.LogoParserTokenManager.jj\lStartNfa_0" alt="" coords="574,406,813,447"/>
+<area shape="rect" id="node32" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a94b20a17d94554012918e876be221c46" title="parser.LogoParserTokenManager.jj\lStartNfaWithStates_0" alt="" coords="574,137,813,178"/>
+<area shape="rect" id="node4" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a3dee50e2286b70ba662519a865e63b77" title="parser.LogoParserTokenManager.get\lNextToken" alt="" coords="2877,450,3131,491"/>
+<area shape="rect" id="node5" href="$d5/d0e/classparser_1_1_logo_parser.html#a7477b52c4469ea43d75f88fb805e37a1" title="parser.LogoParser.getNext\lToken" alt="" coords="3182,366,3373,407"/>
+<area shape="rect" id="node6" href="$d5/d0e/classparser_1_1_logo_parser.html#a63b7890a7d6323bcf938132f968e8157" title="parser.LogoParser.getToken" alt="" coords="3179,432,3376,459"/>
+<area shape="rect" id="node7" href="$d5/d0e/classparser_1_1_logo_parser.html#a550039a3180ec86ef01f419aefc02edc" title="parser.LogoParser.jj\l_consume_token" alt="" coords="3204,703,3351,745"/>
+<area shape="rect" id="node24" href="$d5/d0e/classparser_1_1_logo_parser.html#a2e48e3ab2c1c075beca7bcc54d891afd" title="parser.LogoParser.jj_ntk" alt="" coords="3191,483,3364,509"/>
+<area shape="rect" id="node8" href="$d5/d0e/classparser_1_1_logo_parser.html#a82acce8328e52f3b2bcb90542cc800b7" title="parser.LogoParser.arithm" alt="" coords="3857,648,4039,675"/>
+<area shape="rect" id="node9" href="$d5/d0e/classparser_1_1_logo_parser.html#a397c25c39976e5a1fb689e1f0dd40160" title="parser.LogoParser.eval" alt="" coords="4089,692,4255,719"/>
+<area shape="rect" id="node10" href="$d5/d0e/classparser_1_1_logo_parser.html#a6b0ba0c2b5b0bc8c2ef76863fffdb6a3" title="parser.LogoParser.list" alt="" coords="4561,743,4719,769"/>
+<area shape="rect" id="node11" href="$d5/d0e/classparser_1_1_logo_parser.html#a4a8825534e0488215d22bcd947bc4d41" title="parser.LogoParser.expression" alt="" coords="4769,840,4978,867"/>
+<area shape="rect" id="node21" href="$d5/d0e/classparser_1_1_logo_parser.html#ad6ed8e51959a6e19a2323444aa8331c8" title="parser.LogoParser.statement" alt="" coords="4305,692,4511,719"/>
+<area shape="rect" id="node22" href="$d5/d0e/classparser_1_1_logo_parser.html#a4bdaeff6df067fde6743ff07370c3b0b" title="parser.LogoParser.pow" alt="" coords="3424,584,3589,611"/>
+<area shape="rect" id="node23" href="$d5/d0e/classparser_1_1_logo_parser.html#a34f4226672a2711ce2691162fdb2124d" title="parser.LogoParser.term" alt="" coords="3637,609,3808,636"/>
+<area shape="rect" id="node12" href="$d5/d0e/classparser_1_1_logo_parser.html#adefe3b97ad0d2d7fd0dcd13f7ef2c75e" title="parser.LogoParser.parse" alt="" coords="4785,743,4961,769"/>
+<area shape="rect" id="node13" href="$d6/d95/classparser_1_1_parser.html#af3d0cef45b9f02f1707959c08d8f3797" title="parser.Parser.parse" alt="" coords="5027,743,5173,769"/>
+<area shape="rect" id="node14" href="$d4/d06/classinput_1_1_input_executor.html#a687a9f2cbed5d27a2c7b1336a1cab8aa" title="input.InputExecutor.process\lInput" alt="" coords="5222,677,5421,718"/>
+<area shape="rect" id="node15" href="$d6/d95/classparser_1_1_parser.html#ae90f8410be9931ec3f349085c8fdae71" title="parser.Parser.parseFile" alt="" coords="5239,743,5404,769"/>
+<area shape="rect" id="node20" href="$d5/d56/class_workspace.html#a0ed8fb487512971086b6f3ed0d74e4ae" title="Workspace.sendUserInput" alt="" coords="5476,799,5663,825"/>
+<area shape="rect" id="node16" href="$d9/de8/class_file_chooser_feature.html#ad742b8e9d07e8151f0a9ff1972867ce8" title="FileChooserFeature.openFile\lChooser" alt="" coords="5470,733,5669,774"/>
+<area shape="rect" id="node17" href="$d5/d56/class_workspace.html#a6babd032d9af86fbc23812272d59a2d2" title="Workspace.addFeatureButtons" alt="" coords="5717,743,5933,769"/>
+<area shape="rect" id="node18" href="$d5/d56/class_workspace.html#a429d535dfd8427637b7715f0b1e1df1b" title="Workspace.createWorkspace" alt="" coords="5981,769,6184,796"/>
+<area shape="rect" id="node19" href="$d0/d4b/class_main.html#aaa75b38812324d0f17c89f139bde6ada" title="Main.start" alt="" coords="6233,769,6319,796"/>
+<area shape="rect" id="node26" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a99a01f0b68908e628349e9f09a2cbccd" title="parser.LogoParserTokenManager.jj\lMoveStringLiteralDfa1_0" alt="" coords="2302,450,2541,491"/>
+<area shape="rect" id="node27" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a26eaeb3ef169f93c03edbb3e26128b7a" title="parser.LogoParserTokenManager.jj\lMoveStringLiteralDfa2_0" alt="" coords="2014,401,2253,442"/>
+<area shape="rect" id="node28" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a12bfedaecfaf646642cb1aba5b1bd6fb" title="parser.LogoParserTokenManager.jj\lMoveStringLiteralDfa3_0" alt="" coords="1726,353,1965,394"/>
+<area shape="rect" id="node29" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#aa9aaf3af52d382735345487d2b89e0cf" title="parser.LogoParserTokenManager.jj\lMoveStringLiteralDfa4_0" alt="" coords="1438,309,1677,350"/>
+<area shape="rect" id="node30" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a4553920ced069b9d4852f1c1020bea38" title="parser.LogoParserTokenManager.jj\lMoveStringLiteralDfa5_0" alt="" coords="1150,271,1389,313"/>
+<area shape="rect" id="node31" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a1bad232a9ce95d19e7133cbee0b538b5" title="parser.LogoParserTokenManager.jj\lMoveStringLiteralDfa6_0" alt="" coords="862,246,1101,287"/>
+<area shape="rect" id="node34" href="$d5/d0e/classparser_1_1_logo_parser.html#ad67ba6e3a9b52b58bf08ea2ff3617c0b" title="parser.LogoParser.ReInit" alt="" coords="606,683,781,709"/>
+<area shape="rect" id="node35" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#aa93f80cf1b3b2423102d17bced08c48b" title="parser.LogoParserTokenManager.\lReInit" alt="" coords="577,617,809,658"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="MovementAndImageAPI.src.Turtle.ensurePositiveOrientation" name="MovementAndImageAPI.src.Turtle.ensurePositiveOrientation">
+<area shape="rect" id="node2" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a79610d6c6d05b070331c32cee99d69a9" title="MovementAndImageAPI.src.\lTurtle.finishRotation" alt="" coords="277,43,480,85"/>
+<area shape="rect" id="node3" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#ad607139e3733cfdfc37a7c4388b4a907" title="MovementAndImageAPI.src.\lTurtle.updateOrientation" alt="" coords="543,9,745,50"/>
+<area shape="rect" id="node7" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a0fcf334951cc9357c73e968707cab8d0" title="MovementAndImageAPI.src.\lTurtle.updateAbsoluteOrientation" alt="" coords="528,77,760,118"/>
+<area shape="rect" id="node4" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#af8be08b68068574b061f2e3a2f02c524" title="MovementAndImageAPI.src.\lTurtleHandler.updateTurtleOrientation" alt="" coords="808,5,1067,46"/>
+<area shape="rect" id="node5" href="$d0/d4b/class_main.html#a9aab0955c478f8846fae079b0c56e8d3" title="Main.addKeyboardControl" alt="" coords="1123,12,1309,39"/>
+<area shape="rect" id="node6" href="$d0/d4b/class_main.html#aaa75b38812324d0f17c89f139bde6ada" title="Main.start" alt="" coords="1366,12,1453,39"/>
+<area shape="rect" id="node8" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a24e9fb6ae5a522e3142b165eaa68e94f" title="MovementAndImageAPI.src.\lTurtleHandler.updateTurtleAbsolute\lOrientation" alt="" coords="815,69,1059,125"/>
+<area shape="rect" id="node10" href="$d2/d23/class_movement_and_image_a_p_i_1_1src_1_1_turtle_test.html#a98b768bf3f706d1d322e3eabfcd78dfe" title="MovementAndImageAPI.src.\lTurtleTest.testMovingDirections" alt="" coords="828,149,1047,190"/>
+<area shape="rect" id="node9" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a95e798d7c5caefdc1472c01f1438adaa" title="MovementAndImageAPI.src.\lTurtleHandler.towards" alt="" coords="1115,77,1317,118"/>
+</map>

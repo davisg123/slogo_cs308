@@ -1,0 +1,15 @@
+<map id="Workspace" name="Workspace">
+<area shape="rect" id="node2" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html" title="MovementAndImageAPI.src.\lTurtleHandler" alt="" coords="1344,381,1547,422"/>
+<area shape="rect" id="node3" href="$d1/d2a/class_movement_and_image_a_p_i_1_1src_1_1_general_turtle_handler.html" title="MovementAndImageAPI.src.\lGeneralTurtleHandler" alt="" coords="571,322,773,363"/>
+<area shape="rect" id="node26" href="$d0/d4e/classcommands_1_1_commands_factory.html" title="commands.CommandsFactory" alt="" coords="944,279,1163,305"/>
+<area shape="rect" id="node4" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html" title="MovementAndImageAPI.src.\lImageUpdater" alt="" coords="952,381,1155,422"/>
+<area shape="rect" id="node7" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html" title="MovementAndImageAPI.src.\lTurtle" alt="" coords="952,583,1155,625"/>
+<area shape="rect" id="node8" href="$da/d8f/class_movement_and_image_a_p_i_1_1src_1_1_pen_handler.html" title="MovementAndImageAPI.src.\lPenHandler" alt="" coords="571,655,773,697"/>
+<area shape="rect" id="node9" href="$d2/d78/class_movement_and_image_a_p_i_1_1src_1_1_pen.html" title="MovementAndImageAPI.src.Pen" alt="" coords="192,663,419,689"/>
+<area shape="rect" id="node17" href="$d6/d95/classparser_1_1_parser.html" title="parser.Parser" alt="" coords="1392,225,1499,252"/>
+<area shape="rect" id="node19" href="$d5/d0e/classparser_1_1_logo_parser.html" title="parser.LogoParser" alt="" coords="985,136,1122,163"/>
+<area shape="rect" id="node20" href="$de/db9/interfaceparser_1_1_logo_parser_constants.html" title="parser.LogoParserConstants" alt="" coords="204,103,407,129"/>
+<area shape="rect" id="node21" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html" title="parser.LogoParserTokenManager" alt="" coords="557,65,787,92"/>
+<area shape="rect" id="node22" href="$d4/dad/classparser_1_1_simple_char_stream.html" title="parser.SimpleCharStream" alt="" coords="211,21,399,48"/>
+<area shape="rect" id="node23" href="$db/df3/classparser_1_1_token.html" title="parser.Token" alt="" coords="621,271,723,297"/>
+</map>

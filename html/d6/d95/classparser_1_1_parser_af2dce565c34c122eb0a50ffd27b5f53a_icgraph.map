@@ -1,0 +1,10 @@
+<map id="parser.Parser.translateInput" name="parser.Parser.translateInput">
+<area shape="rect" id="node2" href="$d6/d95/classparser_1_1_parser.html#af3d0cef45b9f02f1707959c08d8f3797" title="parser.Parser.parse" alt="" coords="254,64,399,91"/>
+<area shape="rect" id="node3" href="$d6/d95/classparser_1_1_parser.html#ae90f8410be9931ec3f349085c8fdae71" title="parser.Parser.parseFile" alt="" coords="465,5,631,32"/>
+<area shape="rect" id="node8" href="$d4/d06/classinput_1_1_input_executor.html#a687a9f2cbed5d27a2c7b1336a1cab8aa" title="input.InputExecutor.process\lInput" alt="" coords="449,57,647,98"/>
+<area shape="rect" id="node9" href="$d5/d56/class_workspace.html#a0ed8fb487512971086b6f3ed0d74e4ae" title="Workspace.sendUserInput" alt="" coords="703,93,889,120"/>
+<area shape="rect" id="node4" href="$d9/de8/class_file_chooser_feature.html#ad742b8e9d07e8151f0a9ff1972867ce8" title="FileChooserFeature.openFile\lChooser" alt="" coords="697,13,895,54"/>
+<area shape="rect" id="node5" href="$d5/d56/class_workspace.html#a6babd032d9af86fbc23812272d59a2d2" title="Workspace.addFeatureButtons" alt="" coords="944,27,1160,53"/>
+<area shape="rect" id="node6" href="$d5/d56/class_workspace.html#a429d535dfd8427637b7715f0b1e1df1b" title="Workspace.createWorkspace" alt="" coords="1208,55,1411,81"/>
+<area shape="rect" id="node7" href="$d0/d4b/class_main.html#aaa75b38812324d0f17c89f139bde6ada" title="Main.start" alt="" coords="1459,55,1546,81"/>
+</map>

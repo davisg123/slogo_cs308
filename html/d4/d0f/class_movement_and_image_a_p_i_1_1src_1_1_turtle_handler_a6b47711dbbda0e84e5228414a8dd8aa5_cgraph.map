@@ -1,0 +1,9 @@
+<map id="MovementAndImageAPI.src.TurtleHandler.showTurtle" name="MovementAndImageAPI.src.TurtleHandler.showTurtle">
+<area shape="rect" id="node2" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a75d31c1ce4fcba5a04aec065d2403d39" title="MovementAndImageAPI.src.\lTurtle.getImage" alt="" coords="273,5,476,46"/>
+<area shape="rect" id="node3" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#af438d3cf63dc7584f43e470e56592cbb" title="MovementAndImageAPI.src.\lTurtle.getPoint" alt="" coords="273,70,476,111"/>
+<area shape="rect" id="node4" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#aff3067eb310f015e0b817610aec17647" title="MovementAndImageAPI.src.\lTurtle.show" alt="" coords="273,135,476,177"/>
+<area shape="rect" id="node5" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#adea0730f4ec25ebf5b16940420f9af0b" title="MovementAndImageAPI.src.\lImageUpdater.updateTurtleImage" alt="" coords="257,201,493,242"/>
+<area shape="rect" id="node6" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a581e045297ecf935c75512c1198703b3" title="MovementAndImageAPI.src.\lImageUpdater.drawRotatedImage" alt="" coords="542,167,778,209"/>
+<area shape="rect" id="node8" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a08e8ba7624dbce157332a73670072c78" title="MovementAndImageAPI.src.\lImageUpdater.ensurePositive" alt="" coords="555,233,765,274"/>
+<area shape="rect" id="node7" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a2368721809649636ad6dce3c008a6d62" title="MovementAndImageAPI.src.\lImageUpdater.rotate" alt="" coords="827,167,1029,209"/>
+</map>

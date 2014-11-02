@@ -1,0 +1,7 @@
+<map id="parser.SimpleCharStream.BeginToken" name="parser.SimpleCharStream.BeginToken">
+<area shape="rect" id="node2" href="$d4/dad/classparser_1_1_simple_char_stream.html#a9f80cee02b99e8e200afa646e3b25e29" title="parser.SimpleCharStream.readChar" alt="" coords="245,75,496,101"/>
+<area shape="rect" id="node3" href="$d4/dad/classparser_1_1_simple_char_stream.html#aac1dcd2a238adbc951d3af740cc2aa13" title="parser.SimpleCharStream.\lFillBuff" alt="" coords="544,34,736,75"/>
+<area shape="rect" id="node6" href="$d4/dad/classparser_1_1_simple_char_stream.html#ad8ca3472934b9d38c005c8885d859403" title="parser.SimpleCharStream.\lUpdateLineColumn" alt="" coords="544,99,736,141"/>
+<area shape="rect" id="node4" href="$d4/dad/classparser_1_1_simple_char_stream.html#a5328cda7180ed2a180eac8af133517cf" title="parser.SimpleCharStream.\lExpandBuff" alt="" coords="808,5,1000,46"/>
+<area shape="rect" id="node5" href="$d4/dad/classparser_1_1_simple_char_stream.html#a4eacb833520fdfdb1b18be45bc3bd4ba" title="parser.SimpleCharStream.backup" alt="" coords="785,71,1023,97"/>
+</map>

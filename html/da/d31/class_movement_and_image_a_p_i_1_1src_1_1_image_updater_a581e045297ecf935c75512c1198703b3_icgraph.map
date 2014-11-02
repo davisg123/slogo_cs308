@@ -1,0 +1,16 @@
+<map id="MovementAndImageAPI.src.ImageUpdater.drawRotatedImage" name="MovementAndImageAPI.src.ImageUpdater.drawRotatedImage">
+<area shape="rect" id="node2" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#adea0730f4ec25ebf5b16940420f9af0b" title="MovementAndImageAPI.src.\lImageUpdater.updateTurtleImage" alt="" coords="291,207,527,249"/>
+<area shape="rect" id="node3" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#adf01534451c018bc6b767aa8d42689bb" title="MovementAndImageAPI.src.\lTurtleHandler.moveAndDraw" alt="" coords="597,77,800,118"/>
+<area shape="rect" id="node8" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#af8be08b68068574b061f2e3a2f02c524" title="MovementAndImageAPI.src.\lTurtleHandler.updateTurtleOrientation" alt="" coords="869,149,1128,190"/>
+<area shape="rect" id="node9" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a24e9fb6ae5a522e3142b165eaa68e94f" title="MovementAndImageAPI.src.\lTurtleHandler.updateTurtleAbsolute\lOrientation" alt="" coords="577,200,821,256"/>
+<area shape="rect" id="node11" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a6b47711dbbda0e84e5228414a8dd8aa5" title="MovementAndImageAPI.src.\lTurtleHandler.showTurtle" alt="" coords="597,279,800,321"/>
+<area shape="rect" id="node12" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#ae7bd62e67c6a572a4efef91176eb370e" title="MovementAndImageAPI.src.\lTurtleHandler.updateImage" alt="" coords="597,345,800,386"/>
+<area shape="rect" id="node4" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a47aab93cef3fa6ddcebacd40db48090b" title="MovementAndImageAPI.src.\lTurtleHandler.updateTurtleLocation" alt="" coords="877,5,1120,46"/>
+<area shape="rect" id="node7" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a508472221e2ec6de1f1fae9b04a661c4" title="MovementAndImageAPI.src.\lTurtleHandler.updateTurtleAbsolute\lLocation" alt="" coords="877,69,1121,125"/>
+<area shape="rect" id="node5" href="$d0/d4b/class_main.html#a9aab0955c478f8846fae079b0c56e8d3" title="Main.addKeyboardControl" alt="" coords="1191,156,1377,183"/>
+<area shape="rect" id="node6" href="$d0/d4b/class_main.html#aaa75b38812324d0f17c89f139bde6ada" title="Main.start" alt="" coords="1691,247,1778,273"/>
+<area shape="rect" id="node10" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a95e798d7c5caefdc1472c01f1438adaa" title="MovementAndImageAPI.src.\lTurtleHandler.towards" alt="" coords="897,214,1100,255"/>
+<area shape="rect" id="node13" href="$d7/daa/class_turtle_chooser_feature.html#a46a2a59cd3e594dff7798d6a31cb5c9c" title="TurtleChooserFeature.open\lTurtleChooser" alt="" coords="902,286,1095,327"/>
+<area shape="rect" id="node15" href="$d5/d56/class_workspace.html#a429d535dfd8427637b7715f0b1e1df1b" title="Workspace.createWorkspace" alt="" coords="1440,293,1643,320"/>
+<area shape="rect" id="node14" href="$d5/d56/class_workspace.html#a6babd032d9af86fbc23812272d59a2d2" title="Workspace.addFeatureButtons" alt="" coords="1176,293,1392,320"/>
+</map>

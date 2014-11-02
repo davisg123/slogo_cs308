@@ -1,0 +1,15 @@
+<map id="MovementAndImageAPI.src.ImageUpdater.drawLine" name="MovementAndImageAPI.src.ImageUpdater.drawLine">
+<area shape="rect" id="node2" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a08e8ba7624dbce157332a73670072c78" title="MovementAndImageAPI.src.\lImageUpdater.ensurePositive" alt="" coords="268,5,479,46"/>
+<area shape="rect" id="node3" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a049f8e63bcdbe91f5fad63c778030fb4" title="MovementAndImageAPI.src.\lImageUpdater.findBoundaryPoint" alt="" coords="257,122,490,163"/>
+<area shape="rect" id="node4" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a03f6a2a06e7a7476405345f6fcb3dad5" title="MovementAndImageAPI.src.\lImageUpdater.xOutOfBounds" alt="" coords="539,18,749,59"/>
+<area shape="rect" id="node5" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#af0f2404b46ab5bd003906d97d8460654" title="MovementAndImageAPI.src.\lImageUpdater.yOutOfBounds" alt="" coords="539,214,749,255"/>
+<area shape="rect" id="node8" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a99fe830ba09a4ee088ef04eebc1b2183" title="MovementAndImageAPI.src.\lImageUpdater.findNewStartPoint" alt="" coords="258,239,489,281"/>
+<area shape="rect" id="node9" href="$da/d8f/class_movement_and_image_a_p_i_1_1src_1_1_pen_handler.html#ab73c37fd9bab639a2253b5a5817387a9" title="MovementAndImageAPI.src.\lPenHandler.getLineWidth" alt="" coords="272,305,475,346"/>
+<area shape="rect" id="node11" href="$da/d8f/class_movement_and_image_a_p_i_1_1src_1_1_pen_handler.html#a64a9b8fde73c28f0683640b081d884f1" title="MovementAndImageAPI.src.\lPenHandler.getPenColor" alt="" coords="272,370,475,411"/>
+<area shape="rect" id="node13" href="$da/d8f/class_movement_and_image_a_p_i_1_1src_1_1_pen_handler.html#ad3f35e8b9605bde22fcbb5bc3e15cbf5" title="MovementAndImageAPI.src.\lPenHandler.getPenPosition" alt="" coords="272,435,475,477"/>
+<area shape="rect" id="node6" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#a24866e7c0871e72ff9bb226fa477ee2b" title="MovementAndImageAPI.src.\lImageUpdater.xBoundary" alt="" coords="543,83,745,125"/>
+<area shape="rect" id="node7" href="$da/d31/class_movement_and_image_a_p_i_1_1src_1_1_image_updater.html#ad79a0592d012a80c6db9c91909440415" title="MovementAndImageAPI.src.\lImageUpdater.yBoundary" alt="" coords="543,149,745,190"/>
+<area shape="rect" id="node10" href="$d2/d78/class_movement_and_image_a_p_i_1_1src_1_1_pen.html#aecf75855f964eb9eb238cae05df975a6" title="MovementAndImageAPI.src.\lPen.getLineWidth" alt="" coords="543,305,745,346"/>
+<area shape="rect" id="node12" href="$d2/d78/class_movement_and_image_a_p_i_1_1src_1_1_pen.html#a8d076af52cf4510ecda7a874ee978fc2" title="MovementAndImageAPI.src.\lPen.getPenColor" alt="" coords="543,370,745,411"/>
+<area shape="rect" id="node14" href="$d2/d78/class_movement_and_image_a_p_i_1_1src_1_1_pen.html#a3f3cdbaef2a7328e6051567cc29975fb" title="MovementAndImageAPI.src.\lPen.getPenPosition" alt="" coords="543,435,745,477"/>
+</map>

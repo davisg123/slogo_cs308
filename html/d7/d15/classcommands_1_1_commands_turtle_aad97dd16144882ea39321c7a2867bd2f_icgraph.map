@@ -1,0 +1,5 @@
+<map id="commands.CommandsTurtle.turtleHandler" name="commands.CommandsTurtle.turtleHandler">
+<area shape="rect" id="node2" href="$d7/d15/classcommands_1_1_commands_turtle.html#ab26d610dfd31612313a1671573e08374" title="commands.CommandsTurtle.\lCommandsTurtle" alt="" coords="337,5,548,46"/>
+<area shape="rect" id="node3" href="$dd/d12/classcommands_1_1_activity_command.html#adfd5a1b897a52136a95e4d3b9cdd04d9" title="commands.ActivityCommand.execute" alt="" coords="309,71,576,97"/>
+<area shape="rect" id="node4" href="$d1/d7f/classcommands_1_1_movement_command.html#a80189fb5aa013c7f5c400118c94ddf8c" title="commands.MovementCommand.execute" alt="" coords="299,121,587,148"/>
+</map>

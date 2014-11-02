@@ -1,0 +1,23 @@
+<map id="parser.LogoParserTokenManager.jjMoveStringLiteralDfa0_0" name="parser.LogoParserTokenManager.jjMoveStringLiteralDfa0_0">
+<area shape="rect" id="node2" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a3dee50e2286b70ba662519a865e63b77" title="parser.LogoParserTokenManager.get\lNextToken" alt="" coords="293,111,547,153"/>
+<area shape="rect" id="node3" href="$d5/d0e/classparser_1_1_logo_parser.html#a7477b52c4469ea43d75f88fb805e37a1" title="parser.LogoParser.getNext\lToken" alt="" coords="598,27,789,69"/>
+<area shape="rect" id="node4" href="$d5/d0e/classparser_1_1_logo_parser.html#a63b7890a7d6323bcf938132f968e8157" title="parser.LogoParser.getToken" alt="" coords="595,93,792,120"/>
+<area shape="rect" id="node5" href="$d5/d0e/classparser_1_1_logo_parser.html#a550039a3180ec86ef01f419aefc02edc" title="parser.LogoParser.jj\l_consume_token" alt="" coords="620,365,767,406"/>
+<area shape="rect" id="node22" href="$d5/d0e/classparser_1_1_logo_parser.html#a2e48e3ab2c1c075beca7bcc54d891afd" title="parser.LogoParser.jj_ntk" alt="" coords="607,144,780,171"/>
+<area shape="rect" id="node6" href="$d5/d0e/classparser_1_1_logo_parser.html#a82acce8328e52f3b2bcb90542cc800b7" title="parser.LogoParser.arithm" alt="" coords="1273,309,1455,336"/>
+<area shape="rect" id="node7" href="$d5/d0e/classparser_1_1_logo_parser.html#a397c25c39976e5a1fb689e1f0dd40160" title="parser.LogoParser.eval" alt="" coords="1505,353,1671,380"/>
+<area shape="rect" id="node8" href="$d5/d0e/classparser_1_1_logo_parser.html#a6b0ba0c2b5b0bc8c2ef76863fffdb6a3" title="parser.LogoParser.list" alt="" coords="1977,404,2135,431"/>
+<area shape="rect" id="node9" href="$d5/d0e/classparser_1_1_logo_parser.html#a4a8825534e0488215d22bcd947bc4d41" title="parser.LogoParser.expression" alt="" coords="2185,501,2394,528"/>
+<area shape="rect" id="node19" href="$d5/d0e/classparser_1_1_logo_parser.html#ad6ed8e51959a6e19a2323444aa8331c8" title="parser.LogoParser.statement" alt="" coords="1721,353,1927,380"/>
+<area shape="rect" id="node20" href="$d5/d0e/classparser_1_1_logo_parser.html#a4bdaeff6df067fde6743ff07370c3b0b" title="parser.LogoParser.pow" alt="" coords="840,245,1005,272"/>
+<area shape="rect" id="node21" href="$d5/d0e/classparser_1_1_logo_parser.html#a34f4226672a2711ce2691162fdb2124d" title="parser.LogoParser.term" alt="" coords="1053,271,1224,297"/>
+<area shape="rect" id="node10" href="$d5/d0e/classparser_1_1_logo_parser.html#adefe3b97ad0d2d7fd0dcd13f7ef2c75e" title="parser.LogoParser.parse" alt="" coords="2201,404,2377,431"/>
+<area shape="rect" id="node11" href="$d6/d95/classparser_1_1_parser.html#af3d0cef45b9f02f1707959c08d8f3797" title="parser.Parser.parse" alt="" coords="2443,404,2589,431"/>
+<area shape="rect" id="node12" href="$d4/d06/classinput_1_1_input_executor.html#a687a9f2cbed5d27a2c7b1336a1cab8aa" title="input.InputExecutor.process\lInput" alt="" coords="2638,338,2837,379"/>
+<area shape="rect" id="node13" href="$d6/d95/classparser_1_1_parser.html#ae90f8410be9931ec3f349085c8fdae71" title="parser.Parser.parseFile" alt="" coords="2655,404,2820,431"/>
+<area shape="rect" id="node18" href="$d5/d56/class_workspace.html#a0ed8fb487512971086b6f3ed0d74e4ae" title="Workspace.sendUserInput" alt="" coords="2892,460,3079,487"/>
+<area shape="rect" id="node14" href="$d9/de8/class_file_chooser_feature.html#ad742b8e9d07e8151f0a9ff1972867ce8" title="FileChooserFeature.openFile\lChooser" alt="" coords="2886,394,3085,435"/>
+<area shape="rect" id="node15" href="$d5/d56/class_workspace.html#a6babd032d9af86fbc23812272d59a2d2" title="Workspace.addFeatureButtons" alt="" coords="3133,404,3349,431"/>
+<area shape="rect" id="node16" href="$d5/d56/class_workspace.html#a429d535dfd8427637b7715f0b1e1df1b" title="Workspace.createWorkspace" alt="" coords="3397,431,3600,457"/>
+<area shape="rect" id="node17" href="$d0/d4b/class_main.html#aaa75b38812324d0f17c89f139bde6ada" title="Main.start" alt="" coords="3649,431,3735,457"/>
+</map>

@@ -1,0 +1,24 @@
+<map id="parser.SimpleCharStream.GetImage" name="parser.SimpleCharStream.GetImage">
+<area shape="rect" id="node2" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a3dee50e2286b70ba662519a865e63b77" title="parser.LogoParserTokenManager.get\lNextToken" alt="" coords="533,111,787,153"/>
+<area shape="rect" id="node23" href="$d0/d8c/classparser_1_1_logo_parser_token_manager.html#a105d12f62ad67eda0850987aedc48f4d" title="parser.LogoParserTokenManager.jj\lFillToken" alt="" coords="246,141,485,182"/>
+<area shape="rect" id="node3" href="$d5/d0e/classparser_1_1_logo_parser.html#a7477b52c4469ea43d75f88fb805e37a1" title="parser.LogoParser.getNext\lToken" alt="" coords="838,27,1029,69"/>
+<area shape="rect" id="node4" href="$d5/d0e/classparser_1_1_logo_parser.html#a63b7890a7d6323bcf938132f968e8157" title="parser.LogoParser.getToken" alt="" coords="835,93,1032,120"/>
+<area shape="rect" id="node5" href="$d5/d0e/classparser_1_1_logo_parser.html#a550039a3180ec86ef01f419aefc02edc" title="parser.LogoParser.jj\l_consume_token" alt="" coords="860,365,1007,406"/>
+<area shape="rect" id="node22" href="$d5/d0e/classparser_1_1_logo_parser.html#a2e48e3ab2c1c075beca7bcc54d891afd" title="parser.LogoParser.jj_ntk" alt="" coords="847,144,1020,171"/>
+<area shape="rect" id="node6" href="$d5/d0e/classparser_1_1_logo_parser.html#a82acce8328e52f3b2bcb90542cc800b7" title="parser.LogoParser.arithm" alt="" coords="1513,309,1695,336"/>
+<area shape="rect" id="node7" href="$d5/d0e/classparser_1_1_logo_parser.html#a397c25c39976e5a1fb689e1f0dd40160" title="parser.LogoParser.eval" alt="" coords="1745,353,1911,380"/>
+<area shape="rect" id="node8" href="$d5/d0e/classparser_1_1_logo_parser.html#a6b0ba0c2b5b0bc8c2ef76863fffdb6a3" title="parser.LogoParser.list" alt="" coords="2217,404,2375,431"/>
+<area shape="rect" id="node9" href="$d5/d0e/classparser_1_1_logo_parser.html#a4a8825534e0488215d22bcd947bc4d41" title="parser.LogoParser.expression" alt="" coords="2425,501,2634,528"/>
+<area shape="rect" id="node19" href="$d5/d0e/classparser_1_1_logo_parser.html#ad6ed8e51959a6e19a2323444aa8331c8" title="parser.LogoParser.statement" alt="" coords="1961,353,2167,380"/>
+<area shape="rect" id="node20" href="$d5/d0e/classparser_1_1_logo_parser.html#a4bdaeff6df067fde6743ff07370c3b0b" title="parser.LogoParser.pow" alt="" coords="1080,245,1245,272"/>
+<area shape="rect" id="node21" href="$d5/d0e/classparser_1_1_logo_parser.html#a34f4226672a2711ce2691162fdb2124d" title="parser.LogoParser.term" alt="" coords="1293,271,1464,297"/>
+<area shape="rect" id="node10" href="$d5/d0e/classparser_1_1_logo_parser.html#adefe3b97ad0d2d7fd0dcd13f7ef2c75e" title="parser.LogoParser.parse" alt="" coords="2441,404,2617,431"/>
+<area shape="rect" id="node11" href="$d6/d95/classparser_1_1_parser.html#af3d0cef45b9f02f1707959c08d8f3797" title="parser.Parser.parse" alt="" coords="2683,404,2829,431"/>
+<area shape="rect" id="node12" href="$d6/d95/classparser_1_1_parser.html#ae90f8410be9931ec3f349085c8fdae71" title="parser.Parser.parseFile" alt="" coords="2895,349,3060,376"/>
+<area shape="rect" id="node17" href="$d4/d06/classinput_1_1_input_executor.html#a687a9f2cbed5d27a2c7b1336a1cab8aa" title="input.InputExecutor.process\lInput" alt="" coords="2878,455,3077,497"/>
+<area shape="rect" id="node18" href="$d5/d56/class_workspace.html#a0ed8fb487512971086b6f3ed0d74e4ae" title="Workspace.sendUserInput" alt="" coords="3132,405,3319,432"/>
+<area shape="rect" id="node13" href="$d9/de8/class_file_chooser_feature.html#ad742b8e9d07e8151f0a9ff1972867ce8" title="FileChooserFeature.openFile\lChooser" alt="" coords="3126,339,3325,381"/>
+<area shape="rect" id="node14" href="$d5/d56/class_workspace.html#a6babd032d9af86fbc23812272d59a2d2" title="Workspace.addFeatureButtons" alt="" coords="3373,349,3589,376"/>
+<area shape="rect" id="node15" href="$d5/d56/class_workspace.html#a429d535dfd8427637b7715f0b1e1df1b" title="Workspace.createWorkspace" alt="" coords="3637,376,3840,403"/>
+<area shape="rect" id="node16" href="$d0/d4b/class_main.html#aaa75b38812324d0f17c89f139bde6ada" title="Main.start" alt="" coords="3889,376,3975,403"/>
+</map>

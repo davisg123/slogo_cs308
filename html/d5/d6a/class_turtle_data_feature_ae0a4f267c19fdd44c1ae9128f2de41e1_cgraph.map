@@ -1,0 +1,7 @@
+<map id="TurtleDataFeature.openTurtleDataPage" name="TurtleDataFeature.openTurtleDataPage">
+<area shape="rect" id="node2" href="$d5/d6a/class_turtle_data_feature.html#a3dd3f16c3c168151bc57be68684dfc50" title="TurtleDataFeature.showStage" alt="" coords="259,45,469,72"/>
+<area shape="rect" id="node3" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a183d009af1948557ada7fabffccedd72" title="MovementAndImageAPI.src.\lTurtleHandler.getTurtleLocation" alt="" coords="517,5,736,46"/>
+<area shape="rect" id="node5" href="$d4/d0f/class_movement_and_image_a_p_i_1_1src_1_1_turtle_handler.html#a407c55a73d8dc5bd3f037a5a95fd65c9" title="MovementAndImageAPI.src.\lTurtleHandler.getOrientation" alt="" coords="525,70,728,111"/>
+<area shape="rect" id="node4" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#af438d3cf63dc7584f43e470e56592cbb" title="MovementAndImageAPI.src.\lTurtle.getPoint" alt="" coords="784,5,987,46"/>
+<area shape="rect" id="node6" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#afc67ef4af25343bf4130a771dbcf676e" title="MovementAndImageAPI.src.\lTurtle.getOrientation" alt="" coords="784,70,987,111"/>
+</map>

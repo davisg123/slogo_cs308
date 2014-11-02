@@ -1,0 +1,11 @@
+<map id="commands.MovementCommand.execute" name="commands.MovementCommand.execute">
+<area shape="rect" id="node2" href="$d1/d2a/class_movement_and_image_a_p_i_1_1src_1_1_general_turtle_handler.html#a161e33a15866eb7a11dd386058858ae5" title="MovementAndImageAPI.src.\lGeneralTurtleHandler.clearLines" alt="" coords="357,5,579,46"/>
+<area shape="rect" id="node3" href="$d1/d2a/class_movement_and_image_a_p_i_1_1src_1_1_general_turtle_handler.html#a24933b257c271e44edca95d381b75915" title="MovementAndImageAPI.src.\lGeneralTurtleHandler.setLineWidth" alt="" coords="348,70,588,111"/>
+<area shape="rect" id="node4" href="$d1/d2a/class_movement_and_image_a_p_i_1_1src_1_1_general_turtle_handler.html#a2c0d684dd6a1066c8eace622967e0893" title="MovementAndImageAPI.src.\lGeneralTurtleHandler.setPenPosition" alt="" coords="341,135,595,177"/>
+<area shape="rect" id="node5" href="$d1/d2a/class_movement_and_image_a_p_i_1_1src_1_1_general_turtle_handler.html#ae445e13b00999d81594c72572670d2a9" title="MovementAndImageAPI.src.\lGeneralTurtleHandler.towards" alt="" coords="363,201,573,242"/>
+<area shape="rect" id="node6" href="$d7/d15/classcommands_1_1_commands_turtle.html#aad97dd16144882ea39321c7a2867bd2f" title="commands.CommandsTurtle.turtle\lHandler" alt="" coords="346,266,590,307"/>
+<area shape="rect" id="node7" href="$d1/d2a/class_movement_and_image_a_p_i_1_1src_1_1_general_turtle_handler.html#a610f60da990ccb5e44e49677ff660520" title="MovementAndImageAPI.src.\lGeneralTurtleHandler.updateTurtle\lAbsoluteLocation" alt="" coords="349,331,587,387"/>
+<area shape="rect" id="node8" href="$d1/d2a/class_movement_and_image_a_p_i_1_1src_1_1_general_turtle_handler.html#acb4099ab708047cb310eba81ac30fb9c" title="MovementAndImageAPI.src.\lGeneralTurtleHandler.updateTurtle\lAbsoluteOrientation" alt="" coords="349,411,587,467"/>
+<area shape="rect" id="node9" href="$d1/d2a/class_movement_and_image_a_p_i_1_1src_1_1_general_turtle_handler.html#a781deb87f1f26c7533116bf80d076b9b" title="MovementAndImageAPI.src.\lGeneralTurtleHandler.updateTurtle\lLocation" alt="" coords="349,491,587,547"/>
+<area shape="rect" id="node10" href="$d1/d2a/class_movement_and_image_a_p_i_1_1src_1_1_general_turtle_handler.html#affeeb7ce141d56621503ecc12ed5e8dc" title="MovementAndImageAPI.src.\lGeneralTurtleHandler.updateTurtle\lOrientation" alt="" coords="349,571,587,627"/>
+</map>

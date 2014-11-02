@@ -1,0 +1,8 @@
+<map id="MovementAndImageAPI.src.TurtleTest.testMovingDirections" name="MovementAndImageAPI.src.TurtleTest.testMovingDirections">
+<area shape="rect" id="node2" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#af438d3cf63dc7584f43e470e56592cbb" title="MovementAndImageAPI.src.\lTurtle.getPoint" alt="" coords="287,5,489,46"/>
+<area shape="rect" id="node3" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a2ec2bd850d6b5d8e9479b7e2970b8f28" title="MovementAndImageAPI.src.\lTurtle.updateAbsoluteLocation" alt="" coords="281,70,495,111"/>
+<area shape="rect" id="node4" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a0fcf334951cc9357c73e968707cab8d0" title="MovementAndImageAPI.src.\lTurtle.updateAbsoluteOrientation" alt="" coords="272,135,504,177"/>
+<area shape="rect" id="node7" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#acc1b5c3035033c02d79b43b18d158b91" title="MovementAndImageAPI.src.\lTurtle.updateLocation" alt="" coords="287,201,489,242"/>
+<area shape="rect" id="node5" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a79610d6c6d05b070331c32cee99d69a9" title="MovementAndImageAPI.src.\lTurtle.finishRotation" alt="" coords="552,135,755,177"/>
+<area shape="rect" id="node6" href="$d7/d43/class_movement_and_image_a_p_i_1_1src_1_1_turtle.html#a1e1b79caf9191f2b467d6a50bfeca3df" title="MovementAndImageAPI.src.\lTurtle.ensurePositiveOrientation" alt="" coords="803,135,1027,177"/>
+</map>
