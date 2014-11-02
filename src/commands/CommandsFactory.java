@@ -1,3 +1,5 @@
+/* Code Masterpiece */
+
 package commands;
 
 import MovementAndImageAPI.src.GeneralTurtleHandler;
@@ -7,6 +9,7 @@ import MovementAndImageAPI.src.GeneralTurtleHandler;
  * the factory responsible for creating and executing commands
  * 
  * @author Davis
+ * @author Keng
  *
  */
 

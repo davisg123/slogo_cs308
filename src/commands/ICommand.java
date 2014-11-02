@@ -1,3 +1,5 @@
+/* Code Masterpiece */
+
 package commands;
 
 public interface ICommand {
